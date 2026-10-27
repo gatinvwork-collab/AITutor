@@ -6,8 +6,8 @@ from pathlib import Path
 from PySide6.QtCore import QTimer, Qt
 from PySide6.QtWidgets import QApplication
 
-from aitutor.desktop import run
-from aitutor.service import Service
+from tutor_ai.desktop import run
+from tutor_ai.service import Service
 from tests.test_application import FakeProvider
 
 ROOT = Path(__file__).resolve().parent.parent / "build" / ("gui03-" + uuid.uuid4().hex[:8])

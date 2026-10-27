@@ -5,13 +5,13 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from aitutor.service import Service
+from tutor_ai.service import Service
 from tests.exe_qa_031 import ROOT, run_case, main as previous_regression
 from tests.qa_fixtures import seed_import_032
 
 
-def main():
-    executable = ROOT / "dist" / "AI-Tutor-0.3.2.exe"
+def main(executable=None):
+    executable = Path(executable) if executable else ROOT / "dist" / "AI-Tutor-0.3.2.exe"
     output = ROOT / "build" / ("exe032-" + uuid.uuid4().hex[:8])
     output.mkdir()
     class Stub(BaseHTTPRequestHandler):

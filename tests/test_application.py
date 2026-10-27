@@ -2,11 +2,11 @@ import json
 import httpx
 import pytest
 
-from aitutor.crypto import unb64
-from aitutor.education import analyze_code, arithmetic, check_answer
-from aitutor.errors import AppError
-from aitutor.providers import Provider, validate_config
-from aitutor.service import Service
+from tutor_ai.crypto import unb64
+from tutor_ai.education import analyze_code, arithmetic, check_answer
+from tutor_ai.errors import AppError
+from tutor_ai.providers import Provider, validate_config
+from tutor_ai.service import Service
 
 PASSWORD = "parent-password-123"
 CHILD_PASSWORD = "student-password-123"
@@ -247,7 +247,7 @@ def test_atomic_save_failure_rolls_back_database_and_wrappers(family, monkeypatc
     old_wrap = json.dumps(app.store.envelope["wraps"][child["id"]])
     def fail(*_):
         raise OSError("synthetic disk failure")
-    monkeypatch.setattr("aitutor.storage.atomic_write", fail)
+    monkeypatch.setattr("tutor_ai.storage.atomic_write", fail)
     with pytest.raises(OSError):
         app.reset_password(child["id"], "should-not-be-applied")
     assert json.dumps(app.store.envelope["wraps"][child["id"]]) == old_wrap
@@ -318,7 +318,7 @@ def test_endpoints_are_restricted():
 
 
 def test_documents_are_encrypted_and_require_confirmation(family, tmp_path):
-    from aitutor.documents import import_file
+    from tutor_ai.documents import import_file
     app, _, child, _ = family
     child_login(app, child)
     path = tmp_path / "homework.txt"
@@ -337,7 +337,7 @@ def test_documents_are_encrypted_and_require_confirmation(family, tmp_path):
 
 def test_docx_table_extraction_and_file_limits(family, tmp_path):
     from docx import Document
-    from aitutor.documents import import_file
+    from tutor_ai.documents import import_file
     app, _, child, _ = family
     child_login(app, child)
     doc = Document()

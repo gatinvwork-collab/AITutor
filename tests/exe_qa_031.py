@@ -14,7 +14,7 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-from aitutor.service import Service
+from tutor_ai.service import Service
 from tests.test_application import PASSWORD, PROFILE, CHILD_PASSWORD
 from tests.qa_fixtures import foreign_backup
 

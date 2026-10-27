@@ -4,7 +4,7 @@ from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog
 
-from aitutor.service import Service
+from tutor_ai.service import Service
 from tests import gui_feedback_03 as harness
 from tests.qa_fixtures import seed_import_032
 from tests.test_application import FakeProvider

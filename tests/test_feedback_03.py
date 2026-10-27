@@ -5,9 +5,9 @@ import shutil
 
 import pytest
 
-from aitutor.crypto import atomic_write, encode, seal
-from aitutor.errors import AppError
-from aitutor.service import Service
+from tutor_ai.crypto import atomic_write, encode, seal
+from tutor_ai.errors import AppError
+from tutor_ai.service import Service
 from tests.test_application import PASSWORD, CHILD_PASSWORD, PROFILE, family as family_fixture, child_login
 from tests.test_feedback_02 import address_fixture
 
@@ -137,7 +137,7 @@ def test_failed_write_rolls_back_profile_revision_directory_and_notification(fam
     envelope = copy.deepcopy(app.store.envelope)
     def fail(*_):
         raise OSError("synthetic disk full")
-    monkeypatch.setattr("aitutor.storage.atomic_write", fail)
+    monkeypatch.setattr("tutor_ai.storage.atomic_write", fail)
     with pytest.raises(OSError):
         edit(app, child["id"], name="Не сохранено", school="Не сохранена")
     assert app.get_profile(child["id"]) == before
@@ -221,7 +221,7 @@ def test_failed_v2_migration_keeps_original(family, monkeypatch):
         if path == app.store.path:
             raise OSError("synthetic failure")
         real(path, data)
-    monkeypatch.setattr("aitutor.storage.atomic_write", fail)
+    monkeypatch.setattr("tutor_ai.storage.atomic_write", fail)
     with pytest.raises(AppError) as error:
         app.login(parent["id"], PASSWORD)
     assert error.value.code == "migration" and app.store.path.read_bytes() == raw

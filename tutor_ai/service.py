@@ -74,6 +74,8 @@ class Service:
         require(command in self.COMMANDS, "Неизвестная команда.", "forbidden")
         require(isinstance(args or {}, dict), "Некорректный запрос.")
         with self.lock:
+            require(command == "status" or not (self.store.root / "transfer-state.json").exists(),
+                    "Обнаружен незавершённый перенос. Завершите проверку или отмените временную копию.", "transfer_pending")
             return getattr(self, command)(**(args or {}))
 
     def user(self, role=None):
@@ -102,8 +104,11 @@ class Service:
                                      "fields": fields or []})
 
     def status(self):
+        if (self.store.root / "transfer-state.json").exists():
+            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.4.0",
+                    "context": self.context, "transfer_pending": True}
         return {"exists": self.store.exists, "accounts": self.store.accounts(),
-                "authenticated": bool(self.actor), "version": "0.3.2", "context": self.context}
+                "authenticated": bool(self.actor), "version": "0.4.0", "context": self.context}
 
     def search_addresses(self, kind, query, region_id=None):
         return self.address_directory.search(kind, query, region_id)

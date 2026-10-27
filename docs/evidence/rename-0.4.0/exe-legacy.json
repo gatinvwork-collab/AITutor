@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "schema": 1,
+      "result": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "version",
+            "ok": true
+          },
+          {
+            "name": "old profiles before login",
+            "ok": true
+          },
+          {
+            "name": "old identity",
+            "ok": true
+          },
+          {
+            "name": "verbatim homework",
+            "ok": true
+          },
+          {
+            "name": "old data opened without registration",
+            "ok": true
+          },
+          {
+            "name": "absent historical counters shown as unknown",
+            "ok": true
+          }
+        ]
+      },
+      "source_unchanged": true
+    },
+    {
+      "schema": 2,
+      "result": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "version",
+            "ok": true
+          },
+          {
+            "name": "old profiles before login",
+            "ok": true
+          },
+          {
+            "name": "old identity",
+            "ok": true
+          },
+          {
+            "name": "verbatim homework",
+            "ok": true
+          },
+          {
+            "name": "old data opened without registration",
+            "ok": true
+          },
+          {
+            "name": "absent historical counters shown as unknown",
+            "ok": true
+          }
+        ]
+      },
+      "source_unchanged": true
+    },
+    {
+      "schema": 3,
+      "result": {
+        "passed": true,
+        "checks": [
+          {
+            "name": "version",
+            "ok": true
+          },
+          {
+            "name": "old profiles before login",
+            "ok": true
+          },
+          {
+            "name": "old identity",
+            "ok": true
+          },
+          {
+            "name": "verbatim homework",
+            "ok": true
+          },
+          {
+            "name": "old data opened without registration",
+            "ok": true
+          },
+          {
+            "name": "absent historical counters shown as unknown",
+            "ok": true
+          }
+        ]
+      },
+      "source_unchanged": true
+    }
+  ],
+  "directory": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-legacy040-0d98db69"
+}

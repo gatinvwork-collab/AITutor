@@ -49,7 +49,7 @@ class AddressDirectory:
             with httpx.Client(timeout=8, follow_redirects=False, trust_env=False,
                               transport=self.transport) as client:
                 with client.stream("GET", ENDPOINT + path, params=params,
-                                   headers={"User-Agent": "AITutor/0.2 (educational pilot)",
+                                   headers={"User-Agent": "Tutor-AI/0.4.0 (educational pilot)",
                                             "Accept": "application/json"}) as response:
                     require(response.status_code == 200,
                             "Адресный сервис недоступен. Повторите поиск или включите ручной ввод.", "address_network")

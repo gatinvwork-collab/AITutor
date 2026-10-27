@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .errors import AppError
 from .service import Service
+from .transfer import Transfer, installation_lock
 
 
 def portable_root():
@@ -26,8 +27,8 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
     # Qt/Chromium-managed data stays in the portable directory, set before QApplication.
     os.environ["QTWEBENGINE_DICTIONARIES_PATH"] = str(data / "cache" / "dictionaries")
     app = QApplication(sys.argv[:1])
-    app.setApplicationName("AI-Tutor")
-    app.setOrganizationName("AITutor")
+    app.setApplicationName("Tutor-AI")
+    app.setOrganizationName("Tutor-AI")
     try:
         data.mkdir(parents=True, exist_ok=True)
         instance_lock = QLockFile(str(data / "instance.lock"))
@@ -44,6 +45,9 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
         return 1
     ui = Path(getattr(sys, "_MEIPASS", portable_root())) / "ui"
     pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="native-command")
+    transfer = Transfer(root, sys.executable if getattr(sys, "frozen", False) else None)
+    transferred_executable = None
+    recovery_data = None
 
     class LocalOnly(QWebEngineUrlRequestInterceptor):
         def interceptRequest(self, info):
@@ -73,12 +77,44 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
 
         @Slot(str, str, str)
         def request(self, rid, command, payload):
+            nonlocal recovery_data
             if len(payload) > 200_000 or len(rid) > 100:
                 self.response.emit(rid, json.dumps({"error": "Запрос слишком велик."}))
                 return
             if command == "cancel_request":
+                transfer.cancel()
                 result = service.cancel_request()
                 self.response.emit(rid, json.dumps({"result": result}))
+            elif command == "choose_transfer":
+                try:
+                    if service.actor or service.store.exists:
+                        raise AppError("Перенос доступен до регистрации в пустой установке. Выберите отдельную папку.")
+                    source = QFileDialog.getExistingDirectory(window, "Корень прежней установки (с app-data)")
+                    if not source:
+                        self.response.emit(rid, json.dumps({"result": None}))
+                        return
+                    destination = root
+                    if json.loads(payload).get("separate"):
+                        selected = QFileDialog.getExistingDirectory(window, "Пустая папка новой установки Tutor-AI")
+                        if not selected:
+                            self.response.emit(rid, json.dumps({"result": None}))
+                            return
+                        destination = Path(selected)
+                    pool.submit(self.transfer_prepare, rid, source, destination)
+                except AppError as exc:
+                    self.response.emit(rid, json.dumps({"error": str(exc)}, ensure_ascii=False))
+            elif command == "choose_transfer_recovery":
+                if service.actor:
+                    self.response.emit(rid, json.dumps({"error": "Сначала выйдите из профиля."}))
+                    return
+                selected = QFileDialog.getExistingDirectory(window, "Новая установка с незавершённым переносом")
+                if not selected:
+                    self.response.emit(rid, json.dumps({"result": None}))
+                    return
+                recovery_data = Path(selected) / "app-data"
+                pool.submit(self.transfer_execute, rid, "recover_transfer", "{}")
+            elif command in ("run_transfer", "recover_transfer", "launch_transferred"):
+                pool.submit(self.transfer_execute, rid, command, payload)
             elif command == "pick_file":
                 if not service.actor:
                     self.response.emit(rid, json.dumps({"error": "Сначала войдите."}))
@@ -115,6 +151,55 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 self.response.emit(rid, json.dumps({"error": "Не удалось записать данные. Проверьте место и права."}))
             except Exception:
                 self.response.emit(rid, json.dumps({"error": "Операция не выполнена. Данные запроса не записаны в лог."}))
+
+        def transfer_prepare(self, rid, source, destination):
+            nonlocal recovery_data
+            try:
+                recovery_data = None
+                result = transfer.prepare(source, destination)
+                self.response.emit(rid, json.dumps({"result": result}, ensure_ascii=False))
+            except Exception as exc:
+                message = str(exc) if isinstance(exc, AppError) else "Не удалось подготовить перенос. Проверьте пути и права доступа."
+                self.response.emit(rid, json.dumps({"error": message}, ensure_ascii=False))
+
+        def transfer_execute(self, rid, command, payload):
+            nonlocal transferred_executable, recovery_data
+            try:
+                with service.lock:
+                    if service.actor:
+                        raise AppError("Сначала выйдите из профиля.")
+                    if command == "run_transfer":
+                        if service.store.exists:
+                            raise AppError("В текущей установке уже есть данные. Перезапись запрещена.")
+                        args = json.loads(payload)
+                        result = transfer.execute(args["operation"], args["account"], args["password"])
+                        transferred_executable = Path(result["destination"]) / Path(sys.executable).name
+                    elif command == "recover_transfer":
+                        target = recovery_data or (transfer.plan["destination"] / "app-data" if transfer.plan else data)
+                        if target == data:
+                            result = Transfer.recover(target)
+                        else:
+                            with installation_lock(target):
+                                result = Transfer.recover(target)
+                        recovery_data = None
+                    else:
+                        from PySide6.QtCore import QProcess
+                        if not transferred_executable or not transferred_executable.is_file():
+                            raise AppError("Новая установка ещё не подготовлена.")
+                        ok, _ = QProcess.startDetached(str(transferred_executable), [], str(transferred_executable.parent))
+                        if not ok:
+                            raise AppError("Не удалось запустить новую установку. Запустите её exe вручную.")
+                        result = {"ok": True}
+                    if command != "launch_transferred":
+                        service.store.close()
+                        from .storage import Store
+                        from .service import identity
+                        service.store = Store(data)
+                        service.context = identity()
+                self.response.emit(rid, json.dumps({"result": result}, ensure_ascii=False))
+            except Exception as exc:
+                message = str(exc) if isinstance(exc, AppError) else "Перенос не завершён. Источник сохранён. Устраните причину (место, права, формат) и очистите временную копию перед повтором."
+                self.response.emit(rid, json.dumps({"error": message, "code": "transfer_failed"}, ensure_ascii=False))
 
         def import_selected(self, rid, path):
             try:

@@ -3,7 +3,7 @@ import json
 import shutil
 import uuid
 
-from aitutor.service import Service
+from tutor_ai.service import Service
 
 
 def foreign_backup(source, root, passwords, archive_password):
@@ -33,7 +33,7 @@ def foreign_backup(source, root, passwords, archive_password):
 
 
 def seed_import_032(service, student):
-    from aitutor.crypto import seal
+    from tutor_ai.crypto import seal
     from tests.test_import_032 import pdf_bytes
     with service.store.transaction():
         for hid, filename, raw, extracted in (

@@ -1,0 +1,20 @@
+{
+  "project": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI",
+  "source_retained": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor",
+  "reason": "Windows directory sharing violation; no source deletion",
+  "venv_independent": true,
+  "data": [
+    {
+      "relative": "app-data",
+      "present": true,
+      "persistent_files": 0,
+      "sha256_equal": true
+    },
+    {
+      "relative": "dist/app-data",
+      "present": true,
+      "persistent_files": 1,
+      "sha256_equal": true
+    }
+  ]
+}

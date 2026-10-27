@@ -4,11 +4,11 @@ import json
 import httpx
 import pytest
 
-from aitutor.addresses import AddressDirectory
-from aitutor.crypto import atomic_write, encode, seal
-from aitutor.education import SUBJECTS, catalog, check_answer, subjects_for_grade, topic
-from aitutor.errors import AppError
-from aitutor.service import Service
+from tutor_ai.addresses import AddressDirectory
+from tutor_ai.crypto import atomic_write, encode, seal
+from tutor_ai.education import SUBJECTS, catalog, check_answer, subjects_for_grade, topic
+from tutor_ai.errors import AppError
+from tutor_ai.service import Service
 from tests.test_application import CHILD_PASSWORD, PASSWORD, PROFILE, FakeProvider, child_login
 from tests.test_application import family as family
 
@@ -166,8 +166,8 @@ def test_homework_does_not_reuse_different_mode_or_subject(family):
 
 
 def test_subject_change_preserves_old_result_and_clones_original(family, tmp_path):
-    from aitutor.documents import import_file
-    from aitutor.crypto import open_seal
+    from tutor_ai.documents import import_file
+    from tutor_ai.crypto import open_seal
     app, _, child, _ = family
     child_login(app, child)
     path = tmp_path / "original.txt"
@@ -274,7 +274,7 @@ def test_failed_migration_keeps_original_container(family, monkeypatch):
         if path == app.store.path:
             raise OSError("synthetic migration failure")
         real_write(path, data)
-    monkeypatch.setattr("aitutor.storage.atomic_write", fail_vault)
+    monkeypatch.setattr("tutor_ai.storage.atomic_write", fail_vault)
     with pytest.raises(AppError):
         app.login(parent["id"], PASSWORD)
     assert app.store.path.read_bytes() == raw
@@ -293,7 +293,7 @@ def test_rename_and_delete_sync_public_directory_and_keep_actor_identity(family)
 
 def test_restore_legacy_backup_migrates_before_replacing(family):
     import secrets
-    from aitutor.crypto import wrap
+    from tutor_ai.crypto import wrap
     app, parent, child, _ = family
     legacy = make_legacy(app, child)
     archive_key = secrets.token_bytes(32)

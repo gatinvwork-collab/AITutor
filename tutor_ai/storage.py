@@ -186,15 +186,20 @@ class Store:
     @contextmanager
     def transaction(self):
         previous = copy.deepcopy(self.envelope)
+        # After deserialize(), SQLite can serialize the committed backing image
+        # rather than dirty cached pages. Keep a private RAM rollback image,
+        # commit the private DB first, then publish its new image atomically.
+        before = self.db.serialize()
         self.db.execute("BEGIN IMMEDIATE")
         try:
             yield
-            # Serialize includes the current transaction. Persist before COMMIT;
-            # COMMIT on a private in-memory DB has no disk I/O to fail.
-            self.save()
             self.db.commit()
+            self.save()
         except Exception:
             self.db.rollback()
+            self.db.deserialize(before)
+            self.db.execute("PRAGMA foreign_keys=ON")
+            self.db.execute("PRAGMA temp_store=MEMORY")
             self.envelope = previous
             raise
 

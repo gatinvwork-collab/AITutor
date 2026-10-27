@@ -11,9 +11,9 @@ from pathlib import Path
 import httpx
 from PySide6.QtCore import QTimer
 
-from aitutor.addresses import AddressDirectory
-from aitutor.desktop import run
-from aitutor.service import Service
+from tutor_ai.addresses import AddressDirectory
+from tutor_ai.desktop import run
+from tutor_ai.service import Service
 from tests.test_application import FakeProvider
 
 ROOT = Path(__file__).resolve().parent.parent / "build" / ("gui-" + uuid.uuid4().hex[:8])

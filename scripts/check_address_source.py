@@ -4,7 +4,7 @@ import json
 import sys
 import time
 
-from aitutor.addresses import AddressDirectory
+from tutor_ai.addresses import AddressDirectory
 
 
 def main():

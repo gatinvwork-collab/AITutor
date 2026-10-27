@@ -3,7 +3,7 @@ import copy
 
 import pytest
 
-from aitutor.errors import AppError
+from tutor_ai.errors import AppError
 from tests.test_application import CHILD_PASSWORD, PROFILE, child_login, family as family_fixture
 
 family = family_fixture
@@ -58,7 +58,7 @@ def test_failed_final_answer_is_retryable_with_same_operation(family, monkeypatc
             app.store.put("session", item["id"], item, child["id"])
     for index in range(2):
         current = app.lesson(lesson["id"])
-        from aitutor.education import topic
+        from tutor_ai.education import topic
         answer = topic(current["topic"])["tasks"][current["index"]][1]
         app.answer(lesson["id"], answer, f"qa032-pre-answer-{index}")
     previous = copy.deepcopy(app.lesson(lesson["id"]))

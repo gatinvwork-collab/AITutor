@@ -4,9 +4,9 @@ import io
 
 import pytest
 
-from aitutor.crypto import open_seal, seal
-from aitutor.documents import extract_material, import_file
-from aitutor.errors import AppError
+from tutor_ai.crypto import open_seal, seal
+from tutor_ai.documents import extract_material, import_file
+from tutor_ai.errors import AppError
 from tests.test_application import FakeProvider, child_login, family as family_fixture
 
 family = family_fixture

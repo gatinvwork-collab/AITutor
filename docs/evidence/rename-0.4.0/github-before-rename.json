@@ -1,0 +1,37 @@
+﻿{
+    "default_branch":  "main",
+    "tags":  [
+
+             ],
+    "name":  "gatinvwork-collab/AITutor",
+    "permissions":  {
+                        "admin":  true,
+                        "maintain":  true,
+                        "push":  true,
+                        "triage":  true,
+                        "pull":  true
+                    },
+    "has_issues":  true,
+    "issues":  [
+
+               ],
+    "workflows":  0,
+    "has_projects":  true,
+    "has_pages":  false,
+    "private":  false,
+    "branches":  [
+                     {
+                         "name":  "main",
+                         "sha":  "4d435032289af6c8a3e4e54cfbd020ae4a3204e4"
+                     }
+                 ],
+    "id":  1433205544,
+    "has_wiki":  true,
+    "hooks":  [
+
+              ],
+    "open_issues_count":  0,
+    "releases":  [
+
+                 ]
+}

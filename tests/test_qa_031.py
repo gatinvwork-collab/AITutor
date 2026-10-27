@@ -3,7 +3,7 @@ import copy
 
 import pytest
 
-from aitutor.errors import AppError
+from tutor_ai.errors import AppError
 from tests.test_application import PASSWORD, child_login, family as family_fixture
 from tests.test_application import CHILD_PASSWORD
 from tests.qa_fixtures import foreign_backup
@@ -85,7 +85,7 @@ def test_new_observations_keep_subject_after_catalog_removal(family, monkeypatch
     assert original[0]["subject"] == "physics"
     event = app.store.all("knowledge_event", child["id"])[0]
     assert event["subject"] == "physics" and event["session"] == lesson["id"]
-    monkeypatch.setattr("aitutor.service.catalog", lambda: [])
+    monkeypatch.setattr("tutor_ai.service.catalog", lambda: [])
     assert app.snapshot()["students"][0]["knowledge"][0]["subject"] == "physics"
     assert app.store.all("knowledge", child["id"]) == original
 
@@ -136,7 +136,7 @@ def test_theme_write_failure_preserves_saved_preferences(family, monkeypatch):
     raw = app.store.path.read_bytes()
     def fail(*_):
         raise OSError("synthetic theme disk failure")
-    monkeypatch.setattr("aitutor.storage.atomic_write", fail)
+    monkeypatch.setattr("tutor_ai.storage.atomic_write", fail)
     with pytest.raises(OSError):
         app.set_theme("dark", "modern")
     assert app.user() == before and app.store.path.read_bytes() == raw

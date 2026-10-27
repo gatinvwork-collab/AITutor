@@ -1,0 +1,31 @@
+﻿{
+    "default_branch":  "main",
+    "tags":  [
+
+             ],
+    "old_url_status":  301,
+    "has_issues":  true,
+    "old_url_location":  "https://github.com/gatinvwork-collab/Tutor-AI",
+    "branches":  [
+                     {
+                         "id":  null,
+                         "name":  "main",
+                         "tag_name":  null,
+                         "sha":  "4d435032289af6c8a3e4e54cfbd020ae4a3204e4"
+                     }
+                 ],
+    "workflows":  0,
+    "has_projects":  true,
+    "has_pages":  false,
+    "private":  false,
+    "full_name":  "gatinvwork-collab/Tutor-AI",
+    "id":  1433205544,
+    "has_wiki":  true,
+    "hooks":  [
+
+              ],
+    "open_issues_count":  0,
+    "releases":  [
+
+                 ]
+}
