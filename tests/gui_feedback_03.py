@@ -56,7 +56,8 @@ SCRIPT = r"""
     // Parent editing an actual linked child's form.
     await openProfile(c.id);form=document.querySelector('form[data-form="profile"]');
     form.elements.name.value='Алексей Новый';form.requestSubmit();
-    await until(()=>state.route==='students'&&!inFlight);
+    // 0.4.1 defines returning to the section where the profile was opened.
+    await until(()=>state.route==='notifications'&&!inFlight);
     assert(state.data.students.find(s=>s.id===c.id).name==='Алексей Новый','parent editing');
     for(const design of ['strict','modern'])for(const theme of ['light','dark']){
       await rpc('set_theme',{theme,design});state.route='home';await refresh();await shot(design+'-'+theme+'-parent');

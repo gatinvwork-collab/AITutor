@@ -1,0 +1,27 @@
+{
+  "automated_pointer_checks": 1348,
+  "wrong_dom_routes": 0,
+  "trusted_clicks": true,
+  "windows_clicks": 3,
+  "focus_loss_reproductions": 4,
+  "transfer": {
+    "tests": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "changed_product": [],
+  "broken_links": [],
+  "capture_mismatch_needs_independent_verification": true,
+  "qa_sources_sha256": {
+    "keyboard.mjs": "222a2efe00720b960f4a00b370cb55aaaf962926d26102946252842b707bd338",
+    "manual_observer.mjs": "3837755f992a6c8a33602e77c551fbb5eca2715fe5f3e2f0504f058d60681c41",
+    "navigation.mjs": "df2c7c5b143d5afd14efe981cd420bd1acd870f9db83697877187d9c06a3e705",
+    "prepare.py": "95e73943eef94e295668e47928b9186fa854914967e5afb38e4d6a2860002dc4",
+    "run_exe.py": "618a4cf49a7904ea28997574c85a32eb73c83b22ac4a71bb68b9506e57a52884",
+    "run_keyboard.py": "b83a5023feb495b4f1a2151dd5f4380e9bd82e770832930e847708ac01c43eba",
+    "run_manual.py": "347482360842cee74be2b633aea0adbe8d4c8456882fff4a0660499660c1cfe7",
+    "summarize.py": "f9863e73e24e53b719cbf37ea7ef0e17fd4ad827fb0ef1613aac17389e9efc57",
+    "verify_artifacts.py": "fcf59c810d9bcbda3b80eb47aa2f42781f43ec764ed1fd4e8652dc3314dca1b2"
+  }
+}

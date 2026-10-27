@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' qrc:; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'">
   <title>ИИ-репетитор</title>
+  <link rel="icon" href="assets/Tutor-AI.ico">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="modern.css">
   <script src="qrc:///qtwebchannel/qwebchannel.js" defer></script>
@@ -15,7 +16,7 @@
 <body>
   <div id="app"><main class="welcome"><h1>ИИ-репетитор</h1><p>Подключение к локальному хранилищу…</p></main></div>
   <div id="notice" role="status" aria-live="polite"></div>
-  <div id="busy" hidden>Выполняется операция… <button id="cancel-request">Отменить запрос ИИ</button></div>
+  <div id="busy" role="status" aria-live="polite" hidden>Выполняется операция. Разделы меню доступны для просмотра. <button id="cancel-request">Запросить отмену</button></div>
   <dialog id="secret"><h2>Сохраните данные доступа</h2><p>Обычно профиль выбирается по имени. Сохраните также технический идентификатор для восстановления. Ключ восстановления показывается один раз; храните его отдельно от приложения.</p><pre id="secret-value"></pre><button id="secret-close">Я сохранил данные</button></dialog>
   <dialog id="transition"><h2>Сохранить текущее занятие?</h2><p id="transition-text"></p><div class="row"><button id="transition-accept" class="primary">Сохранить и приостановить</button><button id="transition-cancel">Остаться в текущем занятии</button></div></dialog>
 </body>

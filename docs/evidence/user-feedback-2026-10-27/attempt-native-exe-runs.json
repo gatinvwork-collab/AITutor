@@ -1,0 +1,12 @@
+[
+  {
+    "fixture": "small",
+    "exit": 1,
+    "wall_seconds": 20.129389199995785
+  },
+  {
+    "fixture": "history1500",
+    "exit": 1,
+    "wall_seconds": 19.283638099994278
+  }
+]

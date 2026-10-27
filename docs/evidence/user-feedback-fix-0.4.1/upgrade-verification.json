@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": {
+    "schema": true,
+    "vault_identity": true,
+    "users": true,
+    "links": true,
+    "records": true,
+    "originals": true,
+    "restore_clears_context": true,
+    "old_backup_history": true,
+    "old_backup_originals": true,
+    "new_write_after_reopen": true
+  },
+  "source_version": "0.4.0"
+}

@@ -1,0 +1,247 @@
+{
+  "metric": "JS click handler to second requestAnimationFrame; excludes physical screen latency",
+  "candidate_diagnostics_enabled": true,
+  "baseline_diagnostics_enabled": false,
+  "comparison": [
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 24.350000001490116,
+      "p95_ms": 33,
+      "max_ms": 34.900000005960464
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "home",
+      "n": 100,
+      "median_ms": 25.5,
+      "p95_ms": 32.6000000089407,
+      "max_ms": 35.20000000298023
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "students",
+      "n": 100,
+      "median_ms": 25.049999997019768,
+      "p95_ms": 33,
+      "max_ms": 33.79999999701977
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 24.899999998509884,
+      "p95_ms": 32.29999999701977,
+      "max_ms": 286.79999999701977
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "home",
+      "n": 100,
+      "median_ms": 24.94999999552965,
+      "p95_ms": 32.900000005960464,
+      "max_ms": 33.8999999910593
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "students",
+      "n": 100,
+      "median_ms": 25.75,
+      "p95_ms": 32.20000000298023,
+      "max_ms": 34.20000000298023
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 29.0,
+      "p95_ms": 30.599999994039536,
+      "max_ms": 212.09999999403954
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "home",
+      "n": 100,
+      "median_ms": 29.100000008940697,
+      "p95_ms": 30.700000002980232,
+      "max_ms": 31.700000002980232
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "students",
+      "n": 100,
+      "median_ms": 29.0,
+      "p95_ms": 30.400000005960464,
+      "max_ms": 31.400000005960464
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 29.100000008940697,
+      "p95_ms": 30.400000005960464,
+      "max_ms": 43.900000005960464
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "home",
+      "n": 100,
+      "median_ms": 29.100000008940697,
+      "p95_ms": 30.5,
+      "max_ms": 31.299999997019768
+    },
+    {
+      "fixture": "small",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "students",
+      "n": 100,
+      "median_ms": 29.299999997019768,
+      "p95_ms": 30.599999994039536,
+      "max_ms": 30.899999991059303
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 25.950000002980232,
+      "p95_ms": 32.400000005960464,
+      "max_ms": 36.80000001192093
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "home",
+      "n": 100,
+      "median_ms": 28.350000001490116,
+      "p95_ms": 32.099999994039536,
+      "max_ms": 45.599999994039536
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "strict",
+      "route": "students",
+      "n": 100,
+      "median_ms": 27.75,
+      "p95_ms": 33.69999998807907,
+      "max_ms": 34.900000005960464
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 24.950000002980232,
+      "p95_ms": 32.599999994039536,
+      "max_ms": 233.90000000596046
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "home",
+      "n": 100,
+      "median_ms": 26.900000005960464,
+      "p95_ms": 32.20000000298023,
+      "max_ms": 36.79999999701977
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.0",
+      "design": "modern",
+      "route": "students",
+      "n": 100,
+      "median_ms": 27.900000005960464,
+      "p95_ms": 32.8999999910593,
+      "max_ms": 34.3999999910593
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 28.700000002980232,
+      "p95_ms": 31.299999997019768,
+      "max_ms": 39.8999999910593
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "home",
+      "n": 100,
+      "median_ms": 28.69999999552965,
+      "p95_ms": 30.399999991059303,
+      "max_ms": 47.3999999910593
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "strict",
+      "route": "students",
+      "n": 100,
+      "median_ms": 28.849999994039536,
+      "p95_ms": 30.700000002980232,
+      "max_ms": 31.600000008940697
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "notifications",
+      "n": 100,
+      "median_ms": 29.05000000447035,
+      "p95_ms": 30.700000002980232,
+      "max_ms": 46.900000005960464
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "home",
+      "n": 100,
+      "median_ms": 28.700000002980232,
+      "p95_ms": 30.100000008940697,
+      "max_ms": 30.700000002980232
+    },
+    {
+      "fixture": "history1500",
+      "version": "0.4.1",
+      "design": "modern",
+      "route": "students",
+      "n": 100,
+      "median_ms": 29.0,
+      "p95_ms": 30.399999991059303,
+      "max_ms": 31.400000005960464
+    }
+  ]
+}

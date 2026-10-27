@@ -1,0 +1,63 @@
+{
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "disk_before": {
+    "total": 297238786048,
+    "used": 292061024256,
+    "free": 5177761792
+  },
+  "fixtures": [
+    {
+      "label": "small",
+      "folder": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-feedback041-47d3607b\\small",
+      "exe": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-feedback041-47d3607b\\small\\Tutor-AI-0.4.1.exe",
+      "parent": "85c748fd-952b-4160-8c2c-2e6bce6cdf88",
+      "child": "a690e8ae-b71d-4efb-8086-e0956f781556",
+      "sessions": 0,
+      "notifications": 0,
+      "vault_bytes": 44658,
+      "provider_configured": false
+    },
+    {
+      "label": "history1500",
+      "folder": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-feedback041-47d3607b\\history1500",
+      "exe": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-feedback041-47d3607b\\history1500\\Tutor-AI-0.4.1.exe",
+      "parent": "676a668e-3fec-4750-ad60-50518f4663e8",
+      "child": "dc40d147-4aef-4849-aaf3-0d3574097a28",
+      "sessions": 1500,
+      "notifications": 60,
+      "vault_bytes": 1530142,
+      "provider_configured": false
+    }
+  ],
+  "commit": "698778b1b6c6fe5b6c58e7d14c6411f9a4c84792\n",
+  "status": " M README.md\n?? docs/evidence/user-feedback-2026-10-27/\n?? docs/user-feedback-requirements-2026-10-27.md\n",
+  "baseline_sha256": {
+    "tutor_ai\\addresses.py": "1add22a17c513fa943342ae59ef70a477d16905374722e5f34ede6a4bdd7f605",
+    "tutor_ai\\audit.py": "47196f2dde34f3204ecf866380337f29b9f3513b15633ef5bc45c261edcba89a",
+    "tutor_ai\\crypto.py": "643c2874ba241ae0d376f1ffcb117f642ff25f9e3c273e23c1bfc1ba3e38b91a",
+    "tutor_ai\\desktop.py": "d05b3f9564409711fc06163a355916d4253a2f7347bbe7c75a87413fc5a9e7bf",
+    "tutor_ai\\documents.py": "0890e54d2e6506c9c7ec9b31ccd7e08b75528e129c354e9144d689c78282b419",
+    "tutor_ai\\education.py": "6ba3be72aaa58c1f1c6d37612dfcb67401dd4c77fc3b6c628dac162a574c2780",
+    "tutor_ai\\errors.py": "b6b0289e777fa5cd0a2bbb541b1d08120c9933a86032a05129623ea2dcc56562",
+    "tutor_ai\\history.py": "df1307b4798e0b567ddc873d2f0f6b28a590498802e8d4bbc2f5db13a77c646d",
+    "tutor_ai\\providers.py": "dff8361d9303c6ae262812ad688e6896b80e42cfcbf2786d5f0bced66525b77a",
+    "tutor_ai\\service.py": "15eecdf4ec7ede7e764b99228d5a9700d1bfaf214f8e4e8d25657ef01f6399a2",
+    "tutor_ai\\storage.py": "9f54fdf559aef568bfb87f578a050310f6fde6c6287070e93e4797b4d0c7e7dd",
+    "tutor_ai\\transfer.py": "6a2a043ef6f76eaa5088ee6110bd793c98668b913f3c81c3b5138bde6eb0d7c6",
+    "tutor_ai\\__init__.py": "e27d05e56c21992598d2ab8d17fbc366bac45acf246e1240b9dd0e6ce2630c75",
+    "ui\\addresses.js": "cb5680876e51e3321f901d23002bb4d2edd4d7425ae1aa71ca3200a8d1c9c996",
+    "ui\\app.js": "e17df28ae92f8e1c79728d13cae31e2d33dfb49e3ea76c5cdf955ed9637839c6",
+    "ui\\index.html": "9cebda4b5b5880f50a99714d99b76583a26da1d6f30ab04075761635a46aeee2",
+    "ui\\modern.css": "a1a848eafc36e995cbc60e97c06df72a2054cc269f65467176a3e0a45649365e",
+    "ui\\profiles.js": "ea8757d8cfcbd9feb3825757f4706647e232e46acfdb324371125cea2c5b90b1",
+    "ui\\style.css": "277deaa279d6921cfa5df8250178c83fcde02814965ed72c5de661f0810ee622",
+    "main.py": "3043bbc141c3cc69ed0aef35dd77da78dca4bb39845f2a589ee24d09423da150",
+    "dist\\Tutor-AI-0.4.0.exe": "6d83162b9061b42ec676332ed780231988ebd6f3b924feea47b577dba7170108"
+  },
+  "sha256": {
+    "dist/Tutor-AI-0.4.1.exe": "101590c3d91e301cf4d63154c9af11b1d47033a31dec67ce86023c9815bd14d3"
+  },
+  "version": "0.4.1",
+  "diagnostics_enabled": true
+}

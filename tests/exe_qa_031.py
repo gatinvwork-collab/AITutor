@@ -58,10 +58,16 @@ def close_test_process(process, exe):
         process.wait(timeout=10)
 
 
-def run_case(directory, script, endpoint="", executable=None):
+def run_case(directory, script, endpoint="", executable=None, prefer_link=False):
     source = Path(executable) if executable else ROOT / "dist" / "AI-Tutor-0.3.1.exe"
     exe = directory / source.name
-    shutil.copy2(source, exe)
+    if prefer_link:
+        try:
+            os.link(source, exe)
+        except OSError:
+            shutil.copy2(source, exe)
+    else:
+        shutil.copy2(source, exe)
     script_file = directory / "case.js"
     script_file.write_text(script, encoding="utf-8")
     result = directory / "result.json"

@@ -1,0 +1,34 @@
+{
+  "route": "students",
+  "clicks": [
+    {
+      "requested": "notifications",
+      "trusted": true,
+      "at": 57441.20000000298,
+      "route": "notifications",
+      "heading": "Уведомления",
+      "elapsed_ms": 33.400000005960464
+    },
+    {
+      "requested": "home",
+      "trusted": true,
+      "at": 177223.29999999702,
+      "route": "home",
+      "heading": "Обучение: QA Feedback Child",
+      "elapsed_ms": 28.200000002980232
+    },
+    {
+      "requested": "students",
+      "trusted": true,
+      "at": 196291,
+      "route": "students",
+      "heading": "Профили и семейные связи",
+      "elapsed_ms": 27
+    }
+  ],
+  "viewport": {
+    "width": 1280,
+    "height": 880,
+    "dpr": 2
+  }
+}

@@ -4,4 +4,4 @@ if __name__ == "__main__":
     import sys
     from tutor_ai.desktop import run
 
-    raise SystemExit(run(smoke="--smoke" in sys.argv))
+    raise SystemExit(run(smoke="--smoke" in sys.argv, diagnostics="--diagnostics" in sys.argv))

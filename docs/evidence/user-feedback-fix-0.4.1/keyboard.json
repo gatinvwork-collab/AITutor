@@ -1,0 +1,3653 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "students",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "students",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "students",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "notifications",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "notifications",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "controls",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "controls",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "controls",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "providers",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "providers",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "providers",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "backup",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "backup",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "backup",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "security",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "security",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "security",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "PARENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "strict",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "light",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "dark",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "home",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "subjects",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "subjects",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "lesson",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "lesson",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "homework",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "homework",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "homework",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "knowledge",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "history",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "program",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Enter",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": " ",
+      "passed": true
+    },
+    {
+      "role": "STUDENT",
+      "design": "modern",
+      "theme": "system",
+      "route": "settings",
+      "key": "Tab",
+      "passed": true
+    }
+  ]
+}

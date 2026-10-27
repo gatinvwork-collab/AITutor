@@ -105,10 +105,10 @@ class Service:
 
     def status(self):
         if (self.store.root / "transfer-state.json").exists():
-            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.4.0",
+            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.4.1",
                     "context": self.context, "transfer_pending": True}
         return {"exists": self.store.exists, "accounts": self.store.accounts(),
-                "authenticated": bool(self.actor), "version": "0.4.0", "context": self.context}
+                "authenticated": bool(self.actor), "version": "0.4.1", "context": self.context}
 
     def search_addresses(self, kind, query, region_id=None):
         return self.address_directory.search(kind, query, region_id)

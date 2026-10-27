@@ -5,6 +5,8 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;',
 const state = {route:'home', data:null, status:null, authMode:'login', selected:null, lesson:null, homework:null, drafts:{}};
 let bridge, inFlight = 0;
 let contextEpoch=0,nativeContext=null,noticeTimer=null,cancelTransition=null;
+let navigationRevision=0,currentOperation=null;
+const busyControls=new Set();
 const pending = new Map();
 let subjects = {};
 const icons = {algebra:'∑',geometry:'△',physics:'ρ',informatics:'01'};
@@ -17,7 +19,7 @@ function applyAppearance(theme,design) {
 
 function staleContext() { return Object.assign(new Error('Контекст доступа изменился.'),{stale:true}); }
 function resetPersonalState(context=null) {
-  ++contextEpoch;nativeContext=context;
+  ++contextEpoch;++navigationRevision;nativeContext=context;
   for(const job of pending.values()){clearTimeout(job.timer);job.reject(staleContext());}pending.clear();
   if(cancelTransition)cancelTransition(false);
   for(const key of Object.keys(state))delete state[key];
@@ -25,7 +27,7 @@ function resetPersonalState(context=null) {
   subjects={};clearTimeout(noticeTimer);$('#notice').textContent='';$('#notice').classList.remove('show');
   for(const dialog of document.querySelectorAll('dialog')){if(dialog.open)dialog.close();}
   $('#secret-value').textContent='';$('#transition-text').textContent='';
-  $('#app').replaceChildren();applyAppearance('system','strict');
+  $('#app').replaceChildren();delete $('#app').dataset.shell;applyAppearance('system','strict');
 }
 function notify(text) {clearTimeout(noticeTimer);$('#notice').textContent = text; $('#notice').classList.add('show');noticeTimer=setTimeout(() => $('#notice').classList.remove('show'), 7000);}
 function rpc(command, args={}) {
@@ -36,12 +38,28 @@ function rpc(command, args={}) {
     bridge.request(id,command,JSON.stringify(args));
   });
 }
+function syncBusyState() {
+  if(!inFlight){for(const control of busyControls)if(control.isConnected)control.disabled=false;busyControls.clear();}
+  else for(const control of document.querySelectorAll('button,input,select,textarea')){
+    if(control.matches('nav [data-action="route"],#cancel-request,#transition-accept,#transition-cancel'))continue;
+    if(!control.disabled){control.disabled=true;busyControls.add(control);}
+  }
+  document.querySelector('.content')?.setAttribute('aria-busy',String(!!inFlight));
+}
+function operationOwnsScreen(){return !currentOperation||(currentOperation.epoch===contextEpoch&&currentOperation.revision===navigationRevision);}
+function operationRoute(route){if(operationOwnsScreen())state.route=route;}
+function navigate(route) {
+  const nav=state.data?.user.role==='PARENT'?parentNav:studentNav;
+  if(!state.data||!nav.some(([id])=>id===route)){notify('Этот раздел недоступен текущему профилю.');return;}
+  ++navigationRevision;state.route=route;render();
+}
 async function perform(fn) {
   if(inFlight) return;
+  currentOperation={epoch:contextEpoch,revision:navigationRevision,route:state.route};
   inFlight++; $('#busy').hidden=false;
-  document.querySelectorAll('button:not(#cancel-request)').forEach(b=>b.disabled=true);
+  syncBusyState();
   try { await fn(); } catch(e) { if(!e.stale)notify(e.message); }
-  finally { inFlight--; $('#busy').hidden=true; document.querySelectorAll('button').forEach(b=>b.disabled=false); }
+  finally { inFlight--;currentOperation=null;$('#busy').hidden=true;syncBusyState(); }
 }
 async function refresh() {
   state.status=await rpc('status');
@@ -113,7 +131,7 @@ function auth() {
   if(state.status?.transfer_pending)return `<main class="welcome"><section class="card"><h1>Незавершённый перенос</h1><p>Регистрация и вход приостановлены. Проверьте ранее опубликованную копию или удалите только временные файлы этой операции. Исходная установка сохранена.</p><button data-action="recover-transfer">Завершить проверку / очистить временную копию</button></section></main>`;
   const register=state.authMode==='register';
   const recover=state.authMode==='recover';
-  return `<main class="welcome"><header><span class="badge">Локальное обучение · 7 класс</span><h1>Учиться. Понимать. Продвигаться.</h1><p class="muted">Алгебра, геометрия, физика и информатика.<br>Учебная история хранится на вашем компьютере в зашифрованном виде.</p></header>
+  return `<main class="welcome"><header>${brand()}<span class="badge">Локальное обучение · 7 класс</span><h1>Учиться. Понимать. Продвигаться.</h1><p class="muted">Алгебра, геометрия, физика и информатика.<br>Учебная история хранится на вашем компьютере в зашифрованном виде.</p></header>
   <section class="card auth"><h2>${register?'Создать первый профиль':recover?'Восстановить доступ':'Войти в профиль'}</h2>
   ${!state.status?.exists?'<p class="muted">Начните с профиля родителя или ученика. Для ИИ-занятий потребуется родитель.</p>':''}
   <form data-form="${register?'register':recover?'recover':'login'}">
@@ -122,7 +140,7 @@ function auth() {
     <button class="primary" type="submit">${register?'Создать профиль':recover?'Восстановить':'Войти'}</button>
   </form><hr class="divider"><div class="row">${state.status?.exists?`<button data-action="auth" data-value="${recover?'login':'recover'}">${recover?'Вернуться ко входу':'Забыли пароль?'}</button>`:`<button data-action="auth" data-value="register">Первый запуск → создать профиль</button>`}</div></section>
   ${!state.status?.exists?transferCard():''}
-  <p class="muted">Tutor-AI · Версия 0.4.0 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
+  <p class="muted">Tutor-AI · Версия 0.4.1 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
 }
 function transferCard(){
   const plan=state.transferPlan;
@@ -142,25 +160,61 @@ function registerFields() {
 }
 const studentNav=[['home','Обзор'],['subjects','Предметы'],['lesson','Текущее занятие'],['homework','Проверка ДЗ'],['knowledge','Карта знаний'],['history','История'],['program','Учебник и программа'],['settings','Настройки']];
 const parentNav=[['home','Обзор семьи'],['students','Профили и связи'],['notifications','Уведомления'],['knowledge','Карта знаний'],['history','Занятия и отчёты'],['controls','Учебное время'],['program','Программы и запросы'],['providers','ИИ-провайдеры'],['backup','Резервные копии'],['security','Безопасность'],['settings','Настройки']];
+function brand(){return '<div class="brand-lockup"><img src="assets/tutor-ai-mark.svg" width="48" height="48" alt=""><div><span class="brand-wordmark">Tutor<span>-AI</span></span><small>ИИ-репетитор</small></div></div>';}
 function render() {
-  if(!state.data) { $('#app').innerHTML=auth(); return; }
+  const started=performance.now();
+  if(!state.data) { $('#app').innerHTML=auth();syncBusyState();return; }
   reconcileSnapshot();
   applyAppearance(state.data.user.theme,state.data.user.design);
   const parent=state.data.user.role==='PARENT';
   const nav=parent?parentNav:studentNav;
   const pages={home,subjects:subjectPage,lesson:lessonPage,homework:homeworkPage,knowledge,history,students:studentsPage,controls,program,providers,backup,security,settings,profile:profilePage,notifications:notificationsPage};
+  if(!pages[state.route]){
+    state.route='home';notify('Недоступный раздел. Открыт обзор текущего профиля.');
+  }
   const s=student();
   for(const [key,kind] of [['reportSubject','history'],['knowledgeSubject','knowledge']]) {
     if(state[key]&&!subjects[state[key]]&&!s?.archives?.[kind]?.[state[key]])state[key]='';
   }
-  $('#app').innerHTML=`<div class="layout"><aside class="sidebar"><div class="brand">ИИ-репетитор<small>ПОНЯТНО. ПО ШАГАМ.</small></div><nav>${nav.map(([id,label])=>`<button class="${state.route===id?'active':''}" data-action="route" data-value="${id}">${label}</button>`).join('')}</nav><div class="profile"><strong>${esc(state.data.user.name)}</strong><small>${parent?'Кабинет родителя':'Ученик · 7 класс'}</small><button data-action="logout">Выйти и заблокировать</button></div></aside><main class="content"><div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.4.0</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${(pages[state.route]||home)()}</main></div>`;
+  const shellKey=`${contextEpoch}:${state.data.user.id}:${state.data.user.role}`;
+  const sameShell=$('#app').dataset.shell===shellKey&&!!$('.sidebar');
+  const focused=sameShell?document.activeElement:null;
+  const focusId=focused?.id;
+  const focusForm=focused?.closest('form')?.dataset.form,focusName=focused?.name;
+  const start=focused?.selectionStart,end=focused?.selectionEnd;
+  if(!sameShell){
+    $('#app').innerHTML=`<div class="layout"><aside class="sidebar"><div class="brand">${brand()}<small>ПОНЯТНО. ПО ШАГАМ.</small></div><nav aria-label="Разделы приложения">${nav.map(([id,label])=>`<button data-action="route" data-value="${id}">${label}</button>`).join('')}</nav><div class="profile"><strong></strong><small>${parent?'Кабинет родителя':'Ученик · 7 класс'}</small><button data-action="logout">Выйти и заблокировать</button></div></aside><main class="content"></main></div>`;
+    $('#app').dataset.shell=shellKey;
+  }
+  $('.profile strong').textContent=state.data.user.name;
+  const activeRoute=state.route==='profile'?(state.profileReturn||(parent?'students':'settings')):
+    nav.some(([id])=>id===state.route)?state.route:'home';
+  const unread=parent?state.data.notifications.filter(n=>!n.read_at).length:0;
+  for(const [id,label] of nav){
+    const button=$(`nav [data-value="${id}"]`);
+    button.classList.toggle('active',id===activeRoute);
+    if(id===activeRoute)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
+    button.textContent=label+(id==='notifications'&&unread?' · '+unread:'');
+  }
+  $('.content').innerHTML=`<div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.4.1</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${pages[state.route]()}`;
   const messages=$('.messages'); if(messages) messages.scrollTop=messages.scrollHeight;
   const edit=$('form[data-form="profile"]');
   if(edit&&state.profileEdit?.role==='STUDENT')fillAddress(edit,state.profileEdit.profile);
-  if(parent){const unread=state.data.notifications.filter(n=>!n.read_at).length;
-    const link=$('nav [data-value="notifications"]');if(link&&unread)link.textContent+=' · '+unread;}
   for(const [key,value] of Object.entries(state.drafts)) { const input=document.getElementById(key); if(input) input.value=value; }
   document.querySelectorAll('[data-text-limit]').forEach(validateTextLimit);
+  syncBusyState();
+  if(focused&&!focused.isConnected){
+    const target=focusId?document.getElementById(focusId):focusForm&&focusName?document.querySelector(`form[data-form="${CSS.escape(focusForm)}"] [name="${CSS.escape(focusName)}"]`):null;
+    if(target&&!target.disabled){target.focus({preventScroll:true});if(typeof start==='number'&&typeof target.setSelectionRange==='function')try{target.setSelectionRange(start,end);}catch{}}
+  }
+  if(state.status?.diagnostics){
+    const epoch=contextEpoch,revision=navigationRevision,route=state.route,render_ms=performance.now()-started;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      if(epoch===contextEpoch&&revision===navigationRevision)rpc('diagnostic_navigation',{
+        route,render_ms,raf_ms:performance.now()-started,width:innerWidth,height:innerHeight,dpr:devicePixelRatio
+      }).catch(()=>{});
+    }));
+  }
 }
 function home() {
   const parent=state.data.user.role==='PARENT',s=student();
@@ -252,7 +306,7 @@ function security() {
 function settings() {
   const theme=state.data.user.theme;
   const renameCard=`<section class="card"><h2>Мой профиль</h2><p>${esc(state.data.user.name)}</p><button data-action="edit-profile" data-value="${esc(state.data.user.id)}">Редактировать мои данные</button></section>`;
-  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.4.0 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, OCR, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
+  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.4.1 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, OCR, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
 }
 
 document.addEventListener('input',e=>{
@@ -270,9 +324,11 @@ document.addEventListener('change',e=>{
 document.addEventListener('click',e=>{
   const button=e.target.closest('[data-action]'); if(!button)return;
   const action=button.dataset.action,value=button.dataset.value;
+  if(button.disabled||(inFlight&&action!=='route'))return;
+  if(inFlight&&state.profileDirty&&action==='route'){notify('Дождитесь завершения сохранения анкеты. Переход не отменяет уже отправленные изменения.');return;}
   if(['route','logout','edit-profile','reload-profile','cancel-profile'].includes(action)&&!discardProfile())return;
-  if(action==='cancel-profile'){state.profileEdit=null;state.route=state.data.user.role==='PARENT'?'students':'settings';render();return;}
-  if(action==='route'){state.route=value;render();return;}
+  if(action==='cancel-profile'){state.profileEdit=null;state.route=state.profileReturn||(state.data.user.role==='PARENT'?'students':'settings');render();return;}
+  if(action==='route'){navigate(value);return;}
   if(action==='auth'){state.authMode=value;render();return;}
   if(action==='subject'){state.subject=value;state.route='subjects';render();return;}
   if(action==='subject-homework'){state.hwSubject=value;state.hwTopic=null;state.homeworkResult=null;state.route='homework';render();return;}
@@ -288,7 +344,7 @@ document.addEventListener('click',e=>{
     else if(['start','diagnose','subject-diagnose'].includes(action)){
       await refreshLearningState();const active=student()?.sessions.find(s=>s.status==='active');
       if(active){if(!await askPause(active.title))return;await rpc('pause',{session:active.id});}
-      state.lesson=await rpc('start_lesson',{topic_id:value,mode:{start:'learn',diagnose:'diagnose','subject-diagnose':'subject_diagnose'}[action]});state.route='lesson';render();
+      state.lesson=await rpc('start_lesson',{topic_id:value,mode:{start:'learn',diagnose:'diagnose','subject-diagnose':'subject_diagnose'}[action]});operationRoute('lesson');render();
     }
     else if(['pause','resume','complete','hint'].includes(action)){state.lesson=await rpc(action,{session:state.lesson.id});await refresh();}
     else if(action==='open-session'){const l=student().sessions.find(s=>s.id===value);if(state.data.user.role==='PARENT')state.report=l;else{state.lesson=l;state.route='lesson';}render();}
@@ -349,7 +405,7 @@ document.addEventListener('submit',e=>{
         const p=state.profileEdit;
         const changes={name:v.name,...(p.role==='STUDENT'?{region:v.region,city:v.city,school:v.school,address:addressPayload(form)}:{})};
         const result=await rpc('save_profile',{account:p.id,revision:p.revision,changes});
-        state.profileDirty=false;state.profileEdit=null;state.route=state.data.user.role==='PARENT'?'students':'settings';
+        state.profileDirty=false;state.profileEdit=null;operationRoute(state.profileReturn||(state.data.user.role==='PARENT'?'students':'settings'));
         await refresh();notify(result.changed?'Данные сохранены.'+(result.notifications?' Родители получат уведомление.':''):'Изменений нет.');
       } catch(error){if(!error.stale&&$('#profile-error'))$('#profile-error').textContent=error.message;throw error;}
     }

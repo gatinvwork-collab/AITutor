@@ -1,0 +1,20 @@
+﻿{
+    "method":  "computer-use Windows clicks on frozen 0.4.0 source probe",
+    "screen_capture_skipped_reason":  "Qt active-window condition was not confirmed; no obscured desktop pixels captured",
+    "actions":  [
+                    {
+                        "visible":  "notifications",
+                        "action":  "notifications"
+                    },
+                    {
+                        "visible":  "home",
+                        "action":  "home"
+                    },
+                    {
+                        "visible":  "students",
+                        "action":  "students"
+                    }
+                ],
+    "physical_latency_measured":  false,
+    "independent_screen_capture_obtained":  false
+}

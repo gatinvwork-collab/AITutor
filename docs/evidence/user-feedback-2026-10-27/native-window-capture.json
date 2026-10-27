@@ -1,0 +1,24 @@
+{
+  "window": {
+    "app": "process:D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-user-feedback-20261027\\small\\Tutor-AI-0.4.0.exe",
+    "id": 3017198,
+    "title": "ИИ-репетитор · 7 класс"
+  },
+  "headings": [
+    "\t\t\t\t\t\t237 заголовок (settable, string) Профили и семейные связи ID: QApplication.run.<locals>.Window.QWebEngineView.QObject.app.QObject.QObject",
+    "\t\t\t\t\t\t\t240 заголовок (settable, string) Редактировать профиль ID: QApplication.run.<locals>.Window.QWebEngineView.QObject.app.QObject.QObject.QObject",
+    "\t\t\t\t\t\t\t247 заголовок (settable, string) Создать профиль ID: QApplication.run.<locals>.Window.QWebEngineView.QObject.app.QObject.QObject.QObject",
+    "\t\t\t\t\t\t\t280 заголовок (settable, string) Подключить второго родителя ID: QApplication.run.<locals>.Window.QWebEngineView.QObject.app.QObject.QObject.QObject",
+    "\t\t\t\t\t\t\t291 заголовок (settable, string) Сброс пароля: QA Feedback Child ID: QApplication.run.<locals>.Window.QWebEngineView.QObject.app.QObject.QObject.QObject"
+  ],
+  "screenshots": [
+    {
+      "id": "screenshot-0",
+      "width": 1282,
+      "height": 900,
+      "originX": 11,
+      "originY": 0
+    }
+  ],
+  "note": "Compare screenshot with accessibility headings; capture latency/compositor cause not established."
+}

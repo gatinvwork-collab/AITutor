@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "directory": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\exe-feedback041-47d3607b",
+  "previous_regression_exit": 0,
+  "upgrade_ui": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "version",
+        "ok": true
+      },
+      {
+        "name": "previous-profile",
+        "ok": true
+      },
+      {
+        "name": "previous-homework",
+        "ok": true
+      },
+      {
+        "name": "parent-catalog-algebra",
+        "ok": true
+      },
+      {
+        "name": "parent-catalog-geometry",
+        "ok": true
+      },
+      {
+        "name": "parent-catalog-physics",
+        "ok": true
+      },
+      {
+        "name": "parent-catalog-informatics",
+        "ok": true
+      },
+      {
+        "name": "old-report",
+        "ok": true
+      },
+      {
+        "name": "brand",
+        "ok": true
+      }
+    ]
+  },
+  "upgrade_verification": {
+    "passed": true,
+    "checks": {
+      "schema": true,
+      "vault_identity": true,
+      "users": true,
+      "links": true,
+      "records": true,
+      "originals": true,
+      "restore_clears_context": true,
+      "old_backup_history": true,
+      "old_backup_originals": true,
+      "new_write_after_reopen": true
+    },
+    "source_version": "0.4.0"
+  },
+  "source_unchanged": true,
+  "navigation_checks": 1348,
+  "keyboard_checks": 456,
+  "diagnostic_privacy": true,
+  "exe_sha256": "101590c3d91e301cf4d63154c9af11b1d47033a31dec67ce86023c9815bd14d3"
+}

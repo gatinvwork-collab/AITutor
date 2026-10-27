@@ -3,19 +3,20 @@
 import json
 import os
 import sys
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 from .errors import AppError
 from .service import Service
 from .transfer import Transfer, installation_lock
+from .worker import NativeWorker
+from .diagnostics import Diagnostics
 
 
 def portable_root():
     return Path(sys.executable).resolve().parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent.parent
 
 
-def run(smoke=False, root_override=None, service_factory=Service, test_hook=None):
+def run(smoke=False, root_override=None, service_factory=Service, test_hook=None, diagnostics=False):
     from PySide6.QtCore import QObject, QTimer, QUrl, Signal, Slot, QLockFile
     from PySide6.QtWidgets import QApplication, QFileDialog, QMainWindow, QMessageBox
     from PySide6.QtWebChannel import QWebChannel
@@ -44,7 +45,11 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                              "Перенесите папку в доступный для записи каталог.")
         return 1
     ui = Path(getattr(sys, "_MEIPASS", portable_root())) / "ui"
-    pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="native-command")
+    from PySide6.QtGui import QIcon
+    icon = QIcon(str(ui / "assets" / "Tutor-AI.ico"))
+    app.setWindowIcon(icon)
+    timings = Diagnostics(data, diagnostics, Service.COMMANDS)
+    pool = NativeWorker(observe=timings.command)
     transfer = Transfer(root, sys.executable if getattr(sys, "frozen", False) else None)
     transferred_executable = None
     recovery_data = None
@@ -75,6 +80,13 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
     class Bridge(QObject):
         response = Signal(str, str)
 
+        def submit(self, rid, function, *args, label="unknown"):
+            try:
+                pool.submit(function, rid, *args, label=label)
+            except (AppError, RuntimeError):
+                self.response.emit(rid, json.dumps({"error": "Приложение занято. Дождитесь текущей операции.",
+                                                   "code": "busy"}))
+
         @Slot(str, str, str)
         def request(self, rid, command, payload):
             nonlocal recovery_data
@@ -100,7 +112,7 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                             self.response.emit(rid, json.dumps({"result": None}))
                             return
                         destination = Path(selected)
-                    pool.submit(self.transfer_prepare, rid, source, destination)
+                    self.submit(rid, self.transfer_prepare, source, destination, label="choose_transfer")
                 except AppError as exc:
                     self.response.emit(rid, json.dumps({"error": str(exc)}, ensure_ascii=False))
             elif command == "choose_transfer_recovery":
@@ -112,9 +124,9 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                     self.response.emit(rid, json.dumps({"result": None}))
                     return
                 recovery_data = Path(selected) / "app-data"
-                pool.submit(self.transfer_execute, rid, "recover_transfer", "{}")
+                self.submit(rid, self.transfer_execute, "recover_transfer", "{}", label="recover_transfer")
             elif command in ("run_transfer", "recover_transfer", "launch_transferred"):
-                pool.submit(self.transfer_execute, rid, command, payload)
+                self.submit(rid, self.transfer_execute, command, payload, label=command)
             elif command == "pick_file":
                 if not service.actor:
                     self.response.emit(rid, json.dumps({"error": "Сначала войдите."}))
@@ -124,7 +136,7 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 if not path:
                     self.response.emit(rid, json.dumps({"result": None}))
                     return
-                pool.submit(self.import_selected, rid, path)
+                self.submit(rid, self.import_selected, path, label="pick_file")
             elif command == "speak":
                 try:
                     service.user()
@@ -139,11 +151,18 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 except Exception:
                     self.response.emit(rid, json.dumps({"error": "Озвучивание недоступно. Используйте текст ответа."}))
             else:
-                pool.submit(self.execute, rid, command, payload)
+                self.submit(rid, self.execute, command, payload, label=command)
 
         def execute(self, rid, command, payload):
             try:
-                result = service.dispatch(command, json.loads(payload))
+                if command == "diagnostic_navigation":
+                    if timings.enabled and service.actor:
+                        timings.navigation(json.loads(payload))
+                    result = {"ok": True}
+                else:
+                    result = service.dispatch(command, json.loads(payload))
+                if command == "status":
+                    result["diagnostics"] = timings.enabled
                 self.response.emit(rid, json.dumps({"result": result}, ensure_ascii=False))
             except AppError as exc:
                 self.response.emit(rid, json.dumps({"error": str(exc), "code": exc.code}, ensure_ascii=False))
@@ -222,6 +241,7 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 event.accept()
 
     window = Window()
+    window.setWindowIcon(icon)
     window.setWindowTitle("ИИ-репетитор · 7 класс")
     window.resize(1280, 880)
     profile = QWebEngineProfile("portable", window)
@@ -262,7 +282,7 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
             def update():
                 with service.lock:
                     service.tick()
-            pool.submit(update)
+            pool.submit_idle(update)
 
     timer = QTimer(window)
     timer.timeout.connect(tick)

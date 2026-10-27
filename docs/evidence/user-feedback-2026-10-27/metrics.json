@@ -1,0 +1,373 @@
+{
+  "fixtures": {
+    "small": {
+      "viewport": {
+        "width": 1280,
+        "height": 880,
+        "dpr": 2,
+        "screenWidth": 1440,
+        "screenHeight": 900,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/6.140.0 Chrome/140.0.0.0 Safari/537.36"
+      },
+      "parent_login_ms": 129.5658999999996,
+      "click_count": 668,
+      "wrong_routes": [],
+      "all_clicks_trusted": true,
+      "errors": [],
+      "keyboard": [
+        {
+          "design": "strict",
+          "focused_before_enter": "students",
+          "route": "home",
+          "focus_after_enter": "BUTTON",
+          "active": "home"
+        },
+        {
+          "design": "modern",
+          "focused_before_enter": "students",
+          "route": "home",
+          "focus_after_enter": "BUTTON",
+          "active": "home"
+        }
+      ],
+      "metrics": [
+        {
+          "design": "strict",
+          "route": "notifications",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 24.35,
+            "p95_ms": 33,
+            "max_ms": 34.9
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.686,
+            "p95_ms": 125.344,
+            "max_ms": 154.937
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.0,
+            "p95_ms": 1.3,
+            "max_ms": 1.7
+          }
+        },
+        {
+          "design": "strict",
+          "route": "home",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 25.5,
+            "p95_ms": 32.6,
+            "max_ms": 35.2
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.864,
+            "p95_ms": 125.908,
+            "max_ms": 126.228
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 0.9,
+            "p95_ms": 1.2,
+            "max_ms": 1.4
+          }
+        },
+        {
+          "design": "strict",
+          "route": "students",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 25.05,
+            "p95_ms": 33,
+            "max_ms": 33.8
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.752,
+            "p95_ms": 126.179,
+            "max_ms": 126.881
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.2,
+            "p95_ms": 1.7,
+            "max_ms": 1.9
+          }
+        },
+        {
+          "design": "modern",
+          "route": "notifications",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 24.9,
+            "p95_ms": 32.3,
+            "max_ms": 286.8
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.919,
+            "p95_ms": 125.736,
+            "max_ms": 330.103
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.0,
+            "p95_ms": 1.3,
+            "max_ms": 1.5
+          }
+        },
+        {
+          "design": "modern",
+          "route": "home",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 24.95,
+            "p95_ms": 32.9,
+            "max_ms": 33.9
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.447,
+            "p95_ms": 125.494,
+            "max_ms": 126.105
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 0.9,
+            "p95_ms": 1.3,
+            "max_ms": 1.4
+          }
+        },
+        {
+          "design": "modern",
+          "route": "students",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 25.75,
+            "p95_ms": 32.2,
+            "max_ms": 34.2
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.551,
+            "p95_ms": 125.108,
+            "max_ms": 126.5
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.2,
+            "p95_ms": 1.7,
+            "max_ms": 1.9
+          }
+        }
+      ],
+      "rpc": [
+        {
+          "command": "status",
+          "n": 5,
+          "median_ms": 2.19,
+          "p95_ms": 3.541,
+          "max_ms": 3.541
+        },
+        {
+          "command": "snapshot",
+          "n": 5,
+          "median_ms": 2.959,
+          "p95_ms": 3.551,
+          "max_ms": 3.551
+        }
+      ]
+    },
+    "history1500": {
+      "viewport": {
+        "width": 1280,
+        "height": 880,
+        "dpr": 2,
+        "screenWidth": 1440,
+        "screenHeight": 900,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/6.140.0 Chrome/140.0.0.0 Safari/537.36"
+      },
+      "parent_login_ms": 207.8685000000005,
+      "click_count": 668,
+      "wrong_routes": [],
+      "all_clicks_trusted": true,
+      "errors": [],
+      "keyboard": [
+        {
+          "design": "strict",
+          "focused_before_enter": "students",
+          "route": "home",
+          "focus_after_enter": "BUTTON",
+          "active": "home"
+        },
+        {
+          "design": "modern",
+          "focused_before_enter": "students",
+          "route": "home",
+          "focus_after_enter": "BUTTON",
+          "active": "home"
+        }
+      ],
+      "metrics": [
+        {
+          "design": "strict",
+          "route": "notifications",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 25.95,
+            "p95_ms": 32.4,
+            "max_ms": 36.8
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 37.593,
+            "p95_ms": 141.312,
+            "max_ms": 143.621
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 2.8,
+            "p95_ms": 3.8,
+            "max_ms": 14.1
+          }
+        },
+        {
+          "design": "strict",
+          "route": "home",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 28.35,
+            "p95_ms": 32.1,
+            "max_ms": 45.6
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 125.918,
+            "p95_ms": 140.608,
+            "max_ms": 142.968
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 3.1,
+            "p95_ms": 4.4,
+            "max_ms": 5
+          }
+        },
+        {
+          "design": "strict",
+          "route": "students",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 27.75,
+            "p95_ms": 33.7,
+            "max_ms": 34.9
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 124.133,
+            "p95_ms": 126.009,
+            "max_ms": 127.281
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.2,
+            "p95_ms": 1.5,
+            "max_ms": 1.7
+          }
+        },
+        {
+          "design": "modern",
+          "route": "notifications",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 24.95,
+            "p95_ms": 32.6,
+            "max_ms": 233.9
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 36.406,
+            "p95_ms": 140.951,
+            "max_ms": 258.704
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 3.0,
+            "p95_ms": 3.7,
+            "max_ms": 4.7
+          }
+        },
+        {
+          "design": "modern",
+          "route": "home",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 26.9,
+            "p95_ms": 32.2,
+            "max_ms": 36.8
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 125.811,
+            "p95_ms": 140.811,
+            "max_ms": 151.304
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 2.9,
+            "p95_ms": 4.1,
+            "max_ms": 4.6
+          }
+        },
+        {
+          "design": "modern",
+          "route": "students",
+          "click_to_double_raf": {
+            "n": 100,
+            "median_ms": 27.9,
+            "p95_ms": 32.9,
+            "max_ms": 34.4
+          },
+          "driver_roundtrip_including_poll": {
+            "n": 100,
+            "median_ms": 123.873,
+            "p95_ms": 125.789,
+            "max_ms": 126.623
+          },
+          "synchronous_render": {
+            "n": 100,
+            "median_ms": 1.2,
+            "p95_ms": 1.5,
+            "max_ms": 1.9
+          }
+        }
+      ],
+      "rpc": [
+        {
+          "command": "status",
+          "n": 5,
+          "median_ms": 7.731,
+          "p95_ms": 9.218,
+          "max_ms": 9.218
+        },
+        {
+          "command": "snapshot",
+          "n": 5,
+          "median_ms": 94.146,
+          "p95_ms": 101.599,
+          "max_ms": 101.599
+        }
+      ]
+    }
+  },
+  "unchanged_product": true,
+  "changed_product": [],
+  "memory_at_summary": {
+    "load": 77,
+    "total_physical": 16421949440,
+    "available_physical": 3751563264
+  }
+}

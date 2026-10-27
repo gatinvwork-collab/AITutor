@@ -23,8 +23,10 @@ function discardProfile() {
   state.profileDirty=false;return true;
 }
 async function openProfile(account) {
+  const previous=state.route==='profile'?state.profileReturn:state.route;
   const result=await rpc('get_profile',{account});
-  state.profileEdit=result;state.profileDirty=false;state.route='profile';render();
+  if(!operationOwnsScreen())return;
+  state.profileReturn=previous;state.profileEdit=result;state.profileDirty=false;state.route='profile';render();
 }
 document.addEventListener('input',event=>{
   if(event.target.closest('form[data-form="profile"]'))state.profileDirty=true;

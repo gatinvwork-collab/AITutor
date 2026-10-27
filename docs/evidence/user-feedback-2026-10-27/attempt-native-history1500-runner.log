@@ -1,0 +1,17 @@
+file:///D:/Documents/%D0%90%D1%80%D1%85%D0%B8%D0%B2%D1%8B/Programming/Python/Tutor-AI/docs/evidence/user-feedback-2026-10-27/navigation.mjs:16
+ws.addEventListener('message',event=>{const v=JSON.parse(String(event.data));const j=jobs.get(v.id);if(j){jobs.delete(v.id);clearTimeout(j.timer);v.error?j.reject(Error(v.error.message)):j.resolve(v.result);}});
+                                                                                                                                                                   ^
+
+Error: Target crashed
+    at WebSocket.<anonymous> (file:///D:/Documents/%D0%90%D1%80%D1%85%D0%B8%D0%B2%D1%8B/Programming/Python/Tutor-AI/docs/evidence/user-feedback-2026-10-27/navigation.mjs:16:164)
+    at [nodejs.internal.kHybridDispatch] (node:internal/event_target:856:20)
+    at WebSocket.dispatchEvent (node:internal/event_target:789:26)
+    at fireEvent (node:internal/deps/undici/undici:14403:14)
+    at #onMessage (node:internal/deps/undici/undici:15726:9)
+    at Object.onMessage (node:internal/deps/undici/undici:15433:76)
+    at websocketMessageReceived (node:internal/deps/undici/undici:14407:15)
+    at node:internal/deps/undici/undici:15135:21
+    at node:internal/deps/undici/undici:14915:11
+    at afterWrite (node:internal/streams/writable:708:5)
+
+Node.js v24.19.0

@@ -1,0 +1,185 @@
+{
+  "fixture": "history1500",
+  "parent_login_ms": 186.65290000000005,
+  "clicks": [
+    {
+      "requested": "notifications",
+      "trusted": true,
+      "started": 779.9000000059605,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 37,
+      "route": "notifications",
+      "active": "notifications",
+      "heading": "Уведомления",
+      "render_ms": 13.899999991059303,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 56.742599999999584,
+      "button_disabled": false,
+      "correct": true,
+      "design": "strict",
+      "role": "PARENT",
+      "isolated": true
+    },
+    {
+      "requested": "home",
+      "trusted": true,
+      "started": 1045.4000000059605,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 27.5,
+      "route": "home",
+      "active": "home",
+      "heading": "Обучение: QA Feedback Child",
+      "render_ms": 1,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 130.16179999999986,
+      "button_disabled": false,
+      "correct": true,
+      "design": "strict",
+      "role": "PARENT",
+      "isolated": true
+    },
+    {
+      "requested": "students",
+      "trusted": true,
+      "started": 1379,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 28.5,
+      "route": "students",
+      "active": "students",
+      "heading": "Профили и семейные связи",
+      "render_ms": 1.7999999970197678,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 133.48350000000028,
+      "button_disabled": false,
+      "correct": true,
+      "design": "strict",
+      "role": "PARENT",
+      "isolated": true
+    },
+    {
+      "requested": "notifications",
+      "trusted": true,
+      "started": 1710.300000011921,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 29,
+      "route": "notifications",
+      "active": "notifications",
+      "heading": "Уведомления",
+      "render_ms": 2.199999988079071,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 144.3062,
+      "button_disabled": false,
+      "correct": true,
+      "design": "modern",
+      "role": "PARENT",
+      "isolated": true
+    },
+    {
+      "requested": "home",
+      "trusted": true,
+      "started": 2059.9000000059605,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 29.299999997019768,
+      "route": "home",
+      "active": "home",
+      "heading": "Обучение: QA Feedback Child",
+      "render_ms": 0.800000011920929,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 119.6894000000002,
+      "button_disabled": false,
+      "correct": true,
+      "design": "modern",
+      "role": "PARENT",
+      "isolated": true
+    },
+    {
+      "requested": "students",
+      "trusted": true,
+      "started": 2392.7000000029802,
+      "before": "home",
+      "ready": true,
+      "elapsed_ms": 30.900000005960464,
+      "route": "students",
+      "active": "students",
+      "heading": "Профили и семейные связи",
+      "render_ms": 1,
+      "focus": "BODY",
+      "inFlight": 0,
+      "position": "center",
+      "driver_elapsed_ms": 133.46140000000014,
+      "button_disabled": false,
+      "correct": true,
+      "design": "modern",
+      "role": "PARENT",
+      "isolated": true
+    }
+  ],
+  "keyboard": [],
+  "rpc": [
+    {
+      "command": "status",
+      "ms": 4.016099999999824
+    },
+    {
+      "command": "snapshot",
+      "ms": 99.10649999999987
+    },
+    {
+      "command": "status",
+      "ms": 6.44590000000062
+    },
+    {
+      "command": "snapshot",
+      "ms": 84.88040000000001
+    },
+    {
+      "command": "status",
+      "ms": 4.591400000000249
+    },
+    {
+      "command": "snapshot",
+      "ms": 77.0599000000002
+    },
+    {
+      "command": "status",
+      "ms": 5.524400000000242
+    },
+    {
+      "command": "snapshot",
+      "ms": 77.33410000000003
+    },
+    {
+      "command": "status",
+      "ms": 6.488999999999578
+    },
+    {
+      "command": "snapshot",
+      "ms": 82.78560000000016
+    }
+  ],
+  "errors": [],
+  "viewport": {
+    "width": 1280,
+    "height": 880,
+    "dpr": 2,
+    "screenWidth": 1440,
+    "screenHeight": 900,
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/6.140.0 Chrome/140.0.0.0 Safari/537.36"
+  },
+  "passed": true
+}
