@@ -1,0 +1,16 @@
+{
+  "javascript": [
+    {
+      "status": "blocked",
+      "reason": "node executable unavailable"
+    }
+  ],
+  "portable": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\qa-portable-3e98147e",
+    "returncode": 0,
+    "screenshot_exists": true,
+    "data_next_to_exe": true,
+    "different_cwd": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor",
+    "stderr": ""
+  }
+}

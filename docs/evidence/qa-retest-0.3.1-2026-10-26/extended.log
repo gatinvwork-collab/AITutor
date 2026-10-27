@@ -1,0 +1,101 @@
+...................FFFF                                                  [100%]
+================================== FAILURES ===================================
+____________ test_final_answer_write_failure_retains_active_timer _____________
+
+family = (<aitutor.service.Service object at 0x0000021D1DBF1B50>, {'id': '5a55f2cc-2a11-48c9-9d21-5110fd3aa0ab', 'recovery_key'...3a-4da1-96be-fed07ccb8f5a', 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'}, [100.0])
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000021D1DF5D480>
+
+    def test_final_answer_write_failure_retains_active_timer(family,monkeypatch):
+        app,_,child,clock=family
+        child_login(app,child)
+        session=app.start_lesson("math-equations")
+        app.answer(session["id"],"5","extended-first-answer")
+        app.answer(session["id"],"4","extended-second-answer")
+        original=app.store.get("session",session["id"])
+        real_save=app.store.save
+        def fail_final():
+            # active() first writes its time checkpoint. Fail only final answer publication.
+            current=app.store.get("session",session["id"])
+            if current["status"] == "complete":
+                raise OSError("QA synthetic disk failure on final answer")
+            return real_save()
+        monkeypatch.setattr(app.store,"save",fail_final)
+        with pytest.raises(OSError):
+            app.answer(session["id"],"-3","extended-final-answer")
+        assert app.store.get("session",session["id"]) == original
+>       assert app.active_lesson == session["id"], {
+            "persisted_status":app.store.get("session",session["id"])["status"],
+            "active_lesson":app.active_lesson}
+E       AssertionError: {'persisted_status': 'active', 'active_lesson': None}
+E       assert None == 'd067e2ed-d8ab-4d91-9d3b-1e1bb80f5cec'
+E        +  where None = <aitutor.service.Service object at 0x0000021D1DBF1B50>.active_lesson
+
+docs\evidence\qa-retest-0.3.1-2026-10-26\test_extended.py:83: AssertionError
+________ test_pause_historical_session_does_not_disable_current_timer _________
+
+family = (<aitutor.service.Service object at 0x0000021D1F054890>, {'id': 'b2742aa6-d556-4147-8cf6-f2db46ab36fb', 'recovery_key'...e6-4889-a1f9-baa35fa21396', 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'}, [130.0])
+
+    def test_pause_historical_session_does_not_disable_current_timer(family):
+        app,_,child,clock=family
+        child_login(app,child)
+        older=app.start_lesson("math-equations")
+        app.pause(older["id"])
+        current=app.start_lesson("physics-speed")
+        app.dispatch("pause",{"session":older["id"]})
+        clock[0]+=30
+        app.tick()
+>       assert app.daily(child["id"])["seconds"] >= 30, {
+            "active_lesson":app.active_lesson,"current_status":app.store.get("session",current["id"])["status"],
+            "daily_seconds":app.daily(child["id"])["seconds"]}
+E       AssertionError: {'active_lesson': None, 'current_status': 'active', 'daily_seconds': 0}
+E       assert 0 >= 30
+
+docs\evidence\qa-retest-0.3.1-2026-10-26\test_extended.py:99: AssertionError
+_________ test_delayed_tick_charges_only_three_minutes_of_inactivity __________
+
+family = (<aitutor.service.Service object at 0x0000021D1F055FD0>, {'id': '881d680c-9108-4146-9333-660f7ec39bf6', 'recovery_key'...ed-434d-8423-af36e21daceb', 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'}, [700.0])
+
+    def test_delayed_tick_charges_only_three_minutes_of_inactivity(family):
+        app,_,child,clock=family
+        child_login(app,child)
+        session=app.start_lesson("math-equations")
+        clock[0]+=600
+        app.tick()
+        stored=app.store.get("session",session["id"])
+        assert stored["status"] == "paused"
+>       assert stored["seconds"] <= 180, {"charged_seconds":stored["seconds"],"idle_threshold":180}
+E       AssertionError: {'charged_seconds': 600.0, 'idle_threshold': 180}
+E       assert 600.0 <= 180
+
+docs\evidence\qa-retest-0.3.1-2026-10-26\test_extended.py:111: AssertionError
+_________ test_long_text_import_is_complete_or_warns_about_truncation _________
+
+family = (<aitutor.service.Service object at 0x0000021D1F055E50>, {'id': '6a9eec23-13ac-49a5-a146-e1f52e31a319', 'recovery_key'...ae-40ab-b8c6-bae203fbdf0b', 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'}, [100.0])
+tmp_path = WindowsPath('D:/Documents/Архивы/Programming/Python/AITutor/build/qa-retest031-extended/test_long_text_import_is_compl0')
+
+    def test_long_text_import_is_complete_or_warns_about_truncation(family,tmp_path):
+        app,_,child,_=family
+        child_login(app,child)
+        p=tmp_path/"long-homework.txt"
+        text="x"*30000+"\nFINAL QUESTION: solve 3x+5=20"
+        p.write_text(text,encoding="utf-8")
+        result=import_file(app,p)
+>       assert result["text"] == text or result["warning"], {
+            "file_characters":len(text),"imported_characters":len(result["text"]),
+            "warning":result["warning"],"tail_present":"FINAL QUESTION" in result["text"]}
+E       AssertionError: {'file_characters': 30030, 'imported_characters': 30000, 'warning': '', 'tail_present': False}
+E       assert ('xxxxxxxxxxxx...xxxxxxxxxxxxx' == 'xxxxxxxxxxxx...solve 3x+5=20'
+E         
+E         Skipping 29989 identical leading characters in diff, use -v to show
+E         - xxxxxxxxxxx
+E         ?            -
+E         + xxxxxxxxxxx
+E         - FINAL QUESTION: solve 3x+5=20 or '')
+
+docs\evidence\qa-retest-0.3.1-2026-10-26\test_extended.py:120: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/evidence/qa-retest-0.3.1-2026-10-26/test_extended.py::test_final_answer_write_failure_retains_active_timer
+FAILED docs/evidence/qa-retest-0.3.1-2026-10-26/test_extended.py::test_pause_historical_session_does_not_disable_current_timer
+FAILED docs/evidence/qa-retest-0.3.1-2026-10-26/test_extended.py::test_delayed_tick_charges_only_three_minutes_of_inactivity
+FAILED docs/evidence/qa-retest-0.3.1-2026-10-26/test_extended.py::test_long_text_import_is_complete_or_warns_about_truncation
+4 failed, 19 passed in 11.23s

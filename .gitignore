@@ -221,3 +221,8 @@ __marimo__/
 
 # Local PyCharm project settings
 .idea/
+
+# Portable user data and build artifacts
+app-data/
+node_modules/
+*.pending

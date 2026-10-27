@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "scenario": "pause-old-session-while-current-is-active",
+  "observations": {
+    "before": 0.0010830000001078588,
+    "after": 0.0010830000001078588,
+    "delta": 0,
+    "currentStatus": "active"
+  },
+  "expected": "active session charges at least 5 seconds during 6.5 seconds wait",
+  "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\qa-retest031-exe-boundary-d56dee17"
+}

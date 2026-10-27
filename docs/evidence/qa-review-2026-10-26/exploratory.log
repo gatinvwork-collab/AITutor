@@ -1,0 +1,45 @@
+F..F....                                                                 [100%]
+================================== FAILURES ===================================
+____________ test_empty_completed_session_does_not_create_archive _____________
+
+family = (<aitutor.service.Service object at 0x000001D808C32660>, {'id': '709d4ddf-6b74-4c73-b765-e79019a40323', 'recovery_key'...4526c7e3cc88', 'recovery_key': None, 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'})
+
+    def test_empty_completed_session_does_not_create_archive(family):
+        app, _, child = family
+        with app.store.transaction():
+            app.store.put("session", "empty", {"id": "empty", "subject": "math",
+                "topic": "unknown", "created": "2020-01-01", "status": "complete",
+                "messages": [], "task": "", "total": 0}, child["id"])
+        actual = app.snapshot()["students"][0]["archives"]["history"]
+>       assert actual == {}, actual
+E       AssertionError: {'math_archive': 'Математика — архив'}
+E       assert {'math_archiv...тика — архив'} == {}
+E         
+E         Left contains 1 more item:
+E         {'math_archive': 'Математика — архив'}
+E         Use -v to get more diff
+
+docs\evidence\qa-review-2026-10-26\test_exploratory.py:27: AssertionError
+_____________ test_retired_physics_topic_not_reclassified_as_math _____________
+
+family = (<aitutor.service.Service object at 0x000001D8090E42B0>, {'id': 'b4c8fbca-f9c6-42d8-9a9a-c5193ca63cfa', 'recovery_key'...403e226a12da', 'recovery_key': None, 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'})
+
+    def test_retired_physics_topic_not_reclassified_as_math(family):
+        app, _, child = family
+        with app.store.transaction():
+            app.store.put("knowledge", "old-physics", {"topic": "old-physics",
+                "subject": "physics", "attempts_count": 2, "correct_count": 1,
+                "mastery_score": 50, "confidence": 0.5}, child["id"])
+        actual = app.snapshot()["students"][0]
+>       assert actual["knowledge"][0]["subject"] == "physics", actual["knowledge"][0]
+E       AssertionError: {'topic': 'old-physics', 'subject': 'math_archive', 'attempts_count': 2, 'correct_count': 1, ...}
+E       assert 'math_archive' == 'physics'
+E         
+E         - physics
+E         + math_archive
+
+docs\evidence\qa-review-2026-10-26\test_exploratory.py:57: AssertionError
+=========================== short test summary info ===========================
+FAILED docs/evidence/qa-review-2026-10-26/test_exploratory.py::test_empty_completed_session_does_not_create_archive
+FAILED docs/evidence/qa-review-2026-10-26/test_exploratory.py::test_retired_physics_topic_not_reclassified_as_math
+2 failed, 6 passed in 3.61s

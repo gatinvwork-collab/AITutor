@@ -1,0 +1,37 @@
+{
+  "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui032-db26bdf6",
+  "passed": true,
+  "checks": [
+    {
+      "id": "historical-complete-is-idempotent",
+      "passed": true
+    },
+    {
+      "id": "historical-commands-keep-active-timer",
+      "passed": true
+    },
+    {
+      "id": "complete-date-not-rewritten",
+      "passed": true
+    },
+    {
+      "id": "failed-answer-keeps-draft",
+      "passed": true
+    },
+    {
+      "id": "retry-uses-same-operation-id",
+      "passed": true
+    },
+    {
+      "id": "retry-advances-exactly-once",
+      "passed": true
+    },
+    {
+      "id": "successful-answer-clears-draft",
+      "passed": true
+    }
+  ],
+  "observations": {
+    "charged": 11.595447100000456
+  }
+}

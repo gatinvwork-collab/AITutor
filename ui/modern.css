@@ -1,0 +1,56 @@
+/* The strict design remains in style.css. Solid surfaces are the blur fallback. */
+body[data-design=modern]{
+  --glass:#ffffffc7;--glass-border:#ffffff;--glass-shadow:0 18px 50px #304b8214;
+  --muted:#43536c;--accent:#334eb8;--soft:#e9edff;--bg:#edf2fc;--text:#20304a;
+  --orb-a:#bac9ff;--orb-b:#c0e9eb;
+  color:var(--text);background:var(--bg);isolation:isolate;
+}
+body[data-design=modern][data-theme=dark]{
+  --glass:#19263ac7;--glass-border:#63758c;--glass-shadow:0 18px 50px #0004;
+  --muted:#c0cce0;--accent:#b9c8ff;--soft:#2a3a56;--bg:#0e192b;--text:#eff4ff;
+  --orb-a:#2c3b71;--orb-b:#16484c;
+}
+@media(prefers-color-scheme:dark){body[data-design=modern][data-theme=system]{
+  --glass:#19263ac7;--glass-border:#63758c;--glass-shadow:0 18px 50px #0004;
+  --muted:#c0cce0;--accent:#b9c8ff;--soft:#2a3a56;--bg:#0e192b;--text:#eff4ff;
+  --orb-a:#2c3b71;--orb-b:#16484c;
+}}
+body[data-design=modern]::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:radial-gradient(ellipse at 18% 8%,var(--orb-a),transparent 58%),
+    radial-gradient(ellipse at 98% 75%,var(--orb-b),transparent 55%);
+}
+body[data-design=modern] .card,body[data-design=modern] .sidebar,
+body[data-design=modern] dialog,body[data-design=modern] #notice{
+  background:var(--glass);border:1px solid var(--glass-border);
+  box-shadow:inset 0 1px 0 #ffffff30,var(--glass-shadow);
+}
+body[data-design=modern] .card{border-radius:25px}
+body[data-design=modern] .sidebar{border-radius:0 28px 28px 0}
+body[data-design=modern] button{border-radius:14px}
+body[data-design=modern] .sidebar nav button.active{
+  background:var(--soft);box-shadow:inset 0 1px 0 #ffffff35,0 4px 14px #1c376510;
+}
+body[data-design=modern] .hero{background:var(--glass);border:1px solid var(--glass-border);border-radius:25px;box-shadow:var(--glass-shadow)}
+body[data-design=modern] input,body[data-design=modern] select,body[data-design=modern] textarea,
+body[data-design=modern] .task{background:var(--surface)}
+body[data-design=modern] .message{border:1px solid var(--border)}
+body[data-design=modern] .brand{letter-spacing:-.7px}
+@supports(backdrop-filter:blur(20px)){
+  body[data-design=modern] .card,body[data-design=modern] .sidebar,
+  body[data-design=modern] .hero,body[data-design=modern] dialog,
+  body[data-design=modern] #notice{backdrop-filter:blur(20px) saturate(130%)}
+}
+@supports not (backdrop-filter:blur(20px)){
+  body[data-design=modern] .card,body[data-design=modern] .sidebar,
+  body[data-design=modern] .hero,body[data-design=modern] dialog,
+  body[data-design=modern] #notice{background:var(--surface)}
+}
+.form-error{color:#a31c35}.form-error:empty{display:none}
+.unread{border-left:4px solid var(--accent)}
+dd{margin:5px 0 14px;overflow-wrap:anywhere}dt{color:var(--muted);font-size:14px}
+.card{overflow-wrap:anywhere;min-width:0}strong{overflow-wrap:anywhere}
+body[data-theme=dark] .form-error{color:#ffb4c2}
+@media(prefers-color-scheme:dark){body[data-theme=system] .form-error{color:#ffb4c2}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+@media(max-width:650px){body[data-design=modern] .sidebar{border-radius:0 0 24px 24px}.card{overflow-x:auto}}

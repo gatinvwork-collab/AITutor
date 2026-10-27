@@ -1,0 +1,100 @@
+[
+  {
+    "name": "native",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "pytest",
+      "tests",
+      "docs/evidence/qa-review-2026-10-26/test_exploratory.py",
+      "docs/evidence/qa-retest-0.3.1-2026-10-26/test_extended.py",
+      "docs/evidence/qa-retest-0.3.1-2026-10-26/test_supplementary.py",
+      "-k",
+      "not test_long_text_import_is_complete_or_warns_about_truncation",
+      "-q",
+      "--basetemp=build/qa-retest032-native",
+      "--junitxml=D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\docs\\evidence\\qa-retest-0.3.2-2026-10-26\\native.xml"
+    ]
+  },
+  {
+    "name": "original-independent-gui",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "docs/evidence/qa-review-2026-10-26/gui_exploratory.py"
+    ]
+  },
+  {
+    "name": "tests-gui_smoke",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "tests.gui_smoke"
+    ]
+  },
+  {
+    "name": "tests-gui_feedback_03",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "tests.gui_feedback_03"
+    ]
+  },
+  {
+    "name": "tests-gui_qa_031",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "tests.gui_qa_031"
+    ]
+  },
+  {
+    "name": "tests-gui_qa_032",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "tests.gui_qa_032"
+    ]
+  },
+  {
+    "name": "tests-gui_import_032",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-X",
+      "utf8",
+      "-m",
+      "tests.gui_import_032"
+    ]
+  },
+  {
+    "name": "ruff",
+    "returncode": 0,
+    "command": [
+      "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "check",
+      "aitutor",
+      "tests",
+      "main.py"
+    ]
+  }
+]

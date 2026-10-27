@@ -1,0 +1,87 @@
+{
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "packages": {
+    "pytest": "9.1.1",
+    "PySide6": "6.12.0",
+    "cryptography": "50.0.2",
+    "httpx": "0.28.1"
+  },
+  "commit": "68fcd35efbb08c705d4f80481f75282d5dc300d9",
+  "git_status": " M .gitignore\n M README.md\n M docs/acceptance.md\n M docs/architecture.md\n M docs/requirements.md\n?? aitutor/\n?? docs/adr-0001-python-webview.md\n?? docs/adr-0002-profiles-addresses-subjects.md\n?? docs/adr-0003-appearance-profile-notifications.md\n?? docs/evidence/\n?? docs/implementation-status.md\n?? docs/release-0.2.md\n?? docs/release-0.3.md\n?? docs/user-feedback-requirements-0.2.md\n?? docs/user-feedback-requirements-0.3.md\n?? docs/user-guide.md\n?? main.py\n?? pyproject.toml\n?? requirements-dev.txt\n?? requirements-lock.txt\n?? requirements.txt\n?? scripts/\n?? tests/\n?? ui/\n",
+  "sha256": {
+    "aitutor\\__init__.py": "4dcd9e0cfa45bf2a4b1de89913ad3c4e35c14387c9693d1d3af50dfd1c99bab1",
+    "aitutor\\addresses.py": "4b6e715e48c2eb2a94d50db47ba17beaead104e457cbfe611d460135b6f73640",
+    "aitutor\\audit.py": "47196f2dde34f3204ecf866380337f29b9f3513b15633ef5bc45c261edcba89a",
+    "aitutor\\crypto.py": "643c2874ba241ae0d376f1ffcb117f642ff25f9e3c273e23c1bfc1ba3e38b91a",
+    "aitutor\\desktop.py": "9e7292ef640b6ac88601355b400835aaf50d1ce083c229d4efb9fbd83e05a444",
+    "aitutor\\documents.py": "adeb72bb02b6a098bf30cbce2ccadd8485a2cfcf9c32d6fe48d484dd14e659dd",
+    "aitutor\\education.py": "6ba3be72aaa58c1f1c6d37612dfcb67401dd4c77fc3b6c628dac162a574c2780",
+    "aitutor\\errors.py": "b6b0289e777fa5cd0a2bbb541b1d08120c9933a86032a05129623ea2dcc56562",
+    "aitutor\\providers.py": "dff8361d9303c6ae262812ad688e6896b80e42cfcbf2786d5f0bced66525b77a",
+    "aitutor\\service.py": "61a5d9e26e3a9a84a25ac2ec28f2ccfe8749e99d49fc8fe9f075bd217a566969",
+    "aitutor\\storage.py": "f3bbf587503224cb40a3d90547f9bdf75a2462cecced3313b35c695746169d22",
+    "dist\\AI-Tutor-0.3.exe": "6e316d3eba7067f93d95deef446d79b6d1ae0f92716e8f9d178a28827a543f2f",
+    "main.py": "c1ff5b074de891a00ad0d8034d04ff7efb5a140dbe0cdf23469a030e0db7dec5",
+    "ui\\addresses.js": "cef0045432d8fc4c76b6b6952dde7ac5f95bbe2c38c5c74451b563a61aaeba9e",
+    "ui\\app.js": "8e252a4a9d4096755992b4b5f80e43f6bf93b0dd3728ed0580493580b0931204",
+    "ui\\index.html": "9cebda4b5b5880f50a99714d99b76583a26da1d6f30ab04075761635a46aeee2",
+    "ui\\modern.css": "a1a848eafc36e995cbc60e97c06df72a2054cc269f65467176a3e0a45649365e",
+    "ui\\profiles.js": "ea8757d8cfcbd9feb3825757f4706647e232e46acfdb324371125cea2c5b90b1",
+    "ui\\style.css": "277deaa279d6921cfa5df8250178c83fcde02814965ed72c5de661f0810ee622"
+  },
+  "runs": [
+    {
+      "name": "baseline",
+      "returncode": 0,
+      "command": [
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "-q",
+        "--basetemp=build/qa-review-native-final",
+        "--junitxml=D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\docs\\evidence\\qa-review-2026-10-26\\baseline.xml"
+      ]
+    },
+    {
+      "name": "exploratory",
+      "returncode": 1,
+      "command": [
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-m",
+        "pytest",
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\docs\\evidence\\qa-review-2026-10-26\\test_exploratory.py",
+        "-q",
+        "--basetemp=build/qa-review-extra-final",
+        "--junitxml=D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\docs\\evidence\\qa-review-2026-10-26\\exploratory.xml"
+      ]
+    },
+    {
+      "name": "ruff",
+      "returncode": 0,
+      "command": [
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "aitutor",
+        "tests",
+        "main.py"
+      ]
+    },
+    {
+      "name": "gui_exploratory",
+      "returncode": 1,
+      "command": [
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\docs\\evidence\\qa-review-2026-10-26\\gui_exploratory.py"
+      ]
+    }
+  ]
+}

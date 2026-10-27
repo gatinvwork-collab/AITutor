@@ -1,0 +1,31 @@
+﻿{
+    "version":  "0.3.2",
+    "schema":  3,
+    "import_policy":  "reject text above 30000 Unicode code points; explicit user decision",
+    "source_directory":  "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\source032-86033a62",
+    "source_sha256":  {
+                          "main.py":  "C1FF5B074DE891A00AD0D8034D04FF7EFB5A140DBE0CDF23469A030E0DB7DEC5",
+                          "aitutor\\addresses.py":  "4B6E715E48C2EB2A94D50DB47BA17BEAEAD104E457CBFE611D460135B6F73640",
+                          "aitutor\\audit.py":  "47196F2DDE34F3204ECF866380337F29B9F3513B15633EF5BC45C261EDCBA89A",
+                          "aitutor\\crypto.py":  "643C2874BA241AE0D376F1FFCB117F642FF25F9E3C273E23C1BFC1BA3E38B91A",
+                          "aitutor\\desktop.py":  "C92BDCB5384A15ABC126B0CE054EC01643E2ED67C3FC0249483A204A21A3B69A",
+                          "aitutor\\documents.py":  "0890E54D2E6506C9C7EC9B31CCD7E08B75528E129C354E9144D689C78282B419",
+                          "aitutor\\education.py":  "6BA3BE72AAA58C1F1C6D37612DFCB67401DD4C77FC3B6C628DAC162A574C2780",
+                          "aitutor\\errors.py":  "B6B0289E777FA5CD0A2BBB541B1D08120C9933A86032A05129623EA2DCC56562",
+                          "aitutor\\history.py":  "DF1307B4798E0B567DDC873D2F0F6B28A590498802E8D4BBC2F5DB13A77C646D",
+                          "aitutor\\providers.py":  "DFF8361D9303C6AE262812AD688E6896B80E42CFCBF2786D5F0BCED66525B77A",
+                          "aitutor\\service.py":  "E07CCFF1477E87FD2203CDF54C571DEF84EDBA9EEEE24D50CDB3A2D04F7FF6A1",
+                          "aitutor\\storage.py":  "F3BBF587503224CB40A3D90547F9BDF75A2462CECCED3313B35C695746169D22",
+                          "aitutor\\__init__.py":  "E1C7FD9546C564AB6BCFC3A9941AC3F40AD11A94B03DA77FDACDB37796D3A05B",
+                          "ui\\addresses.js":  "CB5680876E51E3321F901D23002BB4D2EDD4D7425AE1AA71CA3200A8D1C9C996",
+                          "ui\\app.js":  "85994E732DFD7D29DEFE14321669D99D895C7977CCD612C3FE79FEBDF298056A",
+                          "ui\\index.html":  "9CEBDA4B5B5880F50A99714D99B76583A26DA1D6F30AB04075761635A46AEEE2",
+                          "ui\\modern.css":  "A1A848EAFC36E995CBC60E97C06DF72A2054CC269F65467176A3E0A45649365E",
+                          "ui\\profiles.js":  "EA8757D8CFCBD9FEB3825757F4706647E232E46ACFDB324371125CEA2C5B90B1",
+                          "ui\\style.css":  "277DEAA279D6921CFA5DF8250178C83FCDE02814965ED72C5DE661F0810EE622"
+                      },
+    "exe_sha256":  "7BC94C017AC31F5DE0F691C9432E296D2144EA2B72DB926A7E2BB3874BB4B930",
+    "exe_bytes":  243404649,
+    "source_matches_frozen_snapshot":  true,
+    "git_commit":  "68fcd35efbb08c705d4f80481f75282d5dc300d9"
+}

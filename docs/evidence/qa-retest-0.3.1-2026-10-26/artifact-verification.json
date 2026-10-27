@@ -1,0 +1,24 @@
+{
+  "unchanged_product_and_tests": true,
+  "changed": [],
+  "broken_links": [],
+  "pytest": {
+    "tests": 145,
+    "failures": 4,
+    "errors": 0,
+    "skipped": 0
+  },
+  "screenshots": 26,
+  "qa_source_sha256": {
+    "cdp_qt.py": "8645653b4ee5f2a87a75da2218c3b4c54d7f1388837fb58c0b0cfcb086e0ccbc",
+    "collect_evidence.py": "41a33014ac5c96edf870c36f01182f915cbf43c4f983e41dc4cba5bb036ed16c",
+    "exe_boundary.py": "774a8f530a0b3a559e31bf274ca7b2ea2cb12ceeab7d8dcbf9b574af716477db",
+    "run_exe.py": "1a7288c4abdf6ee6b204802f62e5357cdd38993639c4207cffc01c0372881f5a",
+    "run_extended.py": "8f76a0a5863c9b9a3589ba4075db7f244e62e58af783b28def3597d823a5ed1c",
+    "run_regression.py": "e653b61fe283d0e1149cb4fff31c42a6fd7c4685b663515edf3633b434d6121b",
+    "run_supplementary.py": "397e8dea313568e239b79ac97d2d008086315572dc1875d6ab489d0d5faf963d",
+    "test_extended.py": "0eabae8be5724ca5987c57c039b02aa7b71479d8b783e442378855ac21cfd29c",
+    "test_supplementary.py": "4ab683cec20a1ffe599fbac829e801e7c19a2e6825698f2ac53b81205f5065f2",
+    "verify_artifacts.py": "3357b675117071e8cf934774390d0f221f1cb10d28eabacd7bb013b1a75c3fc3"
+  }
+}

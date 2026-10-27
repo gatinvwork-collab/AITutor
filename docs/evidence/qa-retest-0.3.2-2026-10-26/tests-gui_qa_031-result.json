@@ -1,0 +1,106 @@
+{
+  "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui031-5eb7c30a",
+  "passed": true,
+  "checks": [
+    {
+      "id": "preview-is-not-save-strict-system",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-strict-system",
+      "passed": true
+    },
+    {
+      "id": "preview-is-not-save-strict-light",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-strict-light",
+      "passed": true
+    },
+    {
+      "id": "preview-is-not-save-strict-dark",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-strict-dark",
+      "passed": true
+    },
+    {
+      "id": "preview-is-not-save-modern-system",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-modern-system",
+      "passed": true
+    },
+    {
+      "id": "preview-is-not-save-modern-light",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-modern-light",
+      "passed": true
+    },
+    {
+      "id": "preview-is-not-save-modern-dark",
+      "passed": true
+    },
+    {
+      "id": "save-confirmation-modern-dark",
+      "passed": true
+    },
+    {
+      "id": "draft-survives-appearance",
+      "passed": true
+    },
+    {
+      "id": "unsaved-theme-reverts",
+      "passed": true
+    },
+    {
+      "id": "failed-theme-no-success",
+      "passed": true
+    },
+    {
+      "id": "failed-theme-choice-retained",
+      "passed": true
+    },
+    {
+      "id": "theme-retry-works",
+      "passed": true
+    },
+    {
+      "id": "old-rpc-rejected",
+      "passed": true
+    },
+    {
+      "id": "restore-clears-personal-memory",
+      "passed": true
+    },
+    {
+      "id": "restore-clears-dom",
+      "passed": true
+    },
+    {
+      "id": "unrelated-parent-no-report",
+      "passed": true
+    },
+    {
+      "id": "late-reply-cannot-repopulate",
+      "passed": true
+    },
+    {
+      "id": "same-parent-missing-session-stays-missing",
+      "passed": true
+    },
+    {
+      "id": "render-resolves-only-authorized-report",
+      "passed": true
+    },
+    {
+      "id": "failed-restore-preserves-context",
+      "passed": true
+    }
+  ]
+}

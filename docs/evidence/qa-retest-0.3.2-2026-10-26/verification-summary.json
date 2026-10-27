@@ -1,0 +1,511 @@
+{
+  "original-independent-gui": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\qa-review-gui-26cfd0ad",
+    "passed": true,
+    "checks": [
+      {
+        "id": "theme_save_explicit_success",
+        "expected": true,
+        "actual": true,
+        "passed": true
+      },
+      {
+        "id": "lesson_draft_survives_theme",
+        "expected": "QA DRAFT",
+        "actual": "QA DRAFT",
+        "passed": true
+      },
+      {
+        "id": "student_screens_overflow",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "id": "parent_appearance_strict_light",
+        "expected": "strict",
+        "actual": "strict",
+        "passed": true
+      },
+      {
+        "id": "parent_appearance_strict_dark",
+        "expected": "strict",
+        "actual": "strict",
+        "passed": true
+      },
+      {
+        "id": "parent_appearance_modern_light",
+        "expected": "modern",
+        "actual": "modern",
+        "passed": true
+      },
+      {
+        "id": "parent_appearance_modern_dark",
+        "expected": "modern",
+        "actual": "modern",
+        "passed": true
+      },
+      {
+        "id": "parent_screens_with_long_name_overflow",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "id": "parent_report_opened",
+        "expected": "8212d3f1-3152-4d34-896b-450e1c2109c6",
+        "actual": "8212d3f1-3152-4d34-896b-450e1c2109c6",
+        "passed": true
+      },
+      {
+        "id": "unrelated_parent_has_no_students",
+        "expected": 0,
+        "actual": 0,
+        "passed": true
+      },
+      {
+        "id": "restore_clears_other_family_cached_report",
+        "expected": false,
+        "actual": false,
+        "passed": true
+      }
+    ]
+  },
+  "tests-gui_smoke": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui-2490d917",
+    "passed": true,
+    "parent": "fb383fca-092e-4717-b59e-3babfdf9f505",
+    "child": "e7173a9d-54c3-4783-8b3c-385fe7b47268"
+  },
+  "tests-gui_feedback_03": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui03-a3e3df45",
+    "passed": true,
+    "captures": 21
+  },
+  "tests-gui_qa_031": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui031-5eb7c30a",
+    "passed": true,
+    "checks": [
+      {
+        "id": "preview-is-not-save-strict-system",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-strict-system",
+        "passed": true
+      },
+      {
+        "id": "preview-is-not-save-strict-light",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-strict-light",
+        "passed": true
+      },
+      {
+        "id": "preview-is-not-save-strict-dark",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-strict-dark",
+        "passed": true
+      },
+      {
+        "id": "preview-is-not-save-modern-system",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-modern-system",
+        "passed": true
+      },
+      {
+        "id": "preview-is-not-save-modern-light",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-modern-light",
+        "passed": true
+      },
+      {
+        "id": "preview-is-not-save-modern-dark",
+        "passed": true
+      },
+      {
+        "id": "save-confirmation-modern-dark",
+        "passed": true
+      },
+      {
+        "id": "draft-survives-appearance",
+        "passed": true
+      },
+      {
+        "id": "unsaved-theme-reverts",
+        "passed": true
+      },
+      {
+        "id": "failed-theme-no-success",
+        "passed": true
+      },
+      {
+        "id": "failed-theme-choice-retained",
+        "passed": true
+      },
+      {
+        "id": "theme-retry-works",
+        "passed": true
+      },
+      {
+        "id": "old-rpc-rejected",
+        "passed": true
+      },
+      {
+        "id": "restore-clears-personal-memory",
+        "passed": true
+      },
+      {
+        "id": "restore-clears-dom",
+        "passed": true
+      },
+      {
+        "id": "unrelated-parent-no-report",
+        "passed": true
+      },
+      {
+        "id": "late-reply-cannot-repopulate",
+        "passed": true
+      },
+      {
+        "id": "same-parent-missing-session-stays-missing",
+        "passed": true
+      },
+      {
+        "id": "render-resolves-only-authorized-report",
+        "passed": true
+      },
+      {
+        "id": "failed-restore-preserves-context",
+        "passed": true
+      }
+    ]
+  },
+  "tests-gui_qa_032": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui032-db26bdf6",
+    "passed": true,
+    "checks": [
+      {
+        "id": "historical-complete-is-idempotent",
+        "passed": true
+      },
+      {
+        "id": "historical-commands-keep-active-timer",
+        "passed": true
+      },
+      {
+        "id": "complete-date-not-rewritten",
+        "passed": true
+      },
+      {
+        "id": "failed-answer-keeps-draft",
+        "passed": true
+      },
+      {
+        "id": "retry-uses-same-operation-id",
+        "passed": true
+      },
+      {
+        "id": "retry-advances-exactly-once",
+        "passed": true
+      },
+      {
+        "id": "successful-answer-clears-draft",
+        "passed": true
+      }
+    ],
+    "observations": {
+      "charged": 11.595447100000456
+    }
+  },
+  "tests-gui_import_032": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\gui-import032-75008217\\run",
+    "passed": true,
+    "checks": [
+      {
+        "id": "long-picker-file-refused",
+        "passed": true
+      },
+      {
+        "id": "failed-import-keeps-existing-work",
+        "passed": true
+      },
+      {
+        "id": "cancel-picker-keeps-existing-work",
+        "passed": true
+      },
+      {
+        "id": "unicode-30000-valid",
+        "passed": true
+      },
+      {
+        "id": "unicode-30001-invalid",
+        "passed": true
+      },
+      {
+        "id": "unicode-native-boundary",
+        "passed": true
+      },
+      {
+        "id": "legacy-long-ui-refused",
+        "passed": true
+      },
+      {
+        "id": "legacy-long-no-new-version",
+        "passed": true
+      },
+      {
+        "id": "legacy-short-new-version",
+        "passed": true
+      },
+      {
+        "id": "legacy-full-text-visible",
+        "passed": true
+      },
+      {
+        "id": "legacy-text-needs-explicit-review",
+        "passed": true
+      },
+      {
+        "id": "legacy-original-result-preserved",
+        "passed": true
+      }
+    ]
+  },
+  "exe-prior-regression": {
+    "passed": true,
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\exe-regression-98a806e8",
+    "workflow": {
+      "passed": true,
+      "checks": [
+        {
+          "id": "preview-is-not-save-strict-system",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-strict-system",
+          "passed": true
+        },
+        {
+          "id": "preview-is-not-save-strict-light",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-strict-light",
+          "passed": true
+        },
+        {
+          "id": "preview-is-not-save-strict-dark",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-strict-dark",
+          "passed": true
+        },
+        {
+          "id": "preview-is-not-save-modern-system",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-modern-system",
+          "passed": true
+        },
+        {
+          "id": "preview-is-not-save-modern-light",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-modern-light",
+          "passed": true
+        },
+        {
+          "id": "preview-is-not-save-modern-dark",
+          "passed": true
+        },
+        {
+          "id": "save-confirmation-modern-dark",
+          "passed": true
+        },
+        {
+          "id": "draft-survives-appearance",
+          "passed": true
+        },
+        {
+          "id": "unsaved-theme-reverts",
+          "passed": true
+        },
+        {
+          "id": "failed-theme-no-success",
+          "passed": true
+        },
+        {
+          "id": "failed-theme-choice-retained",
+          "passed": true
+        },
+        {
+          "id": "theme-retry-works",
+          "passed": true
+        },
+        {
+          "id": "old-rpc-rejected",
+          "passed": true
+        },
+        {
+          "id": "restore-clears-personal-memory",
+          "passed": true
+        },
+        {
+          "id": "restore-clears-dom",
+          "passed": true
+        },
+        {
+          "id": "unrelated-parent-no-report",
+          "passed": true
+        },
+        {
+          "id": "late-reply-cannot-repopulate",
+          "passed": true
+        },
+        {
+          "id": "same-parent-missing-session-stays-missing",
+          "passed": true
+        },
+        {
+          "id": "render-resolves-only-authorized-report",
+          "passed": true
+        },
+        {
+          "id": "failed-restore-preserves-context",
+          "passed": true
+        }
+      ]
+    },
+    "historical": {
+      "passed": true,
+      "checks": [
+        {
+          "id": "QA-002-no-empty-archive",
+          "passed": true
+        },
+        {
+          "id": "QA-003-physics-preserved",
+          "passed": true
+        },
+        {
+          "id": "QA-002-no-empty-option",
+          "passed": true
+        },
+        {
+          "id": "QA-003-visible-under-physics",
+          "passed": true
+        }
+      ]
+    },
+    "foreign_restore": {
+      "passed": true,
+      "scenario": "different-vault-same-user-ids"
+    },
+    "canonical_record_unchanged": true,
+    "cwd": "C:\\WINDOWS"
+  },
+  "exe032": {
+    "passed": true,
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\exe032-6f8e279e",
+    "timer": {
+      "passed": true,
+      "checks": [
+        {
+          "id": "historical-complete-is-idempotent",
+          "passed": true
+        },
+        {
+          "id": "historical-commands-keep-active-timer",
+          "passed": true
+        },
+        {
+          "id": "complete-date-not-rewritten",
+          "passed": true
+        },
+        {
+          "id": "failed-answer-keeps-draft",
+          "passed": true
+        },
+        {
+          "id": "retry-uses-same-operation-id",
+          "passed": true
+        },
+        {
+          "id": "retry-advances-exactly-once",
+          "passed": true
+        },
+        {
+          "id": "successful-answer-clears-draft",
+          "passed": true
+        }
+      ],
+      "observations": {
+        "charged": 11.589712300000429
+      }
+    },
+    "import": {
+      "passed": true,
+      "checks": [
+        {
+          "id": "unicode-30000-valid",
+          "passed": true
+        },
+        {
+          "id": "unicode-30001-invalid",
+          "passed": true
+        },
+        {
+          "id": "unicode-native-boundary",
+          "passed": true
+        },
+        {
+          "id": "legacy-long-ui-refused",
+          "passed": true
+        },
+        {
+          "id": "legacy-long-no-new-version",
+          "passed": true
+        },
+        {
+          "id": "legacy-short-new-version",
+          "passed": true
+        },
+        {
+          "id": "legacy-full-text-visible",
+          "passed": true
+        },
+        {
+          "id": "legacy-text-needs-explicit-review",
+          "passed": true
+        },
+        {
+          "id": "legacy-original-result-preserved",
+          "passed": true
+        }
+      ]
+    },
+    "legacy_records_unchanged": true,
+    "previous_regression_exit": 0
+  },
+  "portable": {
+    "exit": 0,
+    "screenshot": true,
+    "path": "D:\\Documents\\Архивы\\Programming\\Python\\AITutor\\build\\qa portable retest 032 c55243e3",
+    "app_data_at_exe": true,
+    "cwd": "C:\\WINDOWS",
+    "debug_endpoint": false
+  },
+  "release_manifest_mismatches": [],
+  "application_or_tests_changed": []
+}
