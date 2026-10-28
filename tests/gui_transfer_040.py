@@ -5,6 +5,7 @@ from pathlib import Path
 
 from PySide6.QtWidgets import QFileDialog
 
+from tutor_ai import __version__
 from tutor_ai.crypto import seal
 from tutor_ai.service import Service
 from tutor_ai.transfer import inventory
@@ -28,7 +29,7 @@ def main():
     QFileDialog.getExistingDirectory = staticmethod(lambda *_args, **_kwargs: str(source))
     harness.ROOT = output / "run"
     login = {"id": parent["id"], "password": PASSWORD}
-    harness.SCRIPT = "window.__transferLogin=" + json.dumps(login) + ";\n" + Path(__file__).with_suffix(".js").read_text(encoding="utf-8")
+    harness.SCRIPT = "window.__expectedVersion="+json.dumps(__version__)+";window.__transferLogin=" + json.dumps(login) + ";\n" + Path(__file__).with_suffix(".js").read_text(encoding="utf-8")
     try:
         result = harness.main()
         assert inventory(source / "app-data") == before

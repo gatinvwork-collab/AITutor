@@ -1,0 +1,37 @@
+[
+  {
+    "module": "gui_smoke",
+    "exit_code": 1,
+    "seconds": 8.19
+  },
+  {
+    "module": "gui_feedback_03",
+    "exit_code": 0,
+    "seconds": 19.69
+  },
+  {
+    "module": "gui_qa_031",
+    "exit_code": 0,
+    "seconds": 4.12
+  },
+  {
+    "module": "gui_qa_032",
+    "exit_code": 0,
+    "seconds": 13.93
+  },
+  {
+    "module": "gui_import_032",
+    "exit_code": 1,
+    "seconds": 6.61
+  },
+  {
+    "module": "gui_feedback_041",
+    "exit_code": 0,
+    "seconds": 8.12
+  },
+  {
+    "module": "gui_transfer_040",
+    "exit_code": 1,
+    "seconds": 3.39
+  }
+]

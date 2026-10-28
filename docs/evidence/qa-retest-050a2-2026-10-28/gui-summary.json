@@ -1,0 +1,47 @@
+[
+  {
+    "module": "gui_smoke",
+    "exit_code": 0,
+    "seconds": 29.53
+  },
+  {
+    "module": "gui_feedback_03",
+    "exit_code": 0,
+    "seconds": 25.13
+  },
+  {
+    "module": "gui_qa_031",
+    "exit_code": 0,
+    "seconds": 9.05
+  },
+  {
+    "module": "gui_qa_032",
+    "exit_code": 0,
+    "seconds": 20.28
+  },
+  {
+    "module": "gui_import_032",
+    "exit_code": 0,
+    "seconds": 18.81
+  },
+  {
+    "module": "gui_feedback_041",
+    "exit_code": 0,
+    "seconds": 14.27
+  },
+  {
+    "module": "gui_transfer_040",
+    "exit_code": 0,
+    "seconds": 12.21
+  },
+  {
+    "module": "gui_learning_050",
+    "exit_code": 0,
+    "seconds": 14.72
+  },
+  {
+    "module": "gui_qa_051",
+    "exit_code": 0,
+    "seconds": 7.56
+  }
+]

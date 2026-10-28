@@ -177,6 +177,8 @@ def test_saved_catalog_address_edit_without_search_after_restart(tmp_path):
 
 
 def legacy_v2(app):
+    from tests.legacy_schema import before_v4
+    before_v4(app.store.db)
     with app.store.db:
         app.store.db.execute("ALTER TABLE users DROP COLUMN design")
         app.store.db.execute("ALTER TABLE users DROP COLUMN profile_revision")

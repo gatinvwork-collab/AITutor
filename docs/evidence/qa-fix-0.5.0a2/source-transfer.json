@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "empty welcome with native transfer action",
+      "ok": true
+    },
+    {
+      "name": "source and destination preview",
+      "ok": true
+    },
+    {
+      "name": "failed password never publishes success",
+      "ok": true
+    },
+    {
+      "name": "safe cleanup returns to blank welcome",
+      "ok": true
+    },
+    {
+      "name": "successful transfer requires fresh login",
+      "ok": true
+    },
+    {
+      "name": "original family and profile names",
+      "ok": true
+    },
+    {
+      "name": "native branding and version",
+      "ok": true
+    },
+    {
+      "name": "history remains verbatim",
+      "ok": true
+    },
+    {
+      "name": "modern dark theme",
+      "ok": true
+    }
+  ],
+  "capture": "transfer-success"
+}

@@ -21,7 +21,7 @@
   check('successful transfer requires fresh login',state.status.exists&&!state.status.authenticated&&state.status.accounts.some(a=>a.id===window.__transferLogin.id));
   await rpc('login',{account:window.__transferLogin.id,password:window.__transferLogin.password});await refresh();
   check('original family and profile names',state.data.user.name==='Родитель AI-Tutor'&&state.data.students[0].name==='Старый ученик');
-  check('native branding and version',state.status.version==='0.4.0');
+  check('native branding and version',state.status.version===window.__expectedVersion);
   check('history remains verbatim',state.data.students[0].homework.some(h=>h.text==='AI-Tutor history remains'));
   state.route='settings';render();applyAppearance('dark','modern');
   check('modern dark theme',document.body.dataset.design==='modern'&&document.body.dataset.theme==='dark');

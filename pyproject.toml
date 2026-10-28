@@ -1,6 +1,6 @@
 [project]
 name = "tutor-ai"
-version = "0.4.1"
+version = "0.5.0a4"
 description = "Локальный образовательный агент"
 requires-python = ">=3.13"
 

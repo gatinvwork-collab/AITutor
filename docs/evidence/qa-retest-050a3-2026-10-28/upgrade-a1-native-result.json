@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "source_version": "0.5.0a1",
+  "checks": {
+    "all_tables_before_writes": true,
+    "original_bytes": true,
+    "vault_id": true,
+    "schema_4": true,
+    "active_requires_resume": true,
+    "old_subject_not_rewritten": true,
+    "explicit_copy_unverified": true,
+    "new_dialogue_succeeds": true,
+    "past_payloads_unchanged": true,
+    "old_question_recovered_for_future": true,
+    "restore_clears_context": true,
+    "originals_after_restore": true,
+    "new_write_reopens": true
+  },
+  "target": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\qa-a3-upgrade-a1-dc9e205c",
+  "exit_code": 0,
+  "source_unchanged": true
+}

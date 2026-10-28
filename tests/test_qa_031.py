@@ -125,7 +125,7 @@ def test_open_v3_never_rewrites_subjects_or_changes_schema(family):
     original = copy.deepcopy(app.store.all("knowledge"))
     app.logout()
     app.login(parent["id"], PASSWORD)
-    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 3
+    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4
     app.snapshot()
     assert app.store.all("knowledge") == original
 

@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-28",
+  "version": "0.5.0a2",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "exe_sha256": "0ff0ecf7d3c2c9046bef522aebed07d653c0de55f93c89fb90c44ca7b9c965aa",
+  "source_sha256": {
+    "main.py": "efec7b33fdebf9b87605febc51f9243ae286b80a351bdf0f2c6bc94c69f9e730",
+    "pyproject.toml": "acd7402104d551c73f467c544ab0ea6ec754d804394d80088271b17593286413",
+    "requirements-lock.txt": "7c4180819a249ab19698af74ac0ebcd3e378481d017125268667e6411f0aee7a",
+    "tutor_ai/addresses.py": "1add22a17c513fa943342ae59ef70a477d16905374722e5f34ede6a4bdd7f605",
+    "tutor_ai/assessment.py": "47098e29a77de3020572d7af986c278e390c2f7cb6ff122a25bc717ab9ea856c",
+    "tutor_ai/audit.py": "47196f2dde34f3204ecf866380337f29b9f3513b15633ef5bc45c261edcba89a",
+    "tutor_ai/crypto.py": "643c2874ba241ae0d376f1ffcb117f642ff25f9e3c273e23c1bfc1ba3e38b91a",
+    "tutor_ai/desktop.py": "aa3e76694a73bdd690f918645480d28216b76f328556509e5225bb6ca9d7453e",
+    "tutor_ai/diagnostics.py": "76a810aa2dbbaf28f97e916501930f6c0fd40d0dbcd3b7681951b6ccba594a88",
+    "tutor_ai/dialogue.py": "4554f54a97e543b12f86cc6502d4818590f59f07b9c115dc6c438b5ff1a93436",
+    "tutor_ai/documents.py": "0890e54d2e6506c9c7ec9b31ccd7e08b75528e129c354e9144d689c78282b419",
+    "tutor_ai/education.py": "47a27d7257637b07fe1dd4774f9537b37e7fcdf714d91def144f770e49ed74f1",
+    "tutor_ai/errors.py": "b6b0289e777fa5cd0a2bbb541b1d08120c9933a86032a05129623ea2dcc56562",
+    "tutor_ai/history.py": "df1307b4798e0b567ddc873d2f0f6b28a590498802e8d4bbc2f5db13a77c646d",
+    "tutor_ai/jobs.py": "9c00c289db35276e706ce6efacf09f160cb5d486032fc73c1e4cb1903943f27f",
+    "tutor_ai/learning.py": "62d5012567e65f735c24be7ad34df6232e1992d39ae1072d4fa8f5dc6b1ff113",
+    "tutor_ai/learning_schema.py": "be21603fb23075bc948d7b1ed7bfd9d36d3254120f7519f679f86d4e6b8ab4d7",
+    "tutor_ai/providers.py": "7057dc1a2245113643ca0644a192a08a67f75b2b86b5f3604575911d438993ac",
+    "tutor_ai/service.py": "259c5a63ac97e7bd5bc2fd643d69cb6028bc0ebddf4f7cca1d6a68e713fb2458",
+    "tutor_ai/sources.py": "573a8d072462dffcb1358ff5d01ff1a6c65bfa683a4542f303b94f27adfdca0f",
+    "tutor_ai/storage.py": "d23f1c5923efa8462385695f9c59e674eb2d8a3abbcc55658ac9f61206282349",
+    "tutor_ai/transfer.py": "6a2a043ef6f76eaa5088ee6110bd793c98668b913f3c81c3b5138bde6eb0d7c6",
+    "tutor_ai/verification.py": "6f405f1e9fade2b6486fed518bd83aed7234cc1a1d517a954ed3e7e800175326",
+    "tutor_ai/worker.py": "a7a78f919d7cac7118189bef44c90204c388b26abf6aa962590000531814afcd",
+    "tutor_ai/__init__.py": "f81abd779881b4294a7a41dd78fb203bf220967fd6b400b324b063b292762e71",
+    "ui/addresses.js": "cb5680876e51e3321f901d23002bb4d2edd4d7425ae1aa71ca3200a8d1c9c996",
+    "ui/app.js": "d491e9f670d6371de32e97fc24a52c3cba4a5a26560dc7eee5f9c4ec35c51c9b",
+    "ui/index.html": "086aacd0062f40c49c2300b193dfaca95677407084df3192b891a5ab0d29e221",
+    "ui/learning.js": "c1ea920546869acb04f50451351797db0ce23efd80bd04c1ac74d606109b5d03",
+    "ui/modern.css": "a1a848eafc36e995cbc60e97c06df72a2054cc269f65467176a3e0a45649365e",
+    "ui/profiles.js": "c4ba2d62d83f9343c4bb542f3b805f2af174813fdfe23a92e42738470d8c3aab",
+    "ui/rich-text.js": "c482a49a1a1169764873c86073db5d02869c22c27a07875b5b7c5377304e0f86",
+    "ui/style.css": "27b9fa7976d94ca2438530baaaae9815ab1d1614f907c1aa1a864f18dc79797d",
+    "ui/assets/tutor-ai-mark.svg": "14098e49bad31e3c6c88ab04cdc2459a942ae7af65e14d66d638ae181dddc9e1",
+    "ui/assets/Tutor-AI.ico": "8b33f4092473a72b2b383c26c05a4fb9d2d9533a72bf0cc96d4ee2d8dd93ca74"
+  },
+  "release_source_mismatches": [],
+  "native": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "250",
+    "time": "202.013",
+    "timestamp": "2026-10-28T15:21:04.665983+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "additional_expected_behavior_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "2",
+    "skipped": "0",
+    "tests": "2",
+    "time": "4.018",
+    "timestamp": "2026-10-28T15:24:52.576145+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "gui": {
+    "gui_smoke": {
+      "module": "gui_smoke",
+      "exit_code": 0,
+      "seconds": 29.53,
+      "passed": true,
+      "checks": 0,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-d1f9a856"
+    },
+    "gui_feedback_03": {
+      "module": "gui_feedback_03",
+      "exit_code": 0,
+      "seconds": 25.13,
+      "passed": true,
+      "checks": 0,
+      "captures": 21,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui03-2eb5dec4"
+    },
+    "gui_qa_031": {
+      "module": "gui_qa_031",
+      "exit_code": 0,
+      "seconds": 9.05,
+      "passed": true,
+      "checks": 25,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui031-56815d09"
+    },
+    "gui_qa_032": {
+      "module": "gui_qa_032",
+      "exit_code": 0,
+      "seconds": 20.28,
+      "passed": true,
+      "checks": 7,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui032-12bb278a"
+    },
+    "gui_import_032": {
+      "module": "gui_import_032",
+      "exit_code": 0,
+      "seconds": 18.81,
+      "passed": true,
+      "checks": 12,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-import032-33db9020\\run"
+    },
+    "gui_feedback_041": {
+      "module": "gui_feedback_041",
+      "exit_code": 0,
+      "seconds": 14.27,
+      "passed": true,
+      "checks": 274,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-feedback041-728421d5"
+    },
+    "gui_transfer_040": {
+      "module": "gui_transfer_040",
+      "exit_code": 0,
+      "seconds": 12.21,
+      "passed": true,
+      "checks": 9,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-transfer040-be91838f\\run"
+    },
+    "gui_learning_050": {
+      "module": "gui_learning_050",
+      "exit_code": 0,
+      "seconds": 14.72,
+      "passed": true,
+      "checks": 30,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-learning050-c5e04869"
+    },
+    "gui_qa_051": {
+      "module": "gui_qa_051",
+      "exit_code": 0,
+      "seconds": 7.56,
+      "passed": true,
+      "checks": 30,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-qa051-4de7cc4d"
+    }
+  },
+  "gui_structured_conditions": 387,
+  "compiled_general_passed": true,
+  "compiled_targeted_passed": true,
+  "previous_bug_witnesses": {
+    "passed": true,
+    "meaning": "reproduction completed; false fields below are product defects",
+    "subject": {
+      "requested": "informatics",
+      "selected": "informatics",
+      "created": "informatics",
+      "correct": true
+    },
+    "dialogue": {
+      "previous_user_turn_in_second_request": true,
+      "first_turn_in_local_journal": true,
+      "roles": [
+        "system",
+        "user",
+        "user",
+        "assistant",
+        "user"
+      ]
+    },
+    "timer": {
+      "status": "active",
+      "before": 0.05515400000149384,
+      "after": 8.96117910000612,
+      "dailyBefore": 2.2017244000162464,
+      "dailyAfter": 11.107749500020873,
+      "advanced": true
+    }
+  },
+  "upgrade_a1_native": {
+    "passed": true,
+    "source_version": "0.5.0a1",
+    "checks": {
+      "all_tables_before_writes": true,
+      "original_bytes": true,
+      "vault_id": true,
+      "schema_4": true,
+      "active_requires_resume": true,
+      "old_subject_not_rewritten": true,
+      "explicit_copy_unverified": true,
+      "new_dialogue_succeeds": true,
+      "past_payloads_unchanged": true,
+      "old_question_recovered_for_future": true,
+      "restore_clears_context": true,
+      "originals_after_restore": true,
+      "new_write_reopens": true
+    },
+    "target": "C:\\Users\\591053\\AppData\\Local\\JetBrains\\PyCharm2026.2\\aia\\agents\\views\\codex\\qa-retest-a2-upgrade-634b9ee2",
+    "source_unchanged": true
+  },
+  "source_a1_unchanged": true,
+  "source_041_unchanged": true,
+  "new_bugs": [
+    "QA-050-04",
+    "QA-050-05"
+  ],
+  "live_ai_used": false,
+  "full_acceptance": false,
+  "disk_free_initial_D_bytes": 227340288,
+  "disk_free_final_D_bytes": 2322198528,
+  "guarded_upgrade_attempt": "D: insufficient space, no verification run; repeated successfully on writable C:",
+  "broken_report_links": []
+}

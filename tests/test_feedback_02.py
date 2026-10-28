@@ -219,6 +219,8 @@ def test_independent_programs_and_lesson_snapshots(family):
 def make_legacy(app, child):
     """Construct an actual v1 encrypted container, not a mock migration flag."""
     with app.store.db:
+        from tests.legacy_schema import before_v4
+        before_v4(app.store.db)
         app.store.db.execute("DELETE FROM schema_migrations WHERE version>=2")
         app.store.db.execute("ALTER TABLE users DROP COLUMN design")
         app.store.db.execute("ALTER TABLE users DROP COLUMN profile_revision")
@@ -305,7 +307,7 @@ def test_restore_legacy_backup_migrates_before_replacing(family):
     app.set_controls(child["id"], 10)
     app.restore("legacy.aitbackup", PASSWORD, parent["id"], PASSWORD)
     app.login(parent["id"], PASSWORD)
-    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 3
+    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4
     assert app.controls(child["id"])["minutes"] == 60
     assert app.snapshot()["students"][0]["knowledge"][0]["attempts_count"] == 5
     assert all(p["name"] for p in app.status()["accounts"])

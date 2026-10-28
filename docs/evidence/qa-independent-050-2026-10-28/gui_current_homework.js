@@ -1,0 +1,35 @@
+(async()=>{const checks=[];try{
+ const wait=ms=>new Promise(r=>setTimeout(r,ms));
+ const until=async f=>{for(let n=0;n<200;n++){if(f())return;await wait(50);}throw Error('timeout');};
+ const check=(name,ok)=>{checks.push({name,ok:!!ok});if(!ok)throw Error(name);};
+ const submit=async(selector,values={})=>{const f=document.querySelector(selector);for(const [k,v]of Object.entries(values)){if(f.elements[k].type==='checkbox')f.elements[k].checked=v;else f.elements[k].value=v;}f.requestSubmit();await until(()=>!inFlight);};
+ await rpc('register',{name:'QA Current Parent',password:'qa-current-parent',role:'PARENT'});
+ const c=await rpc('register',{name:'QA Current Child',password:'qa-current-child',role:'STUDENT',profile:{region:'Region',city:'City',school:'School',grade:7,address:{mode:'manual'}}});
+ await rpc('logout');await rpc('login',{account:c.id,password:'qa-current-child'});await refresh();navigate('homework');await learnRefresh();render();
+ const selector=document.querySelector('#learn-subject');selector.value='informatics';selector.dispatchEvent(new Event('change',{bubbles:true}));
+ await submit('[data-learning-form="work"]');
+ await submit('[data-learning-form="work_revision"]',{value:'print(1)',confirm:true});
+ check('python available in informatics',!!document.querySelector('[data-learning="analyze"]'));
+ document.querySelector('[data-learning="analyze"]').click();await until(()=>!inFlight);
+ check('python syntax result shown',document.querySelector('#notice').textContent.includes('Синтаксис Python корректен'));
+ document.querySelector('[data-learning="work_original"]').click();await until(()=>!inFlight);
+ let latest=learnData().works.at(-1);check('short native import attached',latest.body.originals.length===1);
+ check('attachment resets confirmation',!latest.body.confirmed);
+ const revision=latest.revision,id=latest.work,count=student().homework.length;
+ document.querySelector('[data-learning="work_original"]').click();await until(()=>!inFlight);
+ check('long native import rejected',document.querySelector('#notice').textContent.includes('Разбейте'));
+ check('failed import preserves version',learnData().works.at(-1).revision===revision);
+ document.querySelector('[data-learning="work_original"]').click();await until(()=>!inFlight);
+ check('cancel preserves version',learnData().works.at(-1).revision===revision);
+ let f=document.querySelector('[data-learning-form="work_revision"]'),field=f.elements.value;
+ field.value='😀'.repeat(30000);field.dispatchEvent(new Event('input',{bubbles:true}));
+ check('30000 Unicode codepoints allowed',field.checkValidity());
+ await submit('[data-learning-form="work_revision"]',{confirm:true});
+ check('30000 codepoints preserved',Array.from(learnData().works.at(-1).body.text).length===30000);
+ f=document.querySelector('[data-learning-form="work_revision"]');field=f.elements.value;field.value='😀'.repeat(30001);field.dispatchEvent(new Event('input',{bubbles:true}));
+ check('30001 UI invalid',!field.checkValidity());
+ let rejected=false;try{await learnCall('work_revision',{work:id,value:field.value,expected_revision:revision+1,confirm:true});}catch{rejected=true;}
+ check('30001 native rejected',rejected);
+ await learnRefresh();check('rejected revision not created',learnData().works.at(-1).revision===revision+1);
+ window.__testResult={passed:true,checks};
+}catch(error){window.__testResult={passed:false,error:error.stack,checks};}})();

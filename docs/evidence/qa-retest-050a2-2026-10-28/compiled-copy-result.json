@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "source has completed call",
+      "ok": true
+    },
+    {
+      "name": "new work ID",
+      "ok": true
+    },
+    {
+      "name": "copy has chosen subject and same text",
+      "ok": true
+    },
+    {
+      "name": "copy requires confirmation",
+      "ok": true
+    },
+    {
+      "name": "provenance refers to source revision",
+      "ok": true
+    },
+    {
+      "name": "source versions unchanged",
+      "ok": true
+    },
+    {
+      "name": "source calls unchanged",
+      "ok": true
+    },
+    {
+      "name": "copy has no inherited assessment calls",
+      "ok": true
+    }
+  ],
+  "folder": "C:\\Users\\591053\\AppData\\Local\\JetBrains\\PyCharm2026.2\\aia\\agents\\views\\codex\\qa-a2-copy-4e947d3b",
+  "sha256": "0ff0ecf7d3c2c9046bef522aebed07d653c0de55f93c89fb90c44ca7b9c965aa"
+}

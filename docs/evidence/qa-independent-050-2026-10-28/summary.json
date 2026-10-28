@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-28",
+  "version": "0.5.0a1",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "source_sha256": {
+    "main.py": "efec7b33fdebf9b87605febc51f9243ae286b80a351bdf0f2c6bc94c69f9e730",
+    "pyproject.toml": "adf12e34fc9380bb5200ad5f3bd901eb75fa2896bcbc372482c922c1d0b0ef51",
+    "requirements-lock.txt": "7c4180819a249ab19698af74ac0ebcd3e378481d017125268667e6411f0aee7a",
+    "tutor_ai/addresses.py": "1add22a17c513fa943342ae59ef70a477d16905374722e5f34ede6a4bdd7f605",
+    "tutor_ai/assessment.py": "47098e29a77de3020572d7af986c278e390c2f7cb6ff122a25bc717ab9ea856c",
+    "tutor_ai/audit.py": "47196f2dde34f3204ecf866380337f29b9f3513b15633ef5bc45c261edcba89a",
+    "tutor_ai/crypto.py": "643c2874ba241ae0d376f1ffcb117f642ff25f9e3c273e23c1bfc1ba3e38b91a",
+    "tutor_ai/desktop.py": "aa3e76694a73bdd690f918645480d28216b76f328556509e5225bb6ca9d7453e",
+    "tutor_ai/diagnostics.py": "00a527b5b89f25f59243ca043bbbbeb05c7e26160bcf8fd28273611e6d0e84b6",
+    "tutor_ai/documents.py": "0890e54d2e6506c9c7ec9b31ccd7e08b75528e129c354e9144d689c78282b419",
+    "tutor_ai/education.py": "47a27d7257637b07fe1dd4774f9537b37e7fcdf714d91def144f770e49ed74f1",
+    "tutor_ai/errors.py": "b6b0289e777fa5cd0a2bbb541b1d08120c9933a86032a05129623ea2dcc56562",
+    "tutor_ai/history.py": "df1307b4798e0b567ddc873d2f0f6b28a590498802e8d4bbc2f5db13a77c646d",
+    "tutor_ai/jobs.py": "9c00c289db35276e706ce6efacf09f160cb5d486032fc73c1e4cb1903943f27f",
+    "tutor_ai/learning.py": "fdc099347e837f2a2b56ededb2945f17749a09c91a194bc0516ee24185eda3c4",
+    "tutor_ai/learning_schema.py": "be21603fb23075bc948d7b1ed7bfd9d36d3254120f7519f679f86d4e6b8ab4d7",
+    "tutor_ai/providers.py": "7057dc1a2245113643ca0644a192a08a67f75b2b86b5f3604575911d438993ac",
+    "tutor_ai/service.py": "88bc548405a36e99eb60606643ab9b55fde39d2fb5a73e86e51ec17e04e72dd5",
+    "tutor_ai/sources.py": "573a8d072462dffcb1358ff5d01ff1a6c65bfa683a4542f303b94f27adfdca0f",
+    "tutor_ai/storage.py": "d23f1c5923efa8462385695f9c59e674eb2d8a3abbcc55658ac9f61206282349",
+    "tutor_ai/transfer.py": "6a2a043ef6f76eaa5088ee6110bd793c98668b913f3c81c3b5138bde6eb0d7c6",
+    "tutor_ai/verification.py": "6f405f1e9fade2b6486fed518bd83aed7234cc1a1d517a954ed3e7e800175326",
+    "tutor_ai/worker.py": "a7a78f919d7cac7118189bef44c90204c388b26abf6aa962590000531814afcd",
+    "tutor_ai/__init__.py": "37c977975b200b638b58f08eac517517136d4bb421653f41cad0908b88e4bdd0",
+    "ui/addresses.js": "cb5680876e51e3321f901d23002bb4d2edd4d7425ae1aa71ca3200a8d1c9c996",
+    "ui/app.js": "3176289a669bfa593fab8b230742fa52e7b6edcc042166c8d11d002ba8de08ba",
+    "ui/index.html": "086aacd0062f40c49c2300b193dfaca95677407084df3192b891a5ab0d29e221",
+    "ui/learning.js": "ecda2ccc95fd78aad8c9bba02f990a6a8eb68f34a111cadfc60cc79b94999e17",
+    "ui/modern.css": "a1a848eafc36e995cbc60e97c06df72a2054cc269f65467176a3e0a45649365e",
+    "ui/profiles.js": "c4ba2d62d83f9343c4bb542f3b805f2af174813fdfe23a92e42738470d8c3aab",
+    "ui/rich-text.js": "c482a49a1a1169764873c86073db5d02869c22c27a07875b5b7c5377304e0f86",
+    "ui/style.css": "27b9fa7976d94ca2438530baaaae9815ab1d1614f907c1aa1a864f18dc79797d",
+    "ui/assets/tutor-ai-mark.svg": "14098e49bad31e3c6c88ab04cdc2459a942ae7af65e14d66d638ae181dddc9e1",
+    "ui/assets/Tutor-AI.ico": "8b33f4092473a72b2b383c26c05a4fb9d2d9533a72bf0cc96d4ee2d8dd93ca74"
+  },
+  "release_source_mismatches": [],
+  "exe_sha256": "dd818a749ebb4964728432f073e309f8c90c49f96bd5b7017f52b1332eb36ebf",
+  "native": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "239",
+    "time": "100.994",
+    "timestamp": "2026-10-28T13:42:57.107565+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "independent_expected_behavior_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "2",
+    "skipped": "0",
+    "tests": "2",
+    "time": "9.167",
+    "timestamp": "2026-10-28T13:52:32.089731+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "gui": {
+    "ide-gui-feedback03-final.log": {
+      "passed": true,
+      "checks": 0,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui03-9cb6344b"
+    },
+    "gui_qa_031.log": {
+      "passed": true,
+      "checks": 25,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui031-4de7776c"
+    },
+    "gui_qa_032.log": {
+      "passed": true,
+      "checks": 7,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui032-1a9457de"
+    },
+    "gui_feedback_041.log": {
+      "passed": true,
+      "checks": 274,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-feedback041-a26f4418"
+    },
+    "ide-gui-learning.log": {
+      "passed": true,
+      "checks": 30,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-learning050-07306c37"
+    },
+    "gui-current-homework.log": {
+      "passed": true,
+      "checks": 12,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-current-homework050-0dbd31bc\\run"
+    },
+    "gui-transfer-current.log": {
+      "passed": true,
+      "checks": 9,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-transfer040-94860571\\run"
+    }
+  },
+  "packaged_workflow_checks": 30,
+  "packaged_upgrade_ui_checks": 5,
+  "packaged_upgrade_native_checks": 10,
+  "packaged_passed": true,
+  "source_fixture_unchanged": true,
+  "compiled_defects": {
+    "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-independent-exe050-45629391",
+    "passed": true,
+    "meaning": "reproduction completed; false fields below are product defects",
+    "subject": {
+      "requested": "informatics",
+      "selected": "algebra",
+      "created": "algebra",
+      "correct": false
+    },
+    "dialogue": {
+      "previous_user_turn_in_second_request": false,
+      "first_turn_in_local_journal": true,
+      "roles": [
+        "system",
+        "user",
+        "assistant",
+        "user"
+      ]
+    },
+    "timer": {
+      "status": "active",
+      "before": 0.02067880000686273,
+      "after": 0.02067880000686273,
+      "advanced": false
+    }
+  },
+  "full_acceptance": false,
+  "real_provider_requests": false,
+  "free_disk_bytes_after": 954572800,
+  "broken_report_links": []
+}

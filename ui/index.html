@@ -11,9 +11,12 @@
   <script src="qrc:///qtwebchannel/qwebchannel.js" defer></script>
   <script src="addresses.js" defer></script>
   <script src="profiles.js" defer></script>
+  <script src="rich-text.js" defer></script>
+  <script src="learning.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
+  <div id="checkpoint-warning" role="alert" hidden>Не удалось сохранить учебное время. Проверьте свободное место и права записи. Учёт будет повторён автоматически; новое занятие начнётся после успешного сохранения.</div>
   <div id="app"><main class="welcome"><h1>ИИ-репетитор</h1><p>Подключение к локальному хранилищу…</p></main></div>
   <div id="notice" role="status" aria-live="polite"></div>
   <div id="busy" role="status" aria-live="polite" hidden>Выполняется операция. Разделы меню доступны для просмотра. <button id="cancel-request">Запросить отмену</button></div>

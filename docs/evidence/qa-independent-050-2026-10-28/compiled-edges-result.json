@@ -1,0 +1,27 @@
+{
+  "folder": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\qa-independent-exe050-45629391",
+  "passed": true,
+  "meaning": "reproduction completed; false fields below are product defects",
+  "subject": {
+    "requested": "informatics",
+    "selected": "algebra",
+    "created": "algebra",
+    "correct": false
+  },
+  "dialogue": {
+    "previous_user_turn_in_second_request": false,
+    "first_turn_in_local_journal": true,
+    "roles": [
+      "system",
+      "user",
+      "assistant",
+      "user"
+    ]
+  },
+  "timer": {
+    "status": "active",
+    "before": 0.02067880000686273,
+    "after": 0.02067880000686273,
+    "advanced": false
+  }
+}

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.899" timestamp="2026-10-28T16:11:29.774306+04:00" hostname="591BOSSNB"><testcase classname="docs.evidence.qa-retest-050a3-2026-10-28.test_additional" name="test_regular_homework_dialogue_does_not_trigger_idle" time="1.383"><failure message="AssertionError: Regular accepted dialogue was classified as idle&#10;assert False&#10; +  where False = all(&lt;generator object test_regular_homework_dialogue_does_not_trigger_idle.&lt;locals&gt;.&lt;genexpr&gt; at 0x0000019517AEBB90&gt;)">family = (&lt;tutor_ai.service.Service object at 0x00000195176DDFD0&gt;, {'id': 'd7e3d6e4-0006-4cc5-a549-5a07ceabd0f3', 'recovery_key...8d-4abf-be76-bf51315ae391', 'message': 'Сохраните идентификатор входа и ключ восстановления вне приложения.'}, [281.0])
+
+    def test_regular_homework_dialogue_does_not_trigger_idle(family):
+        app, _, child, clock = family
+        child_login(app, child)
+        work = command(app, "work", student=child["id"], subject="algebra")["id"]
+        command(app, "work_revision", work=work, value="3x+5=20\n3x=15\nx=5",
+                expected_revision=0, confirm=True)
+        results = []
+        for index, advance in enumerate((0, 60, 60, 61)):
+            clock[0] += advance
+            try:
+                value = wait_job(app, command(app, "work_check", work=work, expected_revision=1,
+                                             intent="follow_up", follow_up=f"Поясни шаг {index+1}"))
+                results.append({"at": clock[0], "status": value["status"], "last_action": app.last_action})
+            except AppError as error:
+                results.append({"at": clock[0], "error": error.code, "last_action": app.last_action})
+        sessions = app.store.all("session", child["id"])
+        print(json.dumps({"requests": results, "session_status": sessions[0]["status"],
+                          "charged_seconds": sessions[0]["seconds"],
+                          "daily_seconds": app.daily(child["id"])["seconds"]}, ensure_ascii=False))
+&gt;       assert all(r.get("status") == "succeeded" for r in results), "Regular accepted dialogue was classified as idle"
+E       AssertionError: Regular accepted dialogue was classified as idle
+E       assert False
+E        +  where False = all(&lt;generator object test_regular_homework_dialogue_does_not_trigger_idle.&lt;locals&gt;.&lt;genexpr&gt; at 0x0000019517AEBB90&gt;)
+
+docs\evidence\qa-retest-050a3-2026-10-28\test_additional.py:30: AssertionError</failure></testcase></testsuite></testsuites>

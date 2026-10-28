@@ -23,7 +23,7 @@ class Diagnostics:
             folder.mkdir(parents=True, exist_ok=True)
             stamp = datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S")
             self.path = folder / ("performance-" + stamp + "-" + secrets.token_hex(4) + ".jsonl")
-            self.write({"event": "session", "version": "0.4.1", "timing": "not_physical_display_latency"})
+            self.write({"event": "session", "version": "0.5.0a4", "timing": "not_physical_display_latency"})
 
     def write(self, record):
         if not self.enabled:

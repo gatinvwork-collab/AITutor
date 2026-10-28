@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "version": "0.5.0a4",
+  "checks": [
+    {
+      "name": "request 1 accepted",
+      "ok": true
+    },
+    {
+      "name": "request 2 accepted",
+      "ok": true
+    },
+    {
+      "name": "request 3 accepted",
+      "ok": true
+    },
+    {
+      "name": "real dialogue remains one active lesson after 60/60/70",
+      "ok": true
+    },
+    {
+      "name": "time exceeds obsolete 180-second window",
+      "ok": true
+    },
+    {
+      "name": "daily equals linked lesson",
+      "ok": true
+    },
+    {
+      "name": "all three turns retained",
+      "ok": true
+    },
+    {
+      "name": "still active near 178 seconds after last response",
+      "ok": true
+    },
+    {
+      "name": "true idle eventually pauses despite polling",
+      "ok": true
+    },
+    {
+      "name": "true idle remains bounded to last action",
+      "ok": true
+    },
+    {
+      "name": "daily agrees after idle",
+      "ok": true
+    },
+    {
+      "name": "paused time does not grow",
+      "ok": true
+    }
+  ],
+  "accepted": [
+    {
+      "request": 1,
+      "elapsed_ms": 316.09999999403954,
+      "status": "succeeded"
+    },
+    {
+      "request": 2,
+      "elapsed_ms": 60570.69999998808,
+      "status": "succeeded"
+    },
+    {
+      "request": 3,
+      "elapsed_ms": 120805.19999998808,
+      "status": "succeeded"
+    }
+  ],
+  "active_dialogue_preserved": true,
+  "observed": {
+    "at_ms": 190913,
+    "last_success_age_ms": 70107.80000001192,
+    "sessions": [
+      {
+        "id": "59a4d291-d815-48f1-a0ea-49f4a2f65cde",
+        "status": "active",
+        "seconds": 186.8884185999923
+      }
+    ],
+    "daily_seconds": 186.8884185999923
+  },
+  "near_idle": {
+    "age_ms": 178026.20000001788,
+    "status": "active",
+    "seconds": 296.8987500999938
+  },
+  "actual_idle": {
+    "age_ms": 188072.30000001192,
+    "status": "paused",
+    "seconds": 300.562514499994,
+    "daily_seconds": 300.562514499994
+  },
+  "sha256": "42fa4d34dd43702a3593c2bdc79a4f52863269b5abd7efc2570b7833f8d22183"
+}

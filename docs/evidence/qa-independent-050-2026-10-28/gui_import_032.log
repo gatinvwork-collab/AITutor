@@ -1,0 +1,1 @@
+{"directory": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\gui-import032-6f22a731\\run", "passed": false, "error": "TypeError: Cannot read properties of null (reading 'click')\n    at <anonymous>:17:53", "checks": []}

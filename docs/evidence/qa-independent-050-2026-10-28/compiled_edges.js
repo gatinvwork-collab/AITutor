@@ -1,0 +1,38 @@
+(async()=>{try{
+ const wait=ms=>new Promise(r=>setTimeout(r,ms));
+ const until=async f=>{for(let n=0;n<200;n++){if(f())return;await wait(50);}throw Error('condition timeout');};
+ const lc=(action,args={})=>rpc('learning',{action,...args,...(['overview','attempt','job'].includes(action)?{}:{operation_id:crypto.randomUUID()})});
+ const job=async r=>{for(let n=0;n<200;n++){const j=await lc('job',{job:r.job});if(!['running','pending'].includes(j.status)){if(j.status!=='succeeded')throw Error(JSON.stringify(j));return j.body.result;}await wait(50);}throw Error('job timeout');};
+ const form=async(selector,values={})=>{const f=document.querySelector(selector);if(!f)throw Error('missing '+selector);for(const [k,v]of Object.entries(values)){if(f.elements[k].type==='checkbox')f.elements[k].checked=v;else f.elements[k].value=v;}f.requestSubmit();await until(()=>!inFlight);};
+ await rpc('register',{name:'Independent QA Parent',password:'independent-parent',role:'PARENT'});
+ const child=await rpc('register',{name:'Independent QA Child',password:'independent-child',role:'STUDENT',profile:{region:'Region',city:'City',school:'School',grade:7,address:{mode:'manual'}}});
+ await rpc('save_provider',{config:{kind:'ollama',model:'synthetic-only',revision:0,endpoint:window.__qaEndpoint}});
+ let req=await lc('curriculum',{student:child.id,subject:'algebra',title:'QA curriculum',source:'QA manual',topics:[{title:'QA topic',skills:['Method','Check']}],expected_revision:0});
+ await lc('decide',{student:child.id,request:req.id,expected_revision:0,accept:true,reason:'QA reviewed'});
+ req=await job(await lc('generate',{student:child.id,subject:'algebra',count:40}));
+ await lc('decide',{student:child.id,request:req.id,expected_revision:0,accept:true,reason:'QA reviewed questions'});
+ await rpc('logout');await rpc('login',{account:child.id,password:'independent-child'});await refresh();
+ navigate('subjects');document.querySelector('[data-action="subject"][data-value="informatics"]').click();
+ document.querySelector('[data-action="subject-homework"]').click();await learnRefresh();render();
+ const chosen=document.querySelector('#learn-subject').value;
+ await form('[data-learning-form="work"]');
+ const work=learnData().works.at(-1).work,createdSubject=learnData().works.at(-1).body.subject;
+ await form('[data-learning-form="work_revision"]',{value:'3x+5=20\n3x=15\nx=5',confirm:true});
+ await form('[data-learning-form="work_check"]',{intent:'follow_up',follow_up:'QA_CONTEXT: explain subtraction of five'});
+ let d=learnData();await job({job:d.jobs.find(x=>x.body.kind==='work_check').id});await learnRefresh();render();
+ await form('[data-learning-form="work_check"]',{intent:'follow_up',follow_up:'Explain my previous question in more detail'});
+ d=learnData();await job({job:d.jobs.find(x=>x.body.kind==='work_check'&&x.status==='running')?.id||d.jobs.find(x=>x.body.kind==='work_check').id});
+ await learnRefresh();render();d=learnData();
+ const calls=d.calls.filter(c=>c.work===work),last=calls.at(-1).body.messages;
+ const dialogue={previous_user_turn_in_second_request:JSON.stringify(last).includes('QA_CONTEXT'),first_turn_in_local_journal:JSON.stringify(calls[0]).includes('QA_CONTEXT'),roles:last.map(m=>m.role)};
+ await refresh();const active=student().sessions.find(s=>s.status==='active');if(active)await rpc('pause',{session:active.id});
+ d=await lc('overview',{student:child.id});const col=d.collections.find(c=>c.status==='approved').id,topic=d.curricula[0].topics[0].id;
+ const aid=(await lc('start',{student:child.id,collection:col,purpose:'topic_confirmation',topic})).id;
+ for(let i=0;i<10;i++){const v=await lc('attempt',{attempt:aid}),s=v.slots.find(s=>!s.answers.length&&!s.skipped);await lc(s.starred?'skip':'submit',{attempt:aid,slot:s.id,expected_revision:v.revision,...(s.starred?{}:{answer:'Original answer'})});}
+ let v=await lc('attempt',{attempt:aid});await lc('pause',{attempt:aid,expected_revision:v.revision});
+ const bid=(await lc('start',{student:child.id,collection:col,purpose:'topic_confirmation',topic})).id;
+ await learnRefresh();render();
+ await form(`[data-learning-form="finish"]:has(input[name="attempt"][value="${aid}"])`);
+ const before=(await lc('attempt',{attempt:bid})).body.seconds;await wait(6500);const b=await lc('attempt',{attempt:bid});
+ window.__testResult={passed:true,meaning:'reproduction completed; false fields below are product defects',subject:{requested:'informatics',selected:chosen,created:createdSubject,correct:chosen==='informatics'&&createdSubject==='informatics'},dialogue,timer:{status:b.status,before,after:b.body.seconds,advanced:b.body.seconds>before}};
+}catch(error){window.__testResult={passed:false,error:error.stack};}})();

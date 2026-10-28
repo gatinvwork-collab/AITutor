@@ -41,7 +41,7 @@ function rpc(command, args={}) {
 function syncBusyState() {
   if(!inFlight){for(const control of busyControls)if(control.isConnected)control.disabled=false;busyControls.clear();}
   else for(const control of document.querySelectorAll('button,input,select,textarea')){
-    if(control.matches('nav [data-action="route"],#cancel-request,#transition-accept,#transition-cancel'))continue;
+    if(control.matches('nav [data-action="route"],#cancel-request,#transition-accept,#transition-cancel,#learn-subject'))continue;
     if(!control.disabled){control.disabled=true;busyControls.add(control);}
   }
   document.querySelector('.content')?.setAttribute('aria-busy',String(!!inFlight));
@@ -140,7 +140,7 @@ function auth() {
     <button class="primary" type="submit">${register?'Создать профиль':recover?'Восстановить':'Войти'}</button>
   </form><hr class="divider"><div class="row">${state.status?.exists?`<button data-action="auth" data-value="${recover?'login':'recover'}">${recover?'Вернуться ко входу':'Забыли пароль?'}</button>`:`<button data-action="auth" data-value="register">Первый запуск → создать профиль</button>`}</div></section>
   ${!state.status?.exists?transferCard():''}
-  <p class="muted">Tutor-AI · Версия 0.4.1 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
+  <p class="muted">Tutor-AI · Версия 0.5.0a4 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
 }
 function transferCard(){
   const plan=state.transferPlan;
@@ -158,8 +158,8 @@ function accountOptions() {
 function registerFields() {
   return `<label>Роль<select name="role"><option value="PARENT">Родитель</option><option value="STUDENT">Ученик</option></select></label><label>Имя<input name="name" maxlength="60" required autocomplete="off"></label><label>Пароль (не менее 10 символов)<input name="password" type="password" minlength="10" required autocomplete="new-password"></label><p class="muted">Имя и роль будут видны в списке входа. Для ученика заполните данные школы; полное ФИО не требуется.</p>${addressFields()}<label>Школа (ручной ввод)<input name="school" maxlength="200"></label><label>Класс<input value="7" readonly></label>`;
 }
-const studentNav=[['home','Обзор'],['subjects','Предметы'],['lesson','Текущее занятие'],['homework','Проверка ДЗ'],['knowledge','Карта знаний'],['history','История'],['program','Учебник и программа'],['settings','Настройки']];
-const parentNav=[['home','Обзор семьи'],['students','Профили и связи'],['notifications','Уведомления'],['knowledge','Карта знаний'],['history','Занятия и отчёты'],['controls','Учебное время'],['program','Программы и запросы'],['providers','ИИ-провайдеры'],['backup','Резервные копии'],['security','Безопасность'],['settings','Настройки']];
+const studentNav=[['home','Обзор'],['subjects','Предметы'],['lesson','Текущее занятие'],['homework','Проверка ДЗ'],['learning','Учебный процесс'],['knowledge','Карта знаний'],['history','История'],['program','Учебник и программа'],['settings','Настройки']];
+const parentNav=[['home','Обзор семьи'],['students','Профили и связи'],['notifications','Уведомления'],['learning','Учебный процесс'],['knowledge','Карта знаний'],['history','Занятия и отчёты'],['controls','Учебное время'],['program','Программы и запросы'],['providers','ИИ-провайдеры'],['backup','Резервные копии'],['security','Безопасность'],['settings','Настройки']];
 function brand(){return '<div class="brand-lockup"><img src="assets/tutor-ai-mark.svg" width="48" height="48" alt=""><div><span class="brand-wordmark">Tutor<span>-AI</span></span><small>ИИ-репетитор</small></div></div>';}
 function render() {
   const started=performance.now();
@@ -168,7 +168,7 @@ function render() {
   applyAppearance(state.data.user.theme,state.data.user.design);
   const parent=state.data.user.role==='PARENT';
   const nav=parent?parentNav:studentNav;
-  const pages={home,subjects:subjectPage,lesson:lessonPage,homework:homeworkPage,knowledge,history,students:studentsPage,controls,program,providers,backup,security,settings,profile:profilePage,notifications:notificationsPage};
+  const pages={home,subjects:subjectPage,lesson:lessonPage,homework:homeworkPage,learning:learningPage,knowledge,history,students:studentsPage,controls,program,providers,backup,security,settings,profile:profilePage,notifications:notificationsPage};
   if(!pages[state.route]){
     state.route='home';notify('Недоступный раздел. Открыт обзор текущего профиля.');
   }
@@ -196,12 +196,13 @@ function render() {
     if(id===activeRoute)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
     button.textContent=label+(id==='notifications'&&unread?' · '+unread:'');
   }
-  $('.content').innerHTML=`<div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.4.1</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${pages[state.route]()}`;
+  $('.content').innerHTML=`<div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.5.0a4</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${pages[state.route]()}`;
   const messages=$('.messages'); if(messages) messages.scrollTop=messages.scrollHeight;
   const edit=$('form[data-form="profile"]');
   if(edit&&state.profileEdit?.role==='STUDENT')fillAddress(edit,state.profileEdit.profile);
   for(const [key,value] of Object.entries(state.drafts)) { const input=document.getElementById(key); if(input) input.value=value; }
   document.querySelectorAll('[data-text-limit]').forEach(validateTextLimit);
+  augmentLearningUI();restoreLearningDrafts();
   syncBusyState();
   if(focused&&!focused.isConnected){
     const target=focusId?document.getElementById(focusId):focusForm&&focusName?document.querySelector(`form[data-form="${CSS.escape(focusForm)}"] [name="${CSS.escape(focusName)}"]`):null;
@@ -237,12 +238,13 @@ function subjectPage() {
 function lessonPage() {
   const l=state.lesson;
   if(!l) return '<h1>Учебное занятие</h1><section class="card empty">Выберите тему в разделе «Предметы» или продолжите сохранённое занятие из истории.</section>';
-  if(l.mode==='homework')return `<h1>${esc(l.title)}</h1><span class="badge">${esc(subjects[l.subject]||l.subject_label)} · ДЗ</span><section class="card">${l.messages.map(m=>`<div class="message ${m.role==='user'?'user':''}">${esc(m.text)}</div>`).join('')}<div class="row"><button data-action="route" data-value="homework">Открыть проверку ДЗ</button>${l.status==='active'?'<button data-action="pause">Сохранить и приостановить</button><button data-action="complete">Завершить</button>':l.status==='paused'?'<button data-action="resume">Продолжить</button>':''}</div></section>`;
-  return `<div class="row spaced"><div><span class="badge">${esc(subjectDisplay(l))} · ${l.mode.includes('diagnose')?'Диагностика':'Изучение'}</span><h1>${esc(l.title)}</h1></div><span class="muted">${l.status==='active'?'Идёт занятие':l.status==='paused'?'Приостановлено':'Завершено'} · ${minutes(l.seconds)} мин</span></div><section class="card"><div class="messages">${l.messages.map(m=>`<div class="message ${m.role==='user'?'user':''}">${esc(m.text)}${m.hint?`<p class="muted">Подсказка H${m.hint}</p>`:''}${m.usage?`<p class="muted">Токены: ${esc(JSON.stringify(m.usage))}</p>`:''}</div>`).join('')}</div>
+  if(l.mode==='homework')return `<h1>${esc(l.title)}</h1><span class="badge">${esc(subjects[l.subject]||l.subject_label)} · ДЗ</span><section class="card">${l.messages.map(m=>`<div class="message ${m.role==='user'?'user':''}">${renderRich(m.text)}</div>`).join('')}<div class="row"><button data-action="route" data-value="homework">Открыть проверку ДЗ</button>${l.status==='active'?'<button data-action="pause">Сохранить и приостановить</button><button data-action="complete">Завершить</button>':l.status==='paused'?'<button data-action="resume">Продолжить</button>':''}</div></section>`;
+  return `<div class="row spaced"><div><span class="badge">${esc(subjectDisplay(l))} · ${l.mode.includes('diagnose')?'Диагностика':'Изучение'}</span><h1>${esc(l.title)}</h1></div><span class="muted">${l.status==='active'?'Идёт занятие':l.status==='paused'?'Приостановлено':'Завершено'} · ${minutes(l.seconds)} мин</span></div><section class="card"><div class="messages">${l.messages.map(m=>`<div class="message ${m.role==='user'?'user':''}">${renderRich(m.text)}${m.hint?`<p class="muted">Подсказка H${m.hint}</p>`:''}${m.usage?`<p class="muted">Токены: ${esc(JSON.stringify(m.usage))}</p>`:''}</div>`).join('')}</div>
   ${l.status==='active'?`<div class="task"><small>Самостоятельная практика · ${l.index+1} из 3</small><br>${esc(l.task)}</div><form data-form="answer" class="row"><input id="answer-draft" name="answer" placeholder="Твой ответ" required maxlength="500"><button class="primary" type="submit">Проверить</button><button type="button" data-action="hint">Нужна подсказка</button></form><hr class="divider"><form data-form="chat"><label>Что осталось непонятным?<textarea id="question-draft" name="text" maxlength="4000" required placeholder="Задай вопрос по теме…"></textarea></label><div class="row"><button type="submit">Спросить репетитора</button><button type="button" data-action="speak">Озвучить ответ</button></div></form>`:`<div class="callout">${l.status==='complete'?`Занятие завершено. Правильных ответов: ${l.correct??'—'}; проверенных попыток: ${l.total??'—'}. Оценка освоения доступна на карте знаний.`:'Прогресс сохранён. Можно продолжить, если позволяет лимит.'}</div>`}
   <hr class="divider"><div class="row">${l.status==='paused'?'<button class="primary" data-action="resume">Продолжить</button>':''}${l.status==='active'?'<button data-action="pause">Сохранить и приостановить</button><button data-action="complete">Завершить занятие</button>':''}<button data-action="route" data-value="knowledge">Карта знаний</button></div></section>`;
 }
-function homeworkPage() {
+function homeworkPage(){return learningPage();}
+function legacyHomeworkPage() {
   const h=state.homework;
   const chosen=state.hwSubject||'';
   const topics=state.data.catalog.filter(t=>t.subject===chosen);
@@ -266,7 +268,7 @@ function history() {
   const s=student(),sessions=s?.sessions||[];
   const period=state.period||7,cutoff=Date.now()-period*86400000;
   const filtered=sessions.filter(l=>new Date(l.created).getTime()>=cutoff&&(!state.reportSubject||(l.catalog_subject||l.subject)===state.reportSubject));
-  return `<h1>История и отчёты</h1>${subjectFilter('history-subject',state.reportSubject,true)}<div class="row"><button data-action="period" data-value="7">За неделю</button><button data-action="period" data-value="30">За месяц</button><button data-action="period" data-value="36500">Вся история</button></div><section class="card"><h2>${filtered.length} занятий · ${minutes(filtered.reduce((n,l)=>n+l.seconds,0))} мин активного времени</h2>${filtered.length?`<table><thead><tr><th>Предмет / тема / дата</th><th>Состояние</th><th>Ответы</th><th></th></tr></thead><tbody>${filtered.map(l=>`<tr><td><small>${esc(subjectDisplay(l))}</small><br>${esc(l.title)}<br><small>${formatDate(l.created)}</small></td><td>${esc({active:'Активно',paused:'Пауза',complete:'Завершено'}[l.status])}</td><td>${l.correct??'—'}/${l.total??'—'}</td><td><button data-action="open-session" data-value="${l.id}">Открыть</button></td></tr>`).join('')}</tbody></table>`:'<p class="empty">За этот период и предмет занятий нет.</p>'}</section>${state.report?`<section class="card"><h2>${esc(state.report.title)}</h2><p>${esc(subjectDisplay(state.report))}</p><p class="muted">Программа на момент занятия: ${esc(JSON.stringify(state.report.program_snapshot))}</p>${(state.report.messages||[]).map(m=>`<div class="message">${esc(m.text)}</div>`).join('')}</section>`:''}`;
+  return `<h1>История и отчёты</h1>${subjectFilter('history-subject',state.reportSubject,true)}<div class="row"><button data-action="period" data-value="7">За неделю</button><button data-action="period" data-value="30">За месяц</button><button data-action="period" data-value="36500">Вся история</button></div><section class="card"><h2>${filtered.length} занятий · ${minutes(filtered.reduce((n,l)=>n+l.seconds,0))} мин активного времени</h2>${filtered.length?`<table><thead><tr><th>Предмет / тема / дата</th><th>Состояние</th><th>Ответы</th><th></th></tr></thead><tbody>${filtered.map(l=>`<tr><td><small>${esc(subjectDisplay(l))}</small><br>${esc(l.title)}<br><small>${formatDate(l.created)}</small></td><td>${esc({active:'Активно',paused:'Пауза',complete:'Завершено'}[l.status])}</td><td>${l.correct??'—'}/${l.total??'—'}</td><td><button data-action="open-session" data-value="${l.id}">Открыть</button></td></tr>`).join('')}</tbody></table>`:'<p class="empty">За этот период и предмет занятий нет.</p>'}</section>${state.report?`<section class="card"><h2>${esc(state.report.title)}</h2><p>${esc(subjectDisplay(state.report))}</p><p class="muted">Программа на момент занятия: ${esc(JSON.stringify(state.report.program_snapshot))}</p>${(state.report.messages||[]).map(m=>`<div class="message">${renderRich(m.text)}</div>`).join('')}</section>`:''}`;
 }
 function studentsPage() {
   const s=student();
@@ -276,7 +278,8 @@ function controls() {
   const s=student();
   return `<h1>Учебное время</h1>${s?`<section class="card"><h2>${esc(s.name)}</h2><p>Сегодня: ${minutes(s.daily.seconds)} мин из ${s.controls.minutes}. После достижения лимита новое занятие недоступно. На текущее задание — до 15 дополнительных минут.</p><form data-form="controls"><label>Дневной лимит, минуты<input type="number" name="minutes" value="${s.controls.minutes}" min="5" max="240" required></label><button class="primary">Сохранить лимит</button></form><p class="muted">После трёх минут без учебных действий занятие приостанавливается.</p></section>`:'<p>Сначала добавьте ученика.</p>'}`;
 }
-function program() {
+function program(){return learningPage();}
+function legacyProgram() {
   const s=student(),parent=state.data.user.role==='PARENT';
   const assignments=s?Object.entries(subjects).map(([id,label])=>{
     const p=s.programs?.[id]||{};
@@ -290,7 +293,7 @@ function program() {
 }
 function providers() {
   const c=state.data.provider||{};
-  return `<h1>Подключение ИИ</h1><p class="muted">Настройка общая для семейной группы. Ключ хранится в зашифрованном хранилище и не возвращается интерфейсу.</p><section class="card"><form data-form="provider"><div class="field-grid"><label>Провайдер<select id="provider-kind" name="kind">${['openai','gigachat','qwen','ollama'].map(k=>`<option value="${k}" ${k===(c.kind||'ollama')?'selected':''}>${{openai:'OpenAI',gigachat:'GigaChat',qwen:'Qwen',ollama:'Ollama (локальный)'}[k]}</option>`).join('')}</select></label><label>Название<input name="name" value="${esc(c.name||'Семейное подключение')}" maxlength="100"></label></div><label>Модель<input name="model" value="${esc(c.model||'')}" required placeholder="Название установленной / доступной модели"></label><label>Endpoint (пусто — стандартный адрес)<input id="provider-endpoint" name="endpoint" value="${esc(c.endpoint||'')}" placeholder="Для Ollama: http://127.0.0.1:11434"></label><label>API-ключ / Basic-ключ GigaChat<input name="secret" type="password" autocomplete="off" placeholder="Пусто — сохранить прежний ключ этого провайдера"></label><label>Тайм-аут, секунды<input name="timeout" type="number" min="1" max="180" value="${c.timeout||60}"></label><label>Scope GigaChat<select name="scope">${['GIGACHAT_API_PERS','GIGACHAT_API_B2B','GIGACHAT_API_CORP'].map(s=>`<option ${s===c.scope?'selected':''}>${s}</option>`).join('')}</select></label><h3>Разрешения на облачную обработку</h3><label class="check"><input name="allow_text" type="checkbox" ${c.allow_text?'checked':''}>Разрешаю передавать учебный текст выбранному облачному провайдеру</label><label class="check"><input name="allow_documents" type="checkbox" ${c.allow_documents?'checked':''}>Разрешаю передавать подтверждённый текст документов и ДЗ</label><p class="muted">Имена, школа и семейные данные не включаются в контекст по умолчанию. Изображения и аудио в облако эта версия не отправляет. Для GigaChat может требоваться доверенный корневой сертификат в Windows; проверка TLS не отключается.</p><button class="primary">Сохранить подключение и разрешения</button></form><hr class="divider"><div class="row"><button data-action="test-provider">Проверить текстовый запрос</button><button data-action="models">Получить список моделей</button></div>${state.providerResult?`<pre>${esc(state.providerResult)}</pre>`:''}</section>`;
+  return `<h1>Подключение ИИ</h1><p class="muted">Настройка общая для семейной группы. Ключ хранится в зашифрованном хранилище и не возвращается интерфейсу.</p><section class="card"><form data-form="provider"><div class="field-grid"><label>Провайдер<select id="provider-kind" name="kind">${['openai','gigachat','qwen','ollama'].map(k=>`<option value="${k}" ${k===(c.kind||'ollama')?'selected':''}>${{openai:'OpenAI',gigachat:'GigaChat',qwen:'Qwen',ollama:'Ollama (локальный)'}[k]}</option>`).join('')}</select></label><label>Название<input name="name" value="${esc(c.name||'Семейное подключение')}" maxlength="100"></label></div><label>Модель<input name="model" value="${esc(c.model||'')}" required placeholder="Название установленной / доступной модели"></label><label>Endpoint (пусто — стандартный адрес)<input id="provider-endpoint" name="endpoint" value="${esc(c.endpoint||'')}" placeholder="Для Ollama: http://127.0.0.1:11434"></label><label>API-ключ / Basic-ключ GigaChat<input name="secret" type="password" autocomplete="off" placeholder="Пусто — сохранить прежний ключ этого провайдера"></label><label>Тайм-аут, секунды<input name="timeout" type="number" min="1" max="180" value="${c.timeout||60}"></label><label>Scope GigaChat<select name="scope">${['GIGACHAT_API_PERS','GIGACHAT_API_B2B','GIGACHAT_API_CORP'].map(s=>`<option ${s===c.scope?'selected':''}>${s}</option>`).join('')}</select></label><h3>Разрешения на облачную обработку</h3><label class="check"><input name="allow_text" type="checkbox" ${c.allow_text?'checked':''}>Разрешаю передавать учебный текст выбранному облачному провайдеру</label><label class="check"><input name="allow_documents" type="checkbox" ${c.allow_documents?'checked':''}>Разрешаю передавать подтверждённый текст документов и ДЗ</label><p class="muted">Имена, школа и семейные данные не включаются в контекст по умолчанию. Для OCR через GigaChat фотографии передаются только с отдельным разрешением ниже. Аудио в облако не отправляется. Для GigaChat может требоваться доверенный корневой сертификат в Windows; проверка TLS не отключается.</p><button class="primary">Сохранить подключение и разрешения</button></form><hr class="divider"><div class="row"><button data-action="test-provider">Проверить текстовый запрос</button><button data-action="models">Получить список моделей</button></div>${state.providerResult?`<pre>${esc(state.providerResult)}</pre>`:''}</section>`;
 }
 function backup() {
   return `<h1>Резервные копии Tutor-AI</h1><div class="callout">База и вложения зашифрованы всегда. Ручная копия дополнительно защищается отдельным паролем. Автокопии создаются после входа родителя раз в сутки и используют ключ текущего хранилища.</div><div class="split"><section class="card"><h2>Создать копию</h2><form data-form="backup"><label>Пароль архива<input name="password" type="password" minlength="10" required autocomplete="new-password"></label><button class="primary">Создать резервную копию</button></form><p class="muted">Последняя копия: ${formatDate(state.data.backup.last_at)}<br>${esc(state.data.backup.last_file||'Копий ещё нет')}</p><p class="muted">Копии находятся в app-data/backups рядом с приложением. Сохраните пароль архива и данные входа из копии отдельно.</p></section><section class="card"><h2>Восстановить</h2><p>Восстановление заменит текущее состояние. Перед заменой сохраняется его зашифрованный снимок.</p><form data-form="restore"><label>Имя файла в app-data/backups<input name="filename" required placeholder="20261025-….aitbackup"></label><label>Пароль архива (для ручной копии)<input name="password" type="password"></label><label>ID родителя из копии<input name="account" required></label><label>Пароль родителя из копии<input name="account_password" type="password" required></label><label class="check"><input type="checkbox" required>Подтверждаю замену текущего состояния</label><button class="danger">Проверить и восстановить</button></form></section></div>`;
@@ -306,7 +309,7 @@ function security() {
 function settings() {
   const theme=state.data.user.theme;
   const renameCard=`<section class="card"><h2>Мой профиль</h2><p>${esc(state.data.user.name)}</p><button data-action="edit-profile" data-value="${esc(state.data.user.id)}">Редактировать мои данные</button></section>`;
-  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.4.1 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, OCR, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
+  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.5.0a4 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. OCR через GigaChat находится в предварительной версии; фотографии требуют отдельного разрешения. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
 }
 
 document.addEventListener('input',e=>{
@@ -331,7 +334,8 @@ document.addEventListener('click',e=>{
   if(action==='route'){navigate(value);return;}
   if(action==='auth'){state.authMode=value;render();return;}
   if(action==='subject'){state.subject=value;state.route='subjects';render();return;}
-  if(action==='subject-homework'){state.hwSubject=value;state.hwTopic=null;state.homeworkResult=null;state.route='homework';render();return;}
+  if(action==='subject-homework'){selectLearningSubject(value);state.homeworkResult=null;state.route='homework';render();return;}
+  if(action==='diagnose'||action==='subject-diagnose'){state.learnSubject=state.subject;state.route='learning';render();return;}
   if(action==='period'){state.period=Number(value);render();return;}
   perform(async()=>{
     if(action==='choose-transfer'){const plan=await rpc('choose_transfer',{separate:$('#transfer-separate').checked});if(plan){state.transferPlan=plan;render();}return;}
@@ -398,7 +402,7 @@ document.addEventListener('submit',e=>{
       state.homework=await rpc('prepare_homework',{subject:'informatics',topic_id:state.hwTopic||null,homework:state.homework?.id||null});
       const r=await rpc('analyze_code',{code:v.code,homework:state.homework.id});state.codeResult=r.text;render();
     }
-    else if(kind==='provider'){await rpc('save_provider',{config:{...v,timeout:Number(v.timeout),revision:state.data.provider.revision||0,allow_text:fd.has('allow_text'),allow_documents:fd.has('allow_documents')}});form.reset();await refresh();notify('Подключение и разрешения сохранены.');}
+    else if(kind==='provider'){await rpc('save_provider',{config:{...v,timeout:Number(v.timeout),revision:state.data.provider.revision||0,allow_text:fd.has('allow_text'),allow_documents:fd.has('allow_documents'),allow_images:fd.has('allow_images')}});form.reset();await refresh();notify('Подключение и разрешения сохранены.');}
     else if(kind==='controls'){await rpc('set_controls',{student:student().id,minutes:Number(v.minutes),revision:student().controls.revision});await refresh();notify('Лимит сохранён.');}
     else if(kind==='profile'){
       try {
@@ -444,6 +448,10 @@ if(typeof qt!=='undefined') {
   new QWebChannel(qt.webChannelTransport, channel=>{
     bridge=channel.objects.native;
     bridge.response.connect(receiveResponse);
+    bridge.checkpointFailed?.connect(failed=>{
+      const warning=$('#checkpoint-warning');
+      warning.hidden=!failed;
+    });
     perform(refresh);
   });
 } else { $('#app').innerHTML='<main class="welcome"><h1>Запустите настольное приложение</h1><p>Этот интерфейс работает через защищённый нативный слой. Выполните main.py или запустите Tutor-AI.exe.</p></main>'; }

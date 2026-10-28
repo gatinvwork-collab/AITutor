@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "source_version": "0.5.0a3",
+  "checks": {
+    "all_tables_before_writes": true,
+    "original_bytes": true,
+    "vault_id": true,
+    "schema_4": true,
+    "active_requires_resume": true,
+    "old_subject_not_rewritten": true,
+    "explicit_copy_unverified": true,
+    "new_dialogue_succeeds": true,
+    "past_payloads_unchanged": true,
+    "old_question_recovered_for_future": true,
+    "restore_clears_context": true,
+    "originals_after_restore": true,
+    "new_write_reopens": true
+  }
+}

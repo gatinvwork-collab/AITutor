@@ -1,0 +1,341 @@
+{
+  "date": "2026-10-28",
+  "version": "0.5.0a3",
+  "python": "3.13.15 (tags/v3.13.15:4061bc4, Aug  5 2026, 13:05:39) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "exe_sha256": "8c81b4a3c25fd2a828f4ad74e4e431e5689a1432f94b9c08db3955123ee1ca79",
+  "source_sha256": {
+    "main.py": "efec7b33fdebf9b87605febc51f9243ae286b80a351bdf0f2c6bc94c69f9e730",
+    "pyproject.toml": "5c542539c8aed29e3c881434831281f5d6076da1df7eada7544689707e24c9bc",
+    "requirements-lock.txt": "7c4180819a249ab19698af74ac0ebcd3e378481d017125268667e6411f0aee7a",
+    "tutor_ai/addresses.py": "1add22a17c513fa943342ae59ef70a477d16905374722e5f34ede6a4bdd7f605",
+    "tutor_ai/assessment.py": "47098e29a77de3020572d7af986c278e390c2f7cb6ff122a25bc717ab9ea856c",
+    "tutor_ai/audit.py": "47196f2dde34f3204ecf866380337f29b9f3513b15633ef5bc45c261edcba89a",
+    "tutor_ai/crypto.py": "643c2874ba241ae0d376f1ffcb117f642ff25f9e3c273e23c1bfc1ba3e38b91a",
+    "tutor_ai/desktop.py": "c779f24116b0c6943731f5be1f6bcb0031287ba6b80c6c5ba0323aac8b938f5f",
+    "tutor_ai/diagnostics.py": "663e8a3a9cb42179e9240789141aacf84703514906c08a104bd3f35914581d98",
+    "tutor_ai/dialogue.py": "48b87f6a89076ef6f523cbcd6b811262b02e1c9c14706e84ec0711abf4e4e2a1",
+    "tutor_ai/documents.py": "0890e54d2e6506c9c7ec9b31ccd7e08b75528e129c354e9144d689c78282b419",
+    "tutor_ai/education.py": "47a27d7257637b07fe1dd4774f9537b37e7fcdf714d91def144f770e49ed74f1",
+    "tutor_ai/errors.py": "b6b0289e777fa5cd0a2bbb541b1d08120c9933a86032a05129623ea2dcc56562",
+    "tutor_ai/history.py": "df1307b4798e0b567ddc873d2f0f6b28a590498802e8d4bbc2f5db13a77c646d",
+    "tutor_ai/jobs.py": "9c00c289db35276e706ce6efacf09f160cb5d486032fc73c1e4cb1903943f27f",
+    "tutor_ai/learning.py": "08bd2ceaf937f80b0063d79e755dedbbdcff5dafd5ce2baa7538a25714445204",
+    "tutor_ai/learning_schema.py": "be21603fb23075bc948d7b1ed7bfd9d36d3254120f7519f679f86d4e6b8ab4d7",
+    "tutor_ai/providers.py": "7057dc1a2245113643ca0644a192a08a67f75b2b86b5f3604575911d438993ac",
+    "tutor_ai/service.py": "9f178309825b7059aa42d3a4521bb218da78335cdd1cdea391983681cd444315",
+    "tutor_ai/sources.py": "573a8d072462dffcb1358ff5d01ff1a6c65bfa683a4542f303b94f27adfdca0f",
+    "tutor_ai/storage.py": "d23f1c5923efa8462385695f9c59e674eb2d8a3abbcc55658ac9f61206282349",
+    "tutor_ai/transfer.py": "6a2a043ef6f76eaa5088ee6110bd793c98668b913f3c81c3b5138bde6eb0d7c6",
+    "tutor_ai/verification.py": "6f405f1e9fade2b6486fed518bd83aed7234cc1a1d517a954ed3e7e800175326",
+    "tutor_ai/worker.py": "a7a78f919d7cac7118189bef44c90204c388b26abf6aa962590000531814afcd",
+    "tutor_ai/__init__.py": "e1f56f0a726ea2c32e278a56e11ed85d0f4f319c227a1f5c9d1206ab92414011",
+    "ui/addresses.js": "cb5680876e51e3321f901d23002bb4d2edd4d7425ae1aa71ca3200a8d1c9c996",
+    "ui/app.js": "d326fae765ccbc38fae0127590458aaa58e875a93d00b007e9e0d03640596609",
+    "ui/index.html": "b9523b458cd76f0b3a0f102ac310b6b7a171634eb497d5978e226262bcbca302",
+    "ui/learning.js": "c1ea920546869acb04f50451351797db0ce23efd80bd04c1ac74d606109b5d03",
+    "ui/modern.css": "a1a848eafc36e995cbc60e97c06df72a2054cc269f65467176a3e0a45649365e",
+    "ui/profiles.js": "c4ba2d62d83f9343c4bb542f3b805f2af174813fdfe23a92e42738470d8c3aab",
+    "ui/rich-text.js": "c482a49a1a1169764873c86073db5d02869c22c27a07875b5b7c5377304e0f86",
+    "ui/style.css": "d9583b8c6148db8c9395b307f046912e1d4722a9ead736658b7f31e31f107b2d",
+    "ui/assets/tutor-ai-mark.svg": "14098e49bad31e3c6c88ab04cdc2459a942ae7af65e14d66d638ae181dddc9e1",
+    "ui/assets/Tutor-AI.ico": "8b33f4092473a72b2b383c26c05a4fb9d2d9533a72bf0cc96d4ee2d8dd93ca74"
+  },
+  "release_source_mismatches": [],
+  "native": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "266",
+    "time": "217.021",
+    "timestamp": "2026-10-28T16:08:32.471552+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "additional_expected_behavior_tests": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "1",
+    "skipped": "0",
+    "tests": "1",
+    "time": "1.899",
+    "timestamp": "2026-10-28T16:11:29.774306+04:00",
+    "hostname": "591BOSSNB"
+  },
+  "gui": {
+    "gui_smoke": {
+      "module": "gui_smoke",
+      "exit_code": 0,
+      "seconds": 28.23,
+      "passed": true,
+      "checks": 0,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-2e3418ce"
+    },
+    "gui_feedback_03": {
+      "module": "gui_feedback_03",
+      "exit_code": 0,
+      "seconds": 24.55,
+      "passed": true,
+      "checks": 0,
+      "captures": 21,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui03-3af9c0a4"
+    },
+    "gui_qa_031": {
+      "module": "gui_qa_031",
+      "exit_code": 0,
+      "seconds": 5.76,
+      "passed": true,
+      "checks": 25,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui031-735997e1"
+    },
+    "gui_qa_032": {
+      "module": "gui_qa_032",
+      "exit_code": 0,
+      "seconds": 14.36,
+      "passed": true,
+      "checks": 7,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui032-555e1fd7"
+    },
+    "gui_import_032": {
+      "module": "gui_import_032",
+      "exit_code": 0,
+      "seconds": 4.64,
+      "passed": true,
+      "checks": 12,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-import032-9d853d6c\\run"
+    },
+    "gui_feedback_041": {
+      "module": "gui_feedback_041",
+      "exit_code": 0,
+      "seconds": 6.86,
+      "passed": true,
+      "checks": 274,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-feedback041-24265631"
+    },
+    "gui_transfer_040": {
+      "module": "gui_transfer_040",
+      "exit_code": 0,
+      "seconds": 3.73,
+      "passed": true,
+      "checks": 9,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-transfer040-62271499\\run"
+    },
+    "gui_learning_050": {
+      "module": "gui_learning_050",
+      "exit_code": 0,
+      "seconds": 8.54,
+      "passed": true,
+      "checks": 30,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-learning050-8d3e8644"
+    },
+    "gui_qa_051": {
+      "module": "gui_qa_051",
+      "exit_code": 0,
+      "seconds": 3.22,
+      "passed": true,
+      "checks": 30,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-qa051-35bacb56"
+    },
+    "gui_qa_052": {
+      "module": "gui_qa_052",
+      "exit_code": 0,
+      "seconds": 6.56,
+      "passed": true,
+      "checks": 33,
+      "captures": null,
+      "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\gui-intent052-b9602a05"
+    }
+  },
+  "gui_structured_conditions": 420,
+  "exe_modules_passed": {
+    "exe_learning_050": true,
+    "exe_qa_051": true,
+    "exe_qa_052": true,
+    "exe_fault_052": true
+  },
+  "fault": {
+    "directory": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\exe-fault052-110215b9",
+    "passed": true,
+    "checks": [
+      {
+        "name": "crash requires explicit resume",
+        "ok": true
+      },
+      {
+        "name": "failed autopause remains persisted active",
+        "ok": true
+      },
+      {
+        "name": "failed checkpoints do not publish seconds",
+        "ok": true
+      },
+      {
+        "name": "failed checkpoints do not publish daily",
+        "ok": true
+      },
+      {
+        "name": "background failure is visible",
+        "ok": true
+      },
+      {
+        "name": "unsaved pause does not report success",
+        "ok": true
+      },
+      {
+        "name": "retry completes autopause",
+        "ok": true
+      },
+      {
+        "name": "retry bills exactly allowed idle",
+        "ok": true
+      },
+      {
+        "name": "daily agrees with attempt",
+        "ok": true
+      },
+      {
+        "name": "warning clears after successful checkpoint",
+        "ok": true
+      },
+      {
+        "name": "later ticks do not duplicate time",
+        "ok": true
+      }
+    ],
+    "before": 0,
+    "after": 180,
+    "dailyBefore": 1.372725499997614,
+    "dailyAfter": 181.3727254999976,
+    "faults": {
+      "locked_hash": "d3435b39065aa1c774455b052afb186b97ac8829d129354c6106116f2c8a85ea",
+      "vault_unchanged_during_denial": true
+    },
+    "sha256": "8c81b4a3c25fd2a828f4ad74e4e431e5689a1432f94b9c08db3955123ee1ca79",
+    "source_a2_unchanged": true
+  },
+  "intent_http_matches_journal": true,
+  "previous_fixes": {
+    "passed": true,
+    "meaning": "reproduction completed; false fields below are product defects",
+    "subject": {
+      "requested": "informatics",
+      "selected": "informatics",
+      "created": "informatics",
+      "correct": true
+    },
+    "dialogue": {
+      "previous_user_turn_in_second_request": true,
+      "first_turn_in_local_journal": true,
+      "roles": [
+        "system",
+        "user",
+        "user",
+        "assistant",
+        "user"
+      ]
+    },
+    "timer": {
+      "status": "active",
+      "before": 0.2865089999977499,
+      "after": 6.191901099984534,
+      "dailyBefore": 2.302713000011863,
+      "dailyAfter": 8.208105099998647,
+      "advanced": true
+    }
+  },
+  "native_upgrades": {
+    "a1": {
+      "passed": true,
+      "source_version": "0.5.0a1",
+      "checks": {
+        "all_tables_before_writes": true,
+        "original_bytes": true,
+        "vault_id": true,
+        "schema_4": true,
+        "active_requires_resume": true,
+        "old_subject_not_rewritten": true,
+        "explicit_copy_unverified": true,
+        "new_dialogue_succeeds": true,
+        "past_payloads_unchanged": true,
+        "old_question_recovered_for_future": true,
+        "restore_clears_context": true,
+        "originals_after_restore": true,
+        "new_write_reopens": true
+      },
+      "target": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-a3-upgrade-a1-dc9e205c",
+      "exit_code": 0,
+      "source_unchanged": true
+    },
+    "a2": {
+      "passed": true,
+      "source_version": "0.5.0a2",
+      "checks": {
+        "all_tables_before_writes": true,
+        "original_bytes": true,
+        "vault_id": true,
+        "schema_4": true,
+        "active_requires_resume": true,
+        "old_subject_not_rewritten": true,
+        "explicit_copy_unverified": true,
+        "new_dialogue_succeeds": true,
+        "past_payloads_unchanged": true,
+        "old_question_recovered_for_future": true,
+        "restore_clears_context": true,
+        "originals_after_restore": true,
+        "new_write_reopens": true
+      },
+      "target": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-a3-upgrade-a2-a983880f",
+      "exit_code": 0,
+      "source_unchanged": true
+    }
+  },
+  "new_bug": "QA-050-06",
+  "new_bug_compiled": {
+    "passed": true,
+    "meaning": "Reproduction completed; active_dialogue_preserved=false is product failure",
+    "version": "0.5.0a3",
+    "accepted": [
+      {
+        "request": 1,
+        "elapsed_ms": 375.19999998807907,
+        "status": "succeeded"
+      },
+      {
+        "request": 2,
+        "elapsed_ms": 60515.09999999404,
+        "status": "succeeded"
+      },
+      {
+        "request": 3,
+        "elapsed_ms": 121082.5,
+        "status": "succeeded"
+      }
+    ],
+    "observed_ms": 191256.69999998808,
+    "last_successful_request_age_ms": 70174.19999998808,
+    "sessions": [
+      {
+        "id": "38900163-a209-4cfd-a191-0f6f8e54fb08",
+        "status": "paused",
+        "seconds": 180
+      }
+    ],
+    "active_dialogue_preserved": false,
+    "daily_seconds": 180,
+    "folder": "D:\\Documents\\Архивы\\Programming\\Python\\Tutor-AI\\build\\qa-a3-dialogue-idle-0aa611d4",
+    "sha256": "8c81b4a3c25fd2a828f4ad74e4e431e5689a1432f94b9c08db3955123ee1ca79"
+  },
+  "full_acceptance": false,
+  "live_models_used": false,
+  "disk_free_initial_D_bytes": 1609588736,
+  "disk_free_final_D_bytes": 1375363072,
+  "broken_report_links": []
+}

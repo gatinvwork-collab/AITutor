@@ -1,0 +1,196 @@
+{
+  "passed": true,
+  "sha256": "0ff0ecf7d3c2c9046bef522aebed07d653c0de55f93c89fb90c44ca7b9c965aa",
+  "edges": {
+    "passed": true,
+    "meaning": "reproduction completed; false fields below are product defects",
+    "subject": {
+      "requested": "informatics",
+      "selected": "informatics",
+      "created": "informatics",
+      "correct": true
+    },
+    "dialogue": {
+      "previous_user_turn_in_second_request": true,
+      "first_turn_in_local_journal": true,
+      "roles": [
+        "system",
+        "user",
+        "user",
+        "assistant",
+        "user"
+      ]
+    },
+    "timer": {
+      "status": "active",
+      "before": 0.0377151999855414,
+      "after": 6.370104700006777,
+      "dailyBefore": 2.038051399984397,
+      "dailyAfter": 8.370440900005633,
+      "advanced": true
+    }
+  },
+  "subjects": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "subject action algebra",
+        "ok": true
+      },
+      {
+        "name": "selected algebra",
+        "ok": true
+      },
+      {
+        "name": "stored algebra",
+        "ok": true
+      },
+      {
+        "name": "draft kept algebra",
+        "ok": true
+      },
+      {
+        "name": "explicit discard algebra",
+        "ok": true
+      },
+      {
+        "name": "python scope algebra",
+        "ok": true
+      },
+      {
+        "name": "subject action geometry",
+        "ok": true
+      },
+      {
+        "name": "selected geometry",
+        "ok": true
+      },
+      {
+        "name": "stored geometry",
+        "ok": true
+      },
+      {
+        "name": "draft kept geometry",
+        "ok": true
+      },
+      {
+        "name": "explicit discard geometry",
+        "ok": true
+      },
+      {
+        "name": "python scope geometry",
+        "ok": true
+      },
+      {
+        "name": "subject action physics",
+        "ok": true
+      },
+      {
+        "name": "selected physics",
+        "ok": true
+      },
+      {
+        "name": "stored physics",
+        "ok": true
+      },
+      {
+        "name": "draft kept physics",
+        "ok": true
+      },
+      {
+        "name": "explicit discard physics",
+        "ok": true
+      },
+      {
+        "name": "python scope physics",
+        "ok": true
+      },
+      {
+        "name": "subject action informatics",
+        "ok": true
+      },
+      {
+        "name": "selected informatics",
+        "ok": true
+      },
+      {
+        "name": "stored informatics",
+        "ok": true
+      },
+      {
+        "name": "draft kept informatics",
+        "ok": true
+      },
+      {
+        "name": "explicit discard informatics",
+        "ok": true
+      },
+      {
+        "name": "python scope informatics",
+        "ok": true
+      },
+      {
+        "name": "subject usable while loading",
+        "ok": true
+      },
+      {
+        "name": "late load does not undo selection",
+        "ok": true
+      },
+      {
+        "name": "invalid requires explicit choice",
+        "ok": true
+      },
+      {
+        "name": "book draft scoped",
+        "ok": true
+      },
+      {
+        "name": "logout clears drafts",
+        "ok": true
+      },
+      {
+        "name": "old subjects unchanged",
+        "ok": true
+      }
+    ]
+  },
+  "upgrade_a1": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "a2 version",
+        "ok": true
+      },
+      {
+        "name": "family",
+        "ok": true
+      },
+      {
+        "name": "prior collection retained",
+        "ok": true
+      },
+      {
+        "name": "prior work retained",
+        "ok": true
+      },
+      {
+        "name": "prior payload retains first question",
+        "ok": true
+      },
+      {
+        "name": "crashed attempt paused",
+        "ok": true
+      },
+      {
+        "name": "old clarification used prospectively",
+        "ok": true
+      },
+      {
+        "name": "old subject unchanged",
+        "ok": true
+      }
+    ]
+  },
+  "source_a1_unchanged": true
+}

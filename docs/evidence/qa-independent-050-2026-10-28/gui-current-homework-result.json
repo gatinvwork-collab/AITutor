@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "python available in informatics",
+      "ok": true
+    },
+    {
+      "name": "python syntax result shown",
+      "ok": true
+    },
+    {
+      "name": "short native import attached",
+      "ok": true
+    },
+    {
+      "name": "attachment resets confirmation",
+      "ok": true
+    },
+    {
+      "name": "long native import rejected",
+      "ok": true
+    },
+    {
+      "name": "failed import preserves version",
+      "ok": true
+    },
+    {
+      "name": "cancel preserves version",
+      "ok": true
+    },
+    {
+      "name": "30000 Unicode codepoints allowed",
+      "ok": true
+    },
+    {
+      "name": "30000 codepoints preserved",
+      "ok": true
+    },
+    {
+      "name": "30001 UI invalid",
+      "ok": true
+    },
+    {
+      "name": "30001 native rejected",
+      "ok": true
+    },
+    {
+      "name": "rejected revision not created",
+      "ok": true
+    }
+  ]
+}

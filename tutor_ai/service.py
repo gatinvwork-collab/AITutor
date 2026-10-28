@@ -17,6 +17,8 @@ from .errors import AppError, require
 from .providers import Provider, validate_config
 from .storage import Store
 from .history import meaningful_session, positive, subject_metadata, text
+from .jobs import NetworkJobs
+from .learning import Learning
 
 
 def now():
@@ -53,6 +55,7 @@ class Service:
         "search_addresses", "prepare_homework",
         "rename_profile",
         "get_profile", "save_profile", "read_notification",
+        "learning",
     })
 
     def __init__(self, root, provider_factory=Provider, clock=time.monotonic, address_directory=None):
@@ -69,6 +72,12 @@ class Service:
         self.cancelled = threading.Event()
         self.current_provider = None
         self.address_directory = address_directory or AddressDirectory()
+        self.network_jobs = NetworkJobs()
+        self.learning_engine = Learning(self)
+        self.assessment_active = None
+
+    def learning(self, action, **args):
+        return self.learning_engine.dispatch(action, **args)
 
     def dispatch(self, command, args=None):
         require(command in self.COMMANDS, "Неизвестная команда.", "forbidden")
@@ -105,10 +114,10 @@ class Service:
 
     def status(self):
         if (self.store.root / "transfer-state.json").exists():
-            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.4.1",
+            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.5.0a4",
                     "context": self.context, "transfer_pending": True}
         return {"exists": self.store.exists, "accounts": self.store.accounts(),
-                "authenticated": bool(self.actor), "version": "0.4.1", "context": self.context}
+                "authenticated": bool(self.actor), "version": "0.5.0a4", "context": self.context}
 
     def search_addresses(self, kind, query, region_id=None):
         return self.address_directory.search(kind, query, region_id)
@@ -172,6 +181,11 @@ class Service:
         self.login_attempts.clear()
         self.active_lesson = None
         with self.store.transaction():
+            self.store.db.execute("UPDATE learning_attempts SET status='paused',revision=revision+1 "
+                                  "WHERE student=? AND status='active'", (account,))
+            # Never retry a potentially billed network call silently after a crash.
+            self.store.db.execute("UPDATE learning_jobs SET status='cancelled',revision=revision+1 "
+                                  "WHERE status IN ('pending','running')")
             # A prior crashed session must be explicitly resumed, not billed as active downtime.
             for session in self.store.all("session", account):
                 if session["status"] == "active":
@@ -186,14 +200,20 @@ class Service:
         return {"id": account, "directory_warning": self.store.directory_warning, "context": self.context}
 
     def logout(self):
+        self.network_jobs.cancel()
         if self.actor:
             self.tick()
+            if self.assessment_active:
+                with self.store.transaction():
+                    self.store.db.execute("UPDATE learning_attempts SET status='paused',revision=revision+1 WHERE id=?",
+                                          (self.assessment_active,))
             if self.active_lesson:
                 self.pause(self.active_lesson)
             with self.store.transaction():
                 self.audit("logout")
         self.actor = None
         self.active_lesson = None
+        self.assessment_active = None
         self.store.close()
         self.context = identity()
         return {"ok": True, "context": self.context}
@@ -435,11 +455,13 @@ class Service:
         # Only explicit booleans count as consent.
         config["allow_text"] = config.get("allow_text") is True
         config["allow_documents"] = config.get("allow_documents") is True
+        config["allow_images"] = config.get("allow_images") is True
         config["revision"] = old["revision"] + 1
         config["author"] = self.actor
         with self.store.transaction():
             self.store.put("provider", "family", config)
             self.audit("provider_and_consent_changed")
+        self.network_jobs.cancel()
         return {"ok": True}
 
     def configured(self, document=False):
@@ -474,6 +496,7 @@ class Service:
     def cancel_request(self):
         # Deliberately independent from the command lock held during network I/O.
         self.cancelled.set()
+        self.network_jobs.cancel()
         client = self.current_provider
         if client and hasattr(client, "cancel_request"):
             client.cancel_request()
@@ -545,6 +568,9 @@ class Service:
     def tick(self):
         if not self.actor:
             return
+        if self.assessment_active:
+            self.learning_engine.tick()
+            return
         running = self.running_lesson()
         if not running:
             self.active_lesson = None
@@ -567,6 +593,7 @@ class Service:
 
     def start_lesson(self, topic_id, mode="learn"):
         self.user("STUDENT")
+        require(not self.assessment_active, "Приостановите текущую диагностику.", "session_conflict")
         require(mode in ("learn", "diagnose", "subject_diagnose"), "Выберите режим занятия.")
         require(not self.running_lesson(), "Завершите или приостановите текущее занятие.")
         require(self.daily(self.actor)["seconds"] < self.controls(self.actor)["minutes"] * 60,
@@ -998,8 +1025,10 @@ class Service:
         atomic_write(self.store.root / "backups" / ("before-restore-" + identity() + ".aead"),
                      self.store.path.read_bytes())
         atomic_write(self.store.path, payload)
+        self.network_jobs.cancel()
         self.actor = None
         self.active_lesson = None
+        self.assessment_active = None
         self.store.close()
         self.context = identity()
         return {"ok": True, "context": self.context,
@@ -1017,4 +1046,5 @@ class Service:
             self.store.db.execute("DELETE FROM users WHERE id=?", (student,))
             self.store.envelope["wraps"].pop(student, None)
             self.audit("delete_student", student)
+        self.network_jobs.cancel()
         return {"ok": True, "message": "Профиль удалён из текущего хранилища. Старые копии сохраняют свои данные."}

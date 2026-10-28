@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "id": "long-picker-file-refused",
+      "passed": true
+    },
+    {
+      "id": "failed-import-keeps-existing-work",
+      "passed": true
+    },
+    {
+      "id": "cancel-picker-keeps-existing-work",
+      "passed": true
+    },
+    {
+      "id": "unicode-30000-valid",
+      "passed": true
+    },
+    {
+      "id": "unicode-30001-invalid",
+      "passed": true
+    },
+    {
+      "id": "unicode-native-boundary",
+      "passed": true
+    },
+    {
+      "id": "legacy-long-refused",
+      "passed": true
+    },
+    {
+      "id": "legacy-long-no-new-version",
+      "passed": true
+    },
+    {
+      "id": "legacy-short-new-version",
+      "passed": true
+    },
+    {
+      "id": "legacy-full-text-visible",
+      "passed": true
+    },
+    {
+      "id": "legacy-text-needs-explicit-review",
+      "passed": true
+    },
+    {
+      "id": "legacy-original-result-preserved",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "passed": true,
+  "exe_sha256": "42fa4d34dd43702a3593c2bdc79a4f52863269b5abd7efc2570b7833f8d22183",
+  "workflow": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "parent assignment direct",
+        "ok": true
+      },
+      {
+        "name": "curriculum candidate persisted",
+        "ok": true
+      },
+      {
+        "name": "curriculum published",
+        "ok": true
+      },
+      {
+        "name": "generated reviewed bank",
+        "ok": true
+      },
+      {
+        "name": "collection approved",
+        "ok": true
+      },
+      {
+        "name": "appearance strictlight",
+        "ok": true
+      },
+      {
+        "name": "no overflow strictlight",
+        "ok": true
+      },
+      {
+        "name": "appearance strictdark",
+        "ok": true
+      },
+      {
+        "name": "no overflow strictdark",
+        "ok": true
+      },
+      {
+        "name": "appearance strictsystem",
+        "ok": true
+      },
+      {
+        "name": "no overflow strictsystem",
+        "ok": true
+      },
+      {
+        "name": "appearance modernlight",
+        "ok": true
+      },
+      {
+        "name": "no overflow modernlight",
+        "ok": true
+      },
+      {
+        "name": "appearance moderndark",
+        "ok": true
+      },
+      {
+        "name": "no overflow moderndark",
+        "ok": true
+      },
+      {
+        "name": "appearance modernsystem",
+        "ok": true
+      },
+      {
+        "name": "no overflow modernsystem",
+        "ok": true
+      },
+      {
+        "name": "student reference not serialized",
+        "ok": true
+      },
+      {
+        "name": "topic plan 8+2",
+        "ok": true
+      },
+      {
+        "name": "accepted first answer",
+        "ok": true
+      },
+      {
+        "name": "pause attempt",
+        "ok": true
+      },
+      {
+        "name": "confirmed revision",
+        "ok": true
+      },
+      {
+        "name": "work response persisted",
+        "ok": true
+      },
+      {
+        "name": "local math rendered",
+        "ok": true
+      },
+      {
+        "name": "no executable HTML",
+        "ok": true
+      },
+      {
+        "name": "unsupported TeX preserved",
+        "ok": true
+      },
+      {
+        "name": "no injection effect",
+        "ok": true
+      },
+      {
+        "name": "parent review original",
+        "ok": true
+      },
+      {
+        "name": "parent sees work journal",
+        "ok": true
+      },
+      {
+        "name": "menu node remains connected",
+        "ok": true
+      }
+    ]
+  },
+  "upgrade_ui": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "version",
+        "ok": true
+      },
+      {
+        "name": "linked children",
+        "ok": true
+      },
+      {
+        "name": "history preserved",
+        "ok": true
+      },
+      {
+        "name": "legacy not confirmed",
+        "ok": true
+      },
+      {
+        "name": "schema upgrade screen",
+        "ok": true
+      }
+    ]
+  },
+  "upgrade_native": true,
+  "source_unchanged": true,
+  "network": "loopback synthetic server only; no live AI/OCR quality claim"
+}

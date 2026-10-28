@@ -4,6 +4,8 @@ import ipaddress
 import ssl
 import threading
 import uuid
+import time
+import re
 from urllib.parse import urlparse
 
 import httpx
@@ -52,6 +54,9 @@ class Provider:
         self.config = validate_config(config)
         self.cancelled = threading.Event()
         self.usage = None
+        self.token = None
+        self.token_expires = 0
+        self.permission_check = lambda: True
         # System trust is respected (including installed enterprise/GigaChat CA).
         # No verify=False, redirects or ambient HTTP proxy credentials.
         self.client = httpx.Client(timeout=int(config.get("timeout", 60)),
@@ -63,6 +68,7 @@ class Provider:
 
     def request(self, method, url, **kwargs):
         try:
+            require(self.permission_check() and not self.cancelled.is_set(), 'Запрос отменён.', 'cancelled')
             with self.client.stream(method, url, **kwargs) as response:
                 if response.status_code in (401, 403):
                     raise AppError("Проверьте ключ подключения и доступ к модели.", "authorization")
@@ -93,11 +99,15 @@ class Provider:
             scope = self.config.get("scope", "GIGACHAT_API_PERS")
             require(scope in ("GIGACHAT_API_PERS", "GIGACHAT_API_B2B", "GIGACHAT_API_CORP"),
                     "Неизвестный scope GigaChat.")
+            if self.token and time.time() < self.token_expires - 30:
+                return {"Authorization": f"Bearer {self.token}"}
             token = self.request("POST", "https://ngw.devices.sberbank.ru:9443/api/v2/oauth",
                                  headers={"Authorization": f"Basic {secret}", "RqUID": str(uuid.uuid4())},
                                  data={"scope": scope})
             secret = token.get("access_token")
             require(isinstance(secret, str) and bool(secret), "Не удалось получить токен GigaChat.", "provider")
+            self.token = secret
+            self.token_expires = float(token.get('expires_at', 0)) / 1000
         return {"Authorization": f"Bearer {secret}"} if secret else {}
 
     def get_capabilities(self):
@@ -127,16 +137,51 @@ class Provider:
                 usage = result.get("usage")
             require(isinstance(content, str) and bool(content.strip()), "Модель вернула пустой ответ.", "provider")
             self.usage = usage
-            return {"text": content[:100_000], "usage": usage}
+            require(len(content) <= 100_000, "Ответ превышает 100 000 символов. Разбейте запрос.", "capacity")
+            return {"text": content, "usage": usage}
         except (KeyError, IndexError, TypeError) as exc:
             raise AppError("Формат ответа модели не поддерживается.", "provider") from exc
 
     def validate_configuration(self):
         return self.send_message([{"role": "user", "content": "Ответь одним словом: готово"}])
 
-    def send_multimodal(self, *_):
-        raise AppError("Изображения ещё не подключены к этому адаптеру. Подтвердите текст распознавания.",
-                       "unsupported")
+    def send_multimodal(self, messages, images):
+        require(self.config['kind'] == 'gigachat',
+                'OCR изображений в этом выпуске подключён через GigaChat. Доступен ручной ввод текста.', 'unsupported')
+        require(isinstance(images, list) and 0 < len(images) <= 10, 'Прикрепите от 1 до 10 изображений.')
+        uploaded = []
+        cleanup_failed = False
+        try:
+            for image in images:
+                raw, mime = image['bytes'], image['mime']
+                require(len(raw) <= 8*1024*1024 and mime in ('image/png', 'image/jpeg'), 'Используйте PNG/JPEG до 8 МБ.')
+                file = self.request('POST', self.config['endpoint']+'/files', headers=self.headers(),
+                    files={'file': ('page.png' if mime == 'image/png' else 'page.jpg', raw, mime)}, data={'purpose': 'general'})
+                fid = file.get('id', '')
+                require(isinstance(fid, str) and re.fullmatch(r'[\w-]{1,100}', fid), 'Некорректный ID файла.', 'provider')
+                uploaded.append(fid)
+            request_messages = [dict(m) for m in messages]
+            request_messages[-1]['attachments'] = list(uploaded)
+            result = self.request('POST', self.config['endpoint']+'/chat/completions', headers=self.headers(),
+                json={'model': self.config['model'], 'messages': request_messages, 'stream': False})
+            content = result['choices'][0]['message']['content']
+            require(isinstance(content, str) and content.strip() and len(content) <= 30000,
+                    'Распознанный текст пуст или превышает 30 000 символов.', 'unsupported_format')
+            self.usage = result.get('usage')
+        finally:
+            # Deletion is permitted even after consent revocation: it reduces remote retention.
+            permission, cancelled = self.permission_check, self.cancelled.is_set()
+            self.permission_check = lambda: True
+            self.cancelled.clear()
+            for fid in uploaded:
+                try:
+                    self.request('POST', self.config['endpoint']+'/files/'+fid+'/delete', headers=self.headers())
+                except Exception:
+                    cleanup_failed = True
+            self.permission_check = permission
+            if cancelled:
+                self.cancelled.set()
+        return {'text': content, 'usage': self.usage, 'cleanup_failed': cleanup_failed}
 
     def cancel_request(self):
         self.cancelled.set()

@@ -79,6 +79,7 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
 
     class Bridge(QObject):
         response = Signal(str, str)
+        checkpointFailed = Signal(bool)
 
         def submit(self, rid, function, *args, label="unknown"):
             try:
@@ -235,8 +236,12 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
         def closeEvent(self, event):
             # Finish a serialized native operation before closing/clearing its session.
             pool.shutdown(wait=True, cancel_futures=True)
+            service.network_jobs.shutdown()
             try:
-                service.logout()
+                # A completed network job can still be publishing its snapshot.
+                # Closing the shared SQLite connection must use the same writer lock.
+                with service.lock:
+                    service.logout()
             finally:
                 event.accept()
 
@@ -281,7 +286,12 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
         if service.actor:
             def update():
                 with service.lock:
-                    service.tick()
+                    try:
+                        service.tick()
+                    except OSError:
+                        bridge.checkpointFailed.emit(True)
+                    else:
+                        bridge.checkpointFailed.emit(False)
             pool.submit_idle(update)
 
     timer = QTimer(window)
