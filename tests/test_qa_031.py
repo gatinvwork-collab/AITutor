@@ -118,14 +118,14 @@ def test_failed_restore_keeps_context_and_all_working_records(family):
     assert app.store.db.execute("SELECT * FROM records").fetchall() == before["records"]
 
 
-def test_open_v3_never_rewrites_subjects_or_changes_schema(family):
+def test_open_v3_preserves_subjects_and_upgrades_schema(family):
     app, parent, child, _ = family
     with app.store.transaction():
         app.store.put("knowledge", "past", {"topic": "retired", "subject": "physics", "attempts_count": 1}, child["id"])
     original = copy.deepcopy(app.store.all("knowledge"))
     app.logout()
     app.login(parent["id"], PASSWORD)
-    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4
+    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 5
     app.snapshot()
     assert app.store.all("knowledge") == original
 

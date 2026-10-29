@@ -48,6 +48,8 @@ def main(version=__version__):
             "window.__testResult={passed:true,meaning:",
             "if(chosen!=='informatics'||createdSubject!=='informatics'||!dialogue.previous_user_turn_in_second_request||b.status!=='active'||b.body.seconds<=before)throw Error('QA-050 regression');window.__testResult={passed:true,meaning:",
         )
+        # Attempts now have a dedicated learning route; homework stays focused.
+        script = script.replace("await form(`[data-learning-form=\"finish\"]", "navigate('learning');await learnRefresh();render();await form(`[data-learning-form=\"finish\"]")
         script=script.replace("const before=(await lc('attempt',{attempt:bid})).body.seconds;",
             "const dailyBefore=(await rpc('snapshot')).students.find(s=>s.id===child.id).daily.seconds;const before=(await lc('attempt',{attempt:bid})).body.seconds;")
         script=script.replace("window.__testResult={passed:true,meaning:",

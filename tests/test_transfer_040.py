@@ -61,7 +61,7 @@ def test_copy_migration_history_originals_recovery_and_source_unchanged(source, 
     assert open_seal(copied.store.attachment_key(), original["original"], b"original") == b"AITutor original"
     assert copied.store.get("session", "active")["status"] == "paused"
     assert copied.store.get("session", "active")["seconds"] == 42
-    assert copied.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4
+    assert copied.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 5
     assert (copied.store.root / "unknown.bin").read_bytes() == b"unknown persistent data"
     assert copied.store.user(child["id"])["design"] == "modern"
     copied.store.close()

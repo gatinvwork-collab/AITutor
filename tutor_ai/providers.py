@@ -67,9 +67,18 @@ class Provider:
         self.client.close()
 
     def request(self, method, url, **kwargs):
+        def observe(stage, payload):
+            if url.endswith(("/chat/completions", "/api/chat")) and hasattr(self, "observe"):
+                try:
+                    self.observe(stage, payload)
+                except Exception:
+                    pass  # Diagnostics must not change a provider outcome.
         try:
             require(self.permission_check() and not self.cancelled.is_set(), 'Запрос отменён.', 'cancelled')
+            observe("transport_send", {"payload": kwargs.get("json"), "method": method})
             with self.client.stream(method, url, **kwargs) as response:
+                self.last_http_status = response.status_code
+                observe("transport_status", {"http_status": response.status_code})
                 if response.status_code in (401, 403):
                     raise AppError("Проверьте ключ подключения и доступ к модели.", "authorization")
                 if response.status_code == 429:
@@ -85,7 +94,9 @@ class Provider:
                     require(size <= 4 * 1024 * 1024, "Ответ сервиса слишком велик.", "provider")
                     chunks.append(chunk)
                 import json
-                return json.loads(b"".join(chunks))
+                decoded = json.loads(b"".join(chunks))
+                observe("transport_receive", {"http_status": response.status_code, "payload": decoded})
+                return decoded
         except httpx.TimeoutException as exc:
             raise AppError("Сервис ИИ не ответил вовремя.", "timeout") from exc
         except httpx.HTTPError as exc:
@@ -138,7 +149,9 @@ class Provider:
             require(isinstance(content, str) and bool(content.strip()), "Модель вернула пустой ответ.", "provider")
             self.usage = usage
             require(len(content) <= 100_000, "Ответ превышает 100 000 символов. Разбейте запрос.", "capacity")
-            return {"text": content, "usage": usage}
+            return {"text": content, "usage": usage,
+                    "finish_reason": result.get("done_reason") if local else result["choices"][0].get("finish_reason"),
+                    "http_status": getattr(self, "last_http_status", None)}
         except (KeyError, IndexError, TypeError) as exc:
             raise AppError("Формат ответа модели не поддерживается.", "provider") from exc
 

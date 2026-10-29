@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "source_sha256": "f9c72a2dc2ff3dab1b32ae5a496201ceeb13749b4857ed2e902f20ac164b4621",
+  "bytes": 26941252,
+  "counts": {
+    "chapter": 6,
+    "paragraph": 15,
+    "topic": 46
+  },
+  "optional": 6,
+  "directory": "D:\\Documents\\\u0410\u0440\u0445\u0438\u0432\u044b\\Programming\\Python\\Tutor-AI\\build\\uf29-source-pipeline-6983580c",
+  "vault_bytes": 1104164,
+  "duration": 5.223338499999954,
+  "source_unchanged": true,
+  "recognition": "deterministic fixture, not live AI OCR",
+  "schema": 5
+}

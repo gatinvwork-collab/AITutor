@@ -307,7 +307,7 @@ def test_restore_legacy_backup_migrates_before_replacing(family):
     app.set_controls(child["id"], 10)
     app.restore("legacy.aitbackup", PASSWORD, parent["id"], PASSWORD)
     app.login(parent["id"], PASSWORD)
-    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4
+    assert app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 5
     assert app.controls(child["id"])["minutes"] == 60
     assert app.snapshot()["students"][0]["knowledge"][0]["attempts_count"] == 5
     assert all(p["name"] for p in app.status()["accounts"])

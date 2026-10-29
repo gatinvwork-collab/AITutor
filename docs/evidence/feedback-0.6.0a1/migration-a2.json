@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "source_version": "0.5.0a2",
+  "checks": {
+    "old_tables_unchanged": true,
+    "schema_5": true,
+    "original_bytes": true,
+    "vault_id": true,
+    "snapshot_matches_source": true,
+    "trace_default_off": true,
+    "foreign_keys": true,
+    "crashed_attempt_requires_resume": true,
+    "dialogue_continues": true,
+    "past_payloads_unchanged": true,
+    "restore_clears_context": true,
+    "originals_after_restore": true,
+    "new_write_reopens": true,
+    "source_unchanged": true
+  },
+  "source_sha256": "61116027ca27d9bd06daa868f92b91b939621d55621ad60c5544bc284f546d89"
+}

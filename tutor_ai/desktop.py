@@ -128,6 +128,39 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 self.submit(rid, self.transfer_execute, "recover_transfer", "{}", label="recover_transfer")
             elif command in ("run_transfer", "recover_transfer", "launch_transferred"):
                 self.submit(rid, self.transfer_execute, command, payload, label=command)
+            elif command == "export_trace":
+                try:
+                    result = service.developer("view", **json.loads(payload))
+                    path, _ = QFileDialog.getSaveFileName(window, "Экспорт содержит персональные учебные данные", "learning-trace.json", "JSON (*.json)")
+                    if path:
+                        from .crypto import atomic_write
+                        atomic_write(Path(path), json.dumps(result, ensure_ascii=False, indent=2).encode())
+                    self.response.emit(rid, json.dumps({"result": {"exported": bool(path)}}))
+                except (AppError, OSError):
+                    self.response.emit(rid, json.dumps({"error": "Не удалось экспортировать разрешённые диагностические записи."}, ensure_ascii=False))
+            elif command == "pick_source":
+                try:
+                    import time
+                    import secrets
+                    args = json.loads(payload)
+                    service.access(args.get("student"))
+                    path, _ = QFileDialog.getOpenFileName(window, "Выбрать источник книги/УМК (до 64 МиБ)", "", "PDF (*.pdf)")
+                    result = None
+                    if path:
+                        from .pdf_worker import MAX_BYTES
+                        from .errors import require
+                        require(Path(path).stat().st_size <= MAX_BYTES, "Источник: до 64 МиБ.", "source_size")
+                        with open(path, "rb") as stream:
+                            raw = stream.read(MAX_BYTES+1)
+                        require(len(raw) <= MAX_BYTES, "Источник слишком велик.", "source_size")
+                        token = secrets.token_urlsafe(24)
+                        service.source_handles.clear()
+                        service.source_handles[token] = {"bytes": raw, "context": service.context,
+                            "student": args["student"], "created": time.monotonic()}
+                        result = {"handle": token, "name": Path(path).name, "bytes": len(raw)}
+                    self.response.emit(rid, json.dumps({"result": result}, ensure_ascii=False))
+                except (AppError, OSError) as exc:
+                    self.response.emit(rid, json.dumps({"error": str(exc) if isinstance(exc, AppError) else "Не удалось прочитать источник."}, ensure_ascii=False))
             elif command == "pick_file":
                 if not service.actor:
                     self.response.emit(rid, json.dumps({"error": "Сначала войдите."}))
@@ -155,6 +188,11 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                 self.submit(rid, self.execute, command, payload, label=command)
 
         def execute(self, rid, command, payload):
+            import time
+            started, context = time.monotonic(), service.context
+            outcome = "succeeded"
+            if service.actor:
+                service.content_trace.record(service.actor, "native_start", {"purpose": "ui_operation", "command": command, "correlation_id": rid})
             try:
                 if command == "diagnostic_navigation":
                     if timings.enabled and service.actor:
@@ -166,11 +204,19 @@ def run(smoke=False, root_override=None, service_factory=Service, test_hook=None
                     result["diagnostics"] = timings.enabled
                 self.response.emit(rid, json.dumps({"result": result}, ensure_ascii=False))
             except AppError as exc:
+                outcome = exc.code
                 self.response.emit(rid, json.dumps({"error": str(exc), "code": exc.code}, ensure_ascii=False))
             except OSError:
+                outcome = "write_failed"
                 self.response.emit(rid, json.dumps({"error": "Не удалось записать данные. Проверьте место и права."}))
             except Exception:
+                outcome = "technical_error"
                 self.response.emit(rid, json.dumps({"error": "Операция не выполнена. Данные запроса не записаны в лог."}))
+            finally:
+                if context == service.context and service.actor:
+                    service.content_trace.record(service.actor, "native_finish", {"purpose": "ui_operation", "command": command,
+                        "correlation_id": rid, "status": outcome, "duration": max(0, time.monotonic()-started)},
+                        guard=lambda: context == service.context)
 
         def transfer_prepare(self, rid, source, destination):
             nonlocal recovery_data

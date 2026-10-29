@@ -4,3 +4,5 @@
 .brand-lockup{display:flex;align-items:center;gap:10px;margin-bottom:12px}.brand-lockup img{display:block;flex:0 0 44px;width:44px;height:44px}.brand-wordmark{font-size:23px;line-height:1.1;font-weight:750;letter-spacing:-.6px;color:var(--text)}.brand-wordmark>span{color:var(--accent)}.brand-lockup small{display:block;font-size:11px;letter-spacing:.1px;margin-top:5px;color:var(--muted)}.welcome>header>.brand-lockup{margin-bottom:22px}.welcome>header>.brand-lockup img{width:64px;height:64px;flex-basis:64px}.welcome>header .brand-wordmark{font-size:32px}
 .rich-text math,.message math{font-size:1.2em;margin:0 .15em}.formula-fallback{white-space:pre-wrap;overflow-wrap:anywhere}.rich-list{margin:5px 0}.card>details{margin:12px 0}.card article{padding:14px 0;border-bottom:1px solid var(--border)}
 #checkpoint-warning:not([hidden]) { position: fixed; top: 0; left: 0; right: 0; z-index: 10000; padding: 12px 24px; background: #7f1d1d; color: #fff; text-align: center; }
+#busy { pointer-events: none; } #busy button { pointer-events: auto; }
+[data-busy-blocked=true] { pointer-events: none; opacity: .6; }

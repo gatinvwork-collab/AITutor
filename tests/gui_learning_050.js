@@ -7,18 +7,21 @@
  const p=await rpc('register',{name:'Родитель теста',password:'qa-parent-learning',role:'PARENT'});
  const c=await rpc('register',{name:'Ученик теста',password:'qa-child-learning',role:'STUDENT',profile:{region:'Регион',city:'Город',school:'Школа',grade:7,address:{mode:'manual'}}});
  await rpc('save_provider',{config:{kind:'ollama',model:'synthetic-only',revision:0}});await refresh();
- navigate('learning');await learnRefresh();render();
+ navigate('program');await learnRefresh();render();
  await submit('[data-learning-form="assignment"]',{title:'Тестовая алгебра',authors:'Автор',publisher:'Издатель'});
  check('parent assignment direct',learnData().states.algebra.assignment.title==='Тестовая алгебра');
  await submit('[data-learning-form="curriculum"]',{title:'Программа теста',source:'Ручной тестовый источник',topics:'Уравнения | Обосновать преобразования; Проверить результат'});
  check('curriculum candidate persisted',learnData().requests.some(r=>r.kind==='curriculum'));
  await submit('[data-learning-form="decide"]',{reason:'Проверен состав и полнота'});
  check('curriculum published',!!learnData().states.algebra.curriculum);
+ navigate('learning');render();
  await submit('[data-learning-form="generate"]',{});
  for(let i=0;i<100;i++){await learnRefresh();if(learnData().jobs[0].status!=='running')break;await wait(50);}render();
  check('generated reviewed bank',learnData().jobs[0].status==='succeeded');
+ navigate('program');render();
  await submit('[data-learning-form="decide"]',{reason:'Проверены эталоны и рубрики'});
  check('collection approved',learnData().collections[0].status==='approved');
+ navigate('learning');render();
  document.querySelector('[data-learning-form="generate"]').closest('section').scrollIntoView();await wait(100);await shot('parent-bank');
  for(const design of ['strict','modern'])for(const theme of ['light','dark','system']){
    await rpc('set_theme',{design,theme});await refresh();navigate('learning');await learnRefresh();render();
@@ -33,6 +36,7 @@
  check('accepted first answer',learnData().attempts[0].result.U===1&&learnData().attempts[0].result.S===7);
  await submit('[data-learning-form="pause"]',{});
  check('pause attempt',learnData().attempts[0].status==='paused');
+ navigate('homework');render();
  await submit('[data-learning-form="work"]',{});
  await submit('[data-learning-form="work_revision"]',{value:'**Решение**\n$\\frac{1}{2}$\n3x+5=20\n3x=15\nx=5',confirm:true});
  check('confirmed revision',learnData().works.at(-1).body.confirmed);

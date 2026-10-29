@@ -43,7 +43,7 @@ def seed(directory, source):
     from PySide6.QtGui import QImage
     from PySide6.QtCore import QBuffer, QIODevice
 
-    assert __version__ in ("0.5.0a1", "0.5.0a2", "0.5.0a3")
+    assert __version__ in ("0.5.0a1", "0.5.0a2", "0.5.0a3", "0.5.0a4")
     app = Service(directory / "app-data", provider_factory=FakeProvider)
     parent = app.register("Previous parent", PASSWORD, "PARENT")
     profile = {

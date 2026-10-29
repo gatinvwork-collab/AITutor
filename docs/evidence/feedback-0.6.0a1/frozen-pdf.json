@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "exe_sha256": "98c8ae8384536510f1febb6eb957a0fd152a86d6953c6607e430cd615137c2b8",
+  "source_sha256": "f9c72a2dc2ff3dab1b32ae5a496201ceeb13749b4857ed2e902f20ac164b4621",
+  "pages": 257,
+  "rendered": [
+    255,
+    256,
+    257
+  ],
+  "recognition": "no OCR: PDF decoding and raster only"
+}

@@ -45,7 +45,7 @@ class PublicConnection(http.client.HTTPSConnection):
             raise
 
 
-def fetch(url, limit=8 * 1024 * 1024):
+def fetch(url, limit=8 * 1024 * 1024, cancel=None, budget=40):
     started = time.monotonic()
     try:
         for _ in range(5):
@@ -72,7 +72,8 @@ def fetch(url, limit=8 * 1024 * 1024):
                 if response.status in (301, 302, 303, 307, 308):
                     url = urljoin(url, response.getheader("Location", ""))
                     continue
-                require(response.status == 200, "Источник недоступен.", "source_unavailable")
+                require(response.status == 200, f"Источник вернул HTTP {response.status}.",
+                        "source_forbidden" if response.status == 403 else "source_http_error")
                 require(
                     response.getheader("Content-Encoding", "identity") == "identity",
                     "Сжатый ответ не поддерживается.",
@@ -94,7 +95,8 @@ def fetch(url, limit=8 * 1024 * 1024):
                 )
                 data = bytearray()
                 while True:
-                    require(time.monotonic() - started < 40, "Время загрузки истекло.", "source_unavailable")
+                    require(not cancel or not cancel.is_set(), "Загрузка отменена.", "cancelled")
+                    require(time.monotonic() - started < budget, "Время загрузки истекло.", "source_timeout")
                     chunk = response.read(min(65536, limit + 1 - len(data)))
                     if not chunk:
                         return bytes(data), content_type, url

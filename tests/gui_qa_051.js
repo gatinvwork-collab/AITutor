@@ -34,12 +34,14 @@
  select.value='physics';select.dispatchEvent(new Event('change',{bubbles:true}));release();await loading;rpc=originalRPC;
  check('late load does not undo selection',document.querySelector('#learn-subject').value==='physics');
  selectLearningSubject('not-a-subject');render();check('invalid requires explicit choice',!document.querySelector('[data-learning-form="work"]'));
+ await rpc('logout');await rpc('login',{account:parent.id,password:'qa051-parent-password'});await refresh();navigate('program');await learnRefresh();
  selectLearningSubject('algebra');render();
  const assignment=document.querySelector('[data-learning-form="assignment"]');assignment.elements.title.value='UNSAVED BOOK';assignment.elements.title.dispatchEvent(new Event('input',{bubbles:true}));
  selectLearningSubject('geometry');render();selectLearningSubject('algebra');render();
  check('book draft scoped',document.querySelector('[data-learning-form="assignment"]').elements.title.value==='UNSAVED BOOK');
- await rpc('logout');await rpc('login',{account:child.id,password:'qa051-child-password'});await refresh();navigate('learning');await learnRefresh();render();
+ await rpc('logout');await rpc('login',{account:parent.id,password:'qa051-parent-password'});await refresh();navigate('program');await learnRefresh();render();
  check('logout clears drafts',document.querySelector('[data-learning-form="assignment"]').elements.title.value!=='UNSAVED BOOK');
+ await rpc('logout');await rpc('login',{account:child.id,password:'qa051-child-password'});await refresh();navigate('learning');await learnRefresh();render();
  check('old subjects unchanged',learnData().works.filter(w=>w.revision===0).every(w=>Object.hasOwn(subjects,w.body.subject)));
  window.__testResult={passed:true,checks};
 }catch(error){window.__testResult={passed:false,error:error.stack,checks};}})();

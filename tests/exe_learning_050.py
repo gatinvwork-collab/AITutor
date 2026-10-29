@@ -65,7 +65,7 @@ def main(executable=None, version=__version__):
       check('version',(await rpc('status')).version==='0.5.0a1');
       check('linked children',state.data.students.length>=1);
       check('history preserved',state.data.students.some(s=>s.sessions.some(x=>x.id==='past'&&x.seconds===121)));
-      navigate('learning');await learnRefresh();render();
+      navigate('program');await learnRefresh();render();
       check('legacy not confirmed',learnData().map.every(t=>!t.confirmed));
       check('schema upgrade screen',!!document.querySelector('[data-learning-form="assignment"]'));
       window.__testResult={passed:true,checks};

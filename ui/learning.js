@@ -30,6 +30,7 @@ function learningSubjectPicker(){
   return `<label>Предмет<select id="learn-subject"><option value="" ${!subjects[selected]?'selected':''}>Выберите предмет</option>${Object.entries(subjects).map(([k,v])=>`<option value="${k}" ${k===selected?'selected':''}>${esc(v)}</option>`).join('')}</select></label>`;
 }
 function selectLearningSubject(value){
+  if(value!==state.learnSubject)state.learnTopic=null;
   state.learnSubject=Object.hasOwn(subjects,value)?value:'';
   state.hwSubject=state.learnSubject||null;state.hwTopic=null;
   if(!state.learnSubject)notify('Выберите доступный предмет.');
@@ -71,8 +72,8 @@ function jobSummary(j){
   if(r.cleanup_failed)return '<p>Не удалось подтвердить удаление временных файлов на стороне провайдера. Проверьте хранилище GigaChat.</p>';
   return '<p>Результат сохранён. Обновлены связанные данные.</p>';
 }
-async function learnRefresh(){const id=state.selected,epoch=contextEpoch;if(!id)return;const data=await rpc('learning',{action:'overview',student:id});if(epoch!==contextEpoch||id!==state.selected)throw staleContext();state.learning={...data,student:id};}
-async function learnCall(action,args={}){return rpc('learning',{action,...args,operation_id:crypto.randomUUID()});}
+async function learnRefresh(){const id=state.selected,epoch=contextEpoch;if(!id)return;if(state.learningRead?.id===id&&state.learningRead.epoch===epoch)return state.learningRead.promise;const record={id,epoch};record.promise=(async()=>{const data=await rpc('learning',{action:'overview',student:id});if(epoch!==contextEpoch||id!==state.selected)throw staleContext();state.learning={...data,student:id};})();state.learningRead=record;try{return await record.promise;}finally{if(state.learningRead===record)delete state.learningRead;}}
+async function learnCall(action,args={}){const key=JSON.stringify([contextEpoch,action,args]);const unknown=state.learningUnknownOps??={};const operation_id=unknown[key]??crypto.randomUUID();unknown[key]=operation_id;try{const result=await rpc('learning',{action,...args,operation_id});delete unknown[key];return result;}catch(error){if(error.code)delete unknown[key];throw error;}}
 const learnHidden=(name,value)=>`<input type="hidden" name="${name}" value="${esc(value)}">`;
 function learnSubject(name='subject',value){return `<label>Предмет<select name="${name}">${Object.entries(subjects).map(([k,v])=>`<option value="${k}" ${k===value?'selected':''}>${esc(v)}</option>`).join('')}</select></label>`;}
 function learningPage(){
@@ -120,9 +121,14 @@ document.addEventListener('input',e=>{const form=e.target.closest('[data-learnin
 document.addEventListener('change',e=>{const form=e.target.closest('[data-learning-form]');if(form)saveLearningDraft(form);});
 document.addEventListener('click',e=>{
   const b=e.target.closest('[data-learning]');if(!b||b.disabled||inFlight)return;
+  if(b.dataset.learning==='refresh'){
+    if(b.dataset.readBusy)return;b.dataset.readBusy='1';b.setAttribute('aria-busy','true');
+    const epoch=contextEpoch,revision=navigationRevision;
+    learnRefresh().then(()=>{if(epoch!==contextEpoch||revision!==navigationRevision)return;const active=document.activeElement;if(active?.matches('input,select,textarea'))active.addEventListener('blur',()=>{if(epoch===contextEpoch&&revision===navigationRevision)render();},{once:true});else render();}).catch(error=>{if(!error.stale)notify(error.message);}).finally(()=>{delete b.dataset.readBusy;b.removeAttribute('aria-busy');});return;
+  }
   perform(async()=>{const a=b.dataset.learning;if(a==='refresh'){await learnRefresh();render();return;}
     if(a==='select-source'){const result=learnData().jobs.find(j=>j.id===b.dataset.job).body.result;const input=document.querySelector('[data-learning-form="source"] input[name="url"]');input.value=result.candidates[Number(b.dataset.index)].url;input.closest('details').open=true;input.focus();return;}
-    if(a==='use-candidate'){const result=learnData().jobs.find(j=>j.id===b.dataset.job).body.result;const form=document.querySelector('[data-learning-form="curriculum"]');form.elements.title.value=result.candidate.title||'';form.elements.source.value=result.source;form.elements.topics.value=(result.candidate.topics||[]).map(t=>t.title+' | '+t.skills.join('; ')).join('\n');form.closest('details').open=true;form.elements.topics.focus();return;}
+    if(a==='use-candidate'){const result=learnData().jobs.find(j=>j.id===b.dataset.job).body.result;const form=document.querySelector('[data-learning-form="curriculum"]');form.elements.title.value=result.candidate.title||'';form.elements.source.value=result.source;form.elements.topics.value=(result.candidate.topics||[]).map(t=>t.title+' | '+t.skills.join('; ')).join('\n');saveLearningDraft(form);form.closest('details').open=true;form.elements.topics.focus();return;}
     if(a==='discard_draft'){
       const form=b.closest('form');
       if(form?.dataset.learningForm==='work_revision')delete state.drafts['work-'+form.elements.work.value];
@@ -151,7 +157,7 @@ document.addEventListener('submit',e=>{
     if(action==='current')v.topic=v.topic||null;
     if(action==='studied')v.topics=fd.getAll('topics');
     if(action==='decide'){v.accept=v.accept==='true';if(v.until)v.until=new Date(v.until).toISOString();else delete v.until;}
-    if(action==='generate')v.count=Number(v.count);
+    if(action==='generate'){v.count=Number(v.count);v.max_repairs=Number(v.max_repairs||0);}
     if(action==='source'){if(!v.url)delete v.url;delete v.expected_revision;}
     if(['generate','work','start'].includes(action))delete v.expected_revision;
     if(action==='start'){delete v.subject;}

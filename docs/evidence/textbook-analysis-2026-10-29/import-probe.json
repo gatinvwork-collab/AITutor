@@ -1,0 +1,20 @@
+[
+  {
+    "file": "Algebra_7_klass.pdf",
+    "network_default_limit_bytes": 8388608,
+    "exceeds_default_download_limit": true,
+    "status": "rejected",
+    "exception": "AppError",
+    "code": "validation",
+    "message": "PDF: до 30 страниц без пароля."
+  },
+  {
+    "file": "N_G_Mindyuk_I_S_Shlykova_Metodicheskie_rekomendatsii_Algebra_7_klass.pdf",
+    "network_default_limit_bytes": 8388608,
+    "exceeds_default_download_limit": false,
+    "status": "rejected",
+    "exception": "AppError",
+    "code": "validation",
+    "message": "PDF: до 30 страниц без пароля."
+  }
+]

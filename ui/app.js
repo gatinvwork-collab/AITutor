@@ -6,6 +6,7 @@ const state = {route:'home', data:null, status:null, authMode:'login', selected:
 let bridge, inFlight = 0;
 let contextEpoch=0,nativeContext=null,noticeTimer=null,cancelTransition=null;
 let navigationRevision=0,currentOperation=null;
+const operationRegistry=new Map();
 const busyControls=new Set();
 const pending = new Map();
 let subjects = {};
@@ -32,17 +33,21 @@ function resetPersonalState(context=null) {
 function notify(text) {clearTimeout(noticeTimer);$('#notice').textContent = text; $('#notice').classList.add('show');noticeTimer=setTimeout(() => $('#notice').classList.remove('show'), 7000);}
 function rpc(command, args={}) {
   const id = crypto.randomUUID();
+  const operationId=currentOperation?.id||id;
   return new Promise((resolve,reject) => {
-    const timer = setTimeout(() => { pending.delete(id); reject(new Error('Операция длится дольше ожидаемого. Обновите состояние перед повтором.')); }, command==='run_transfer'?1800000:200000);
-    pending.set(id,{resolve,reject,timer,epoch:contextEpoch,command});
+    const timer = setTimeout(() => { pending.delete(id);const operation=operationRegistry.get(operationId);if(operation)operation.stage='outcome_unknown';reject(new Error('Истекло ожидание интерфейса. Операция могла сохраниться: проверьте состояние перед повтором.')); }, command==='run_transfer'?1800000:['status','snapshot'].includes(command)||(command==='learning'&&['overview','job','subject_context'].includes(args.action))?15000:30000);
+    const started=performance.now();
+    pending.set(id,{resolve,reject,timer,epoch:contextEpoch,command,started,operation:operationId});
+    if(!currentOperation)operationRegistry.set(operationId,{id:operationId,command,epoch:contextEpoch,scope:'read_or_explicit_command',started,stage:'sent'});
+    if(currentOperation){currentOperation.calls??=[];currentOperation.calls.push({id,command,stage:'sent',started});}
     bridge.request(id,command,JSON.stringify(args));
   });
 }
 function syncBusyState() {
-  if(!inFlight){for(const control of busyControls)if(control.isConnected)control.disabled=false;busyControls.clear();}
-  else for(const control of document.querySelectorAll('button,input,select,textarea')){
+  if(!inFlight){for(const control of busyControls)if(control.isConnected){delete control.dataset.busyBlocked;control.removeAttribute('aria-disabled');}busyControls.clear();}
+  else for(const control of document.querySelectorAll('form button:not([type="button"]),[data-learning="refresh"]')){
     if(control.matches('nav [data-action="route"],#cancel-request,#transition-accept,#transition-cancel,#learn-subject'))continue;
-    if(!control.disabled){control.disabled=true;busyControls.add(control);}
+    if(!control.disabled){control.dataset.busyBlocked='true';control.setAttribute('aria-disabled','true');busyControls.add(control);}
   }
   document.querySelector('.content')?.setAttribute('aria-busy',String(!!inFlight));
 }
@@ -54,12 +59,13 @@ function navigate(route) {
   ++navigationRevision;state.route=route;render();
 }
 async function perform(fn) {
-  if(inFlight) return;
-  currentOperation={epoch:contextEpoch,revision:navigationRevision,route:state.route};
+  if(inFlight){notify('Дождитесь сохранения текущего действия. Ввод и просмотр остаются доступны.');return;}
+  currentOperation={id:crypto.randomUUID(),epoch:contextEpoch,revision:navigationRevision,route:state.route,scope:'mutation',started:performance.now(),stage:'running'};
+  operationRegistry.set(currentOperation.id,currentOperation);
   inFlight++; $('#busy').hidden=false;
   syncBusyState();
   try { await fn(); } catch(e) { if(!e.stale)notify(e.message); }
-  finally { inFlight--;currentOperation=null;$('#busy').hidden=true;syncBusyState(); }
+  finally { inFlight--;if(currentOperation){if(currentOperation.stage!=='outcome_unknown')currentOperation.stage='finished';currentOperation.finished=performance.now();}currentOperation=null;while(operationRegistry.size>50)operationRegistry.delete(operationRegistry.keys().next().value);$('#busy').hidden=true;syncBusyState(); }
 }
 async function refresh() {
   state.status=await rpc('status');
@@ -140,7 +146,7 @@ function auth() {
     <button class="primary" type="submit">${register?'Создать профиль':recover?'Восстановить':'Войти'}</button>
   </form><hr class="divider"><div class="row">${state.status?.exists?`<button data-action="auth" data-value="${recover?'login':'recover'}">${recover?'Вернуться ко входу':'Забыли пароль?'}</button>`:`<button data-action="auth" data-value="register">Первый запуск → создать профиль</button>`}</div></section>
   ${!state.status?.exists?transferCard():''}
-  <p class="muted">Tutor-AI · Версия 0.5.0a4 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
+  <p class="muted">Tutor-AI · Версия 0.6.0a1 · Рабочий прототип. Полная приёмка MVP ещё не пройдена.</p></main>`;
 }
 function transferCard(){
   const plan=state.transferPlan;
@@ -196,7 +202,7 @@ function render() {
     if(id===activeRoute)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');
     button.textContent=label+(id==='notifications'&&unread?' · '+unread:'');
   }
-  $('.content').innerHTML=`<div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.5.0a4</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${pages[state.route]()}`;
+  $('.content').innerHTML=`<div class="topline"><span>Ваше пространство обучения</span><span class="badge">Локальная история · v0.6.0a1</span></div>${parent&&state.data.students.length?`<label>Ученик<select id="selected-student">${state.data.students.map(c=>`<option value="${esc(c.id)}" ${c.id===s?.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select></label>`:''}${pages[state.route]()}`;
   const messages=$('.messages'); if(messages) messages.scrollTop=messages.scrollHeight;
   const edit=$('form[data-form="profile"]');
   if(edit&&state.profileEdit?.role==='STUDENT')fillAddress(edit,state.profileEdit.profile);
@@ -309,7 +315,7 @@ function security() {
 function settings() {
   const theme=state.data.user.theme;
   const renameCard=`<section class="card"><h2>Мой профиль</h2><p>${esc(state.data.user.name)}</p><button data-action="edit-profile" data-value="${esc(state.data.user.id)}">Редактировать мои данные</button></section>`;
-  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.5.0a4 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. OCR через GigaChat находится в предварительной версии; фотографии требуют отдельного разрешения. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
+  return `<h1>Настройки</h1>${renameCard}<section class="card"><h2>Оформление</h2><form data-form="theme"><label>Дизайн<select name="design">${[["strict","Строгий"],["modern","Современная"]].map(([k,v])=>`<option value="${k}" ${k===state.data.user.design?"selected":""}>${v}</option>`).join("")}</select></label><label>Цветовая тема<select name="theme">${[['system','Как в системе'],['light','Светлая'],['dark','Тёмная']].map(([k,v])=>`<option value="${k}" ${k===theme?'selected':''}>${v}</option>`).join('')}</select></label><button class="primary">Сохранить</button></form></section><section class="card"><h2>Доступ к профилю</h2><p>Идентификатор входа: <strong>${esc(state.data.user.id)}</strong></p><form data-form="password"><label>Новый пароль<input name="password" type="password" minlength="10" required></label><button>Сменить пароль</button></form><hr class="divider"><button data-action="logout">Выйти и заблокировать хранилище</button></section>${state.data.user.role==='STUDENT'&&!state.data.has_parent?`<section class="card"><h2>Подключить первого родителя</h2><form data-form="register">${registerFields()}<button class="primary">Создать профиль родителя</button></form></section>`:''}<section class="card"><h2>О версии</h2><p>0.6.0a1 · Python / Qt WebEngine. Полная приёмка MVP не пройдена. Короткий PIN, автоматический школьный справочник, потоковая генерация и диктовка пока недоступны. OCR через GigaChat находится в предварительной версии; фотографии требуют отдельного разрешения. Системное озвучивание работает при наличии голоса Windows.</p></section>`;
 }
 
 document.addEventListener('input',e=>{
@@ -333,7 +339,7 @@ document.addEventListener('click',e=>{
   if(action==='cancel-profile'){state.profileEdit=null;state.route=state.profileReturn||(state.data.user.role==='PARENT'?'students':'settings');render();return;}
   if(action==='route'){navigate(value);return;}
   if(action==='auth'){state.authMode=value;render();return;}
-  if(action==='subject'){state.subject=value;state.route='subjects';render();return;}
+  if(action==='subject'){state.subject=value;selectLearningSubject(value);state.route='subjects';render();if(typeof loadContext29==='function'&&!learnData())void loadContext29();return;}
   if(action==='subject-homework'){selectLearningSubject(value);state.homeworkResult=null;state.route='homework';render();return;}
   if(action==='diagnose'||action==='subject-diagnose'){state.learnSubject=state.subject;state.route='learning';render();return;}
   if(action==='period'){state.period=Number(value);render();return;}
@@ -426,6 +432,7 @@ document.addEventListener('submit',e=>{
 
 function receiveResponse(id,payload) {
       const job=pending.get(id);if(!job)return;clearTimeout(job.timer);pending.delete(id);
+      const operation=operationRegistry.get(job.operation);if(operation){operation.stage='response_received';operation.finished=performance.now();const call=operation.calls?.find(c=>c.id===id);if(call){call.stage='response_received';call.finished=operation.finished;}}
       try{
         if(job.epoch!==contextEpoch){job.reject(staleContext());return;}
         const value=JSON.parse(payload);

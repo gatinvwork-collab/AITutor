@@ -83,6 +83,8 @@ class Store:
         from .learning_schema import install
         install(self.db)
         self.db.execute("INSERT INTO schema_migrations VALUES(4)")
+        from .schema5 import install as install5
+        install5(self.db)
         self.db.commit()
 
     def aad(self, account, purpose):
@@ -103,7 +105,7 @@ class Store:
             self.db.execute("PRAGMA temp_store=MEMORY")
             require(self.db.execute("PRAGMA integrity_check").fetchone()[0] == "ok", "База повреждена.")
             version = self.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0]
-            require(version in (1, 2, 3, 4),
+            require(version in (1, 2, 3, 4, 5),
                     "Версия базы не поддерживается.")
             require(self.user(account) is not None, "Учётная запись отсутствует.")
             directory = self.envelope.get("directory")
@@ -114,9 +116,9 @@ class Store:
         except Exception as exc:
             self.close()
             raise AppError("Неверные данные входа или повреждённое хранилище.", "authentication") from exc
-        if version < 4:
+        if version < 5:
             try:
-                self.migrate_v4(version)
+                self.migrate_v5(version)
             except Exception as exc:
                 self.close()
                 raise AppError("Не удалось обновить хранилище. Исходные данные сохранены; "
@@ -188,7 +190,7 @@ class Store:
             self.db.execute("UPDATE users SET design='modern' WHERE role='STUDENT'")
             self.db.execute("INSERT INTO schema_migrations(version) VALUES(3)")
 
-    def migrate_v4(self, version):
+    def migrate_v4(self, version, persist=True):
         """One atomic publication, including 1/2->3. No inferred new achievements."""
         from .learning_schema import install
         raw = self.path.read_bytes()
@@ -199,13 +201,28 @@ class Store:
         if not backup.exists():
             atomic_write(backup, raw)
         require(backup.read_bytes() == raw, 'Не удалось проверить исходную копию.', 'migration')
-        with self.transaction():
+        with self.transaction() if persist else nullcontext():
             if version < 3:
                 self.migrate_v3(version, persist=False)
             install(self.db)
             self.db.execute('INSERT INTO schema_migrations VALUES(4)')
             require(not self.db.execute('PRAGMA foreign_key_check').fetchall(),
                     'Нарушены связи данных.', 'migration')
+
+    def migrate_v5(self, version):
+        from .schema5 import install
+        raw = self.path.read_bytes()
+        require(shutil.disk_usage(self.root).free > len(raw) * 3 + 1024 * 1024,
+                "Недостаточно места для безопасного обновления.", "migration")
+        backup = self.root / "backups" / (f"before-migration-v{version}-" + hashlib.sha256(raw).hexdigest()[:16] + ".aead")
+        if not backup.exists():
+            atomic_write(backup, raw)
+        require(backup.read_bytes() == raw, "Не удалось проверить исходную копию.", "migration")
+        with self.transaction():
+            if version < 4:
+                self.migrate_v4(version, persist=False)
+            install(self.db)
+            require(not self.db.execute("PRAGMA foreign_key_check").fetchall(), "Нарушены связи.", "migration")
 
     @contextmanager
     def transaction(self):

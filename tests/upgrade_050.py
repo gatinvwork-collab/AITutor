@@ -165,7 +165,7 @@ def verify(directory):
     app = Service(directory / "app-data")
     app.store.unlock(expected["parent"], PASSWORD)
     checks = {
-        "schema": app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 4,
+        "schema": app.store.db.execute("SELECT max(version) FROM schema_migrations").fetchone()[0] == 5,
         "vault_identity": app.store.envelope["vault"] == expected["vault"],
         "users": [dict(row) for row in app.store.db.execute("SELECT * FROM users ORDER BY id")]
         == expected["users"],

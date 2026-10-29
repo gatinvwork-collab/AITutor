@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Algebra_7_klass.pdf",
+    "sha256": "f9c72a2dc2ff3dab1b32ae5a496201ceeb13749b4857ed2e902f20ac164b4621",
+    "bytes": 26941252,
+    "pages": 257,
+    "selected_pages": [
+      1,
+      2,
+      3,
+      4,
+      250,
+      251,
+      252,
+      253,
+      254,
+      255,
+      256,
+      257
+    ],
+    "nonempty_selected": 0,
+    "duration": 0.4168015000032028,
+    "rendered": [
+      255,
+      256,
+      257
+    ],
+    "source_unchanged": true
+  },
+  {
+    "name": "N_G_Mindyuk_I_S_Shlykova_Metodicheskie_rekomendatsii_Algebra_7_klass.pdf",
+    "sha256": "607a23d511c413aa2ead3bb9454bc8b10318afc1a0accde68999b63079bb51e1",
+    "bytes": 872351,
+    "pages": 204,
+    "selected_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      175,
+      176,
+      177,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204
+    ],
+    "nonempty_selected": 15,
+    "duration": 2.78157989999454,
+    "toc_discovered": true,
+    "source_unchanged": true
+  }
+]

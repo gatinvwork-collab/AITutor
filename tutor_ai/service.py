@@ -55,7 +55,7 @@ class Service:
         "search_addresses", "prepare_homework",
         "rename_profile",
         "get_profile", "save_profile", "read_notification",
-        "learning",
+        "learning", "developer",
     })
 
     def __init__(self, root, provider_factory=Provider, clock=time.monotonic, address_directory=None):
@@ -75,6 +75,36 @@ class Service:
         self.network_jobs = NetworkJobs()
         self.learning_engine = Learning(self)
         self.assessment_active = None
+        self.source_handles = {}
+        from .content_trace import ContentTrace
+        self.content_trace = ContentTrace(self.store)
+
+    def developer(self, action="status", password=None, enabled=None, student=None, since=0, job=None, stage=None):
+        trace = self.content_trace
+        if action == "unlock":
+            require(password == "god", "Неверный пароль разработчика.", "forbidden")
+            trace.unlocked = True
+        elif action == "close":
+            trace.close()
+        elif action != "status":
+            require(trace.unlocked, "Войдите в настройки разработчика.", "forbidden")
+            self.user()
+            if action == "enable":
+                trace.enabled = enabled is True
+            elif action == "clear":
+                require(self.user()["role"] == "PARENT", "Очистка доступна родителю.", "forbidden")
+                allowed = [r[0] for r in self.store.db.execute("SELECT student_id FROM links WHERE parent_id=?", (self.actor,))]
+                trace.clear(allowed)
+            elif action == "view":
+                if student:
+                    self.access(student)
+                allowed = [student] if student else ([self.actor] if self.user()["role"] == "STUDENT" else
+                    [self.actor] + [r[0] for r in self.store.db.execute("SELECT student_id FROM links WHERE parent_id=?", (self.actor,))])
+                return {"events": trace.read(allowed, self.user()["role"] == "STUDENT", since, job, stage),
+                        "incomplete": trace.incomplete, "warning": "Журнал содержит персональные учебные данные."}
+            else:
+                require(False, "Неизвестная команда диагностики.")
+        return {"unlocked": trace.unlocked, "enabled": trace.enabled, "incomplete": trace.incomplete}
 
     def learning(self, action, **args):
         return self.learning_engine.dispatch(action, **args)
@@ -114,10 +144,10 @@ class Service:
 
     def status(self):
         if (self.store.root / "transfer-state.json").exists():
-            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.5.0a4",
+            return {"exists": False, "accounts": [], "authenticated": False, "version": "0.6.0a1",
                     "context": self.context, "transfer_pending": True}
         return {"exists": self.store.exists, "accounts": self.store.accounts(),
-                "authenticated": bool(self.actor), "version": "0.5.0a4", "context": self.context}
+                "authenticated": bool(self.actor), "version": "0.6.0a1", "context": self.context}
 
     def search_addresses(self, kind, query, region_id=None):
         return self.address_directory.search(kind, query, region_id)
@@ -171,6 +201,7 @@ class Service:
                 "message": "Сохраните идентификатор входа и ключ восстановления вне приложения."}
 
     def login(self, account, password):
+        self.content_trace.close()
         require(not self.actor, "Сначала выйдите из текущего профиля.")
         cutoff = self.clock() - 60
         self.login_attempts = [v for v in self.login_attempts if v > cutoff]
@@ -184,7 +215,10 @@ class Service:
             self.store.db.execute("UPDATE learning_attempts SET status='paused',revision=revision+1 "
                                   "WHERE student=? AND status='active'", (account,))
             # Never retry a potentially billed network call silently after a crash.
-            self.store.db.execute("UPDATE learning_jobs SET status='cancelled',revision=revision+1 "
+            self.store.db.execute("UPDATE learning_jobs SET status=CASE WHEN json_extract(body,'$.stage') IS NOT NULL "
+                                  "THEN 'failed' ELSE 'cancelled' END,revision=revision+1, "
+                                  "body=CASE WHEN json_extract(body,'$.stage') IS NOT NULL THEN "
+                                  "json_set(body,'$.stage','interrupted','$.code','interrupted') ELSE body END "
                                   "WHERE status IN ('pending','running')")
             # A prior crashed session must be explicitly resumed, not billed as active downtime.
             for session in self.store.all("session", account):
@@ -200,6 +234,8 @@ class Service:
         return {"id": account, "directory_warning": self.store.directory_warning, "context": self.context}
 
     def logout(self):
+        self.content_trace.close()
+        self.source_handles.clear()
         self.network_jobs.cancel()
         if self.actor:
             self.tick()
@@ -210,6 +246,11 @@ class Service:
             if self.active_lesson:
                 self.pause(self.active_lesson)
             with self.store.transaction():
+                # A deliberate logout is a cancellation, distinct from restart
+                # reconciliation of a process that ended without a checkpoint.
+                self.store.db.execute("UPDATE learning_jobs SET status='cancelled',revision=revision+1, "
+                                      "body=json_set(body,'$.stage','cancelled','$.code','cancelled') "
+                                      "WHERE status IN ('pending','running')")
                 self.audit("logout")
         self.actor = None
         self.active_lesson = None
@@ -983,6 +1024,8 @@ class Service:
         return {"file": name}
 
     def restore(self, filename, password="", account="", account_password=""):
+        self.content_trace.close()
+        self.source_handles.clear()
         self.user("PARENT")
         require(filename == filename.split("/")[-1].split("\\")[-1] and filename.endswith(".aitbackup"),
                 "Выберите файл резервной копии из каталога backups.")

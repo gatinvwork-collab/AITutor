@@ -1,0 +1,98 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "program heading",
+      "ok": true
+    },
+    {
+      "name": "program contains edition and source",
+      "ok": true
+    },
+    {
+      "name": "program excludes bank",
+      "ok": true
+    },
+    {
+      "name": "learning excludes edition form",
+      "ok": true
+    },
+    {
+      "name": "learning bank present",
+      "ok": true
+    },
+    {
+      "name": "nine clicks no dialog",
+      "ok": true
+    },
+    {
+      "name": "tenth opens dialog",
+      "ok": true
+    },
+    {
+      "name": "unlock does not enable trace",
+      "ok": true
+    },
+    {
+      "name": "developer controls available",
+      "ok": true
+    },
+    {
+      "name": "explicit trace enable",
+      "ok": true
+    },
+    {
+      "name": "logout removes developer state",
+      "ok": true
+    },
+    {
+      "name": "dynamic subjects visible",
+      "ok": true
+    },
+    {
+      "name": "future study allowed",
+      "ok": true
+    },
+    {
+      "name": "future test disabled",
+      "ok": true
+    },
+    {
+      "name": "all studied checkboxes enabled",
+      "ok": true
+    },
+    {
+      "name": "future studied request persisted",
+      "ok": true
+    },
+    {
+      "name": "homework distinct heading",
+      "ok": true
+    },
+    {
+      "name": "homework no administrative forms",
+      "ok": true
+    },
+    {
+      "name": "homework editing retained",
+      "ok": true
+    },
+    {
+      "name": "draft preserved",
+      "ok": true
+    },
+    {
+      "name": "busy does not disable textarea",
+      "ok": true
+    },
+    {
+      "name": "busy does not disable subject",
+      "ok": true
+    },
+    {
+      "name": "busy ends and draft survives",
+      "ok": true
+    }
+  ],
+  "exe_sha256": "98c8ae8384536510f1febb6eb957a0fd152a86d6953c6607e430cd615137c2b8"
+}
